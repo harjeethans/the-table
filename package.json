@@ -12,8 +12,11 @@
     "babel-runtime": "6.26.0",
     "case-sensitive-paths-webpack-plugin": "2.1.1",
     "chalk": "1.1.3",
+    "classnames": "^2.2.5",
     "css-loader": "0.28.4",
+    "dialog-polyfill": "^0.4.9",
     "dotenv": "4.0.0",
+    "esdoc-react-plugin": "^1.0.1",
     "eslint": "4.4.1",
     "eslint-config-react-app": "^2.0.0",
     "eslint-loader": "1.9.0",
@@ -30,6 +33,7 @@
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.6",
     "promise": "8.0.1",
+    "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dev-utils": "^4.0.1",
     "react-dom": "^15.6.1",
@@ -41,6 +45,7 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
+    "esdocs": "./node_modules/.bin/esdoc -c .esdoc.json",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "sass-dev": "./node_modules/node-sass/bin/node-sass ./src/sass/index.scss -o ./src/sass",
@@ -88,6 +93,8 @@
     "extends": "react-app"
   },
   "devDependencies": {
+    "esdoc": "^1.0.2",
+    "esdoc-standard-plugin": "^1.0.0",
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6",
     "webpack": "^3.5.6"
