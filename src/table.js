@@ -1,4 +1,5 @@
-import './sass/index.scss';
+import './sass/index.css';
 
+import Table from 'lib/table/Table';
 
-export default {}
+export default {Table}
