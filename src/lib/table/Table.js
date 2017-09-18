@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
 import Defaults from './Defaults';
 import Logger from '../common/Logger';
@@ -12,6 +10,14 @@ import Util from '../common/Util';
 import EventEmitter from '../common/EventEmitter';
 import HtmlUtils from '../common/HtmlUtils';
 
+import Header from './Header';
+import Body from './Body';
+import Toolbar from './Toolbar';
+import Paginator from './Paginator';
+import HeaderSection from './HeaderSection';
+import Export from './Export';
+
+import Message from './Message';
 
 /**
  * this is Table.
@@ -52,7 +58,7 @@ class Table extends Component {
 
       this._calculateSizing = this._calculateSizing.bind(this);
       this._debouncedCalculateSizing = Util.debounce(this._calculateSizing, props.delay);
-      this._debouncedOnGridEvent = Util.debounce(this.props.onGridEvent, this.props.delay);
+      this._debouncedOnTableEvent = Util.debounce(this.props.onTableEvent, this.props.delay);
       // reference for expanded rows.
       //this._expandedRows = {};
       this._openNestedRows = {};
@@ -90,13 +96,13 @@ class Table extends Component {
       if(this._debouncedCalculateSizing){
         this._debouncedCalculateSizing.cancel();
       }
-      if(this._debouncedOnGridEvent){
-        this._debouncedOnGridEvent.cancel();
+      if(this._debouncedOnTableEvent){
+        this._debouncedOnTableEvent.cancel();
       }
 
     }
 
-    unmountGrid(){
+    unmountTable(){
       ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(this).parentNode);
     }
 
@@ -136,7 +142,7 @@ class Table extends Component {
             }
             return true;
           } catch(error) {
-            log.error('');
+            this.logger.error('');
             return false;
           }
 
@@ -148,7 +154,7 @@ class Table extends Component {
       if(this.state.autoRefresh){
         this._autoRefresh();
       }
-      this.logger.log('Called componentDidUpdate() on Grid');
+      this.logger.log('Called componentDidUpdate() on Table');
     }
 
     componentWillUpdate(/*nextProps, nextState*/){
@@ -156,16 +162,909 @@ class Table extends Component {
     }
 
 
+    /*
+      * Cleanup the structure for some default or missing values that can be defaulted.
+      */
+      _cleanupStructure(structure) {
+        // const cols = structure.columns;
+        // let col;
+        Array.from(structure.columns).forEach(function(column) {
+          if (column.editable === undefined) {
+            column.editable = true;
+          }
+          if (column.sortable === undefined) {
+            column.sortable = true;
+          }
+          if (column.filterable === undefined) {
+            column.filterable = true;
+          }
+          if (column.showTitleOnHover === undefined) {
+            column.showTitleOnHover = true;
+          }
+        });
+
+        // @TODO harjeet will fix after local storage support is added.
+        /*
+        var _storage = this._getStorage();
+        var _cf = (_storage && _storage["columnPerfrences"]) ? _storage["columnPerfrences"].columns : null;
+        var _cfCol
+        if(_cf){
+          Array.from(structure.columns).forEach(function(column) {
+            _cfCol = _.findWhere(_cf, {"attr": col["attr"]});
+            if(_cfCol){
+                col.width  = _cfCol.width;
+                col.hidden  = _cfCol.hidden;
+                col.position  = _cfCol.position;
+            }
+          });
+        }
+        */
+      }
+
+      /*
+      * Do some column processing like how many columns are visible, fix position by sorting, add column widths so that we can cache some stuff.
+      * @TODO Down the line when storage is added we may want to overide some of the stuff to structure from the storage.
+      */
+      _processColumns(structure) {
+        structure.columns = Util.sort(structure.columns, 'position', '1');
+        // let column;
+        let visibleColumns = 0;
+        let width = 0;
+        Array.from(structure.columns).forEach(function(column) {
+          if (!column.hidden) {
+            visibleColumns++;
+            width += column.width;
+          }
+        });
+
+        structure.visibleColumns = visibleColumns;
+        structure.width = width;
+      }
+
+      onToggleRowExpansion(change){
+        this.props.onTableEvent(change);
+      }
+
+      onFetchChildren(change){
+        if(change.payload && change.payload.action === this.props.privateEventCatalog.showChildren){
+          this.logger.log('Fetch and show children for ' + change.payload.id);
+          if(change.payload.promise){
+            change.payload.promise.then(function(response){
+              if(response.data){
+                for (const _model of this.state.data) {
+                  if(_model[this.state.structure.id] === change.payload.model[this.state.structure.id]){
+                    _model[this.state.structure.childrenAttr] = response.data;
+                    _model[this.state.structure.childrenIndicator] = (response.data) ? true : false;
+                    this._openNestedRows[_model[this.state.structure.id]] = _model[this.state.structure.id];
+                    break;
+                  }
+                }
+                this.logger.log('Children fetched will fire an update now!');
+                this.forceUpdate();
+              } else {
+                this.logger.log('could not fetch children for unknown reason!');
+              }
+
+            }.bind(this));
+
+            change.payload.promise.catch(function(error){
+              this.logger.error('Could not fetch children for error ' + JSON.stringify(error));
+            }.bind(this));
+          }
+        }
+        if(change.payload && change.payload.action === this.props.privateEventCatalog.hideChildren){
+          this.logger.log('Hide/remove children for ' + change.payload.id);
+          for (const _model of this.state.data) {
+            if(_model[this.state.structure.id] === change.payload.model[this.state.structure.id]){
+              _model[this.state.structure.childrenAttr] = null;
+              _model[this.state.structure.childrenIndicator] = false;
+              break;
+            }
+          }
+
+          if(this._openNestedRows[change.payload.model[this.state.structure.id]]){
+            delete this._openNestedRows[change.payload.model[this.state.structure.id]];
+          }
+
+          this.setTableState(this._gridStates.ready);
+          if(change.payload.resolve){
+            change.payload.resolve();
+          }
+        }
+
+        this.props.onTableEvent(change);
+      }
+
+      handlePaginatorChange(change) {
+        change.payload = Object.assign(this.state.pagination, change.payload)
+        this.props.onTableEvent(change);
+        //this.logger.log('Called Table.handlePaginatorChange() -->' + JSON.stringify(change));
+      }
+
+      handleHeaderChange(change) {
+        if(change.type === this.props.eventCatalog.simpleFilter){
+
+          if(this.props.filterProcesser && typeof this.props.filterProcesser === 'function'){
+            change.payload = this.props.filterProcesser(change.payload);
+          }
+          if(this.props.usePagination){
+            //set the currentPage to 0 after a request for a filter is received as we do not know how many pages we are going to have after flter query executes.
+            const pagination = Object.assign(this.state.pagination, {currentPage: 1});
+            //willfully not calling paginator.setState(..) as we do not want to make an unecessary call to server requesting page 1 data whereas filter query is just about to be issueed.
+            this.refs.paginator.state.currentPage = 1;
+            this.setState({'filter': change.payload, pagination});
+          } else {
+            this.setState({'filter': change.payload});
+          }
+
+          if(!this._debouncedOnTableEvent){
+            this._debouncedOnTableEvent = Util.debounce(this.props.onTableEvent, this.props.delay);
+          }
+          this._debouncedOnTableEvent(change);
+        } else if(change.type === this.props.eventCatalog.sort) {
+          this.setState({sort: change.payload});
+          this.props.onTableEvent(change);
+        } else {
+          this.props.onTableEvent(change);
+        }
+
+        this.logger.log('Called Table.handleHeaderChange() -->' + JSON.stringify(change));
+      }
+
+      handleSearchChange(change) {
+
+        if(this.props.usePagination){
+          const pagination = Object.assign(this.state.pagination, {currentPage: 1});
+          //willfully not calling paginator.setState(..) as we do not want to make an unecessary call to server requesting page 1 data whereas filter query is just about to be issueed.
+          this.refs.paginator.state.currentPage = 1;
+          this.setState({'filter': {'type': change.type, 'value': change.payload.value}, pagination});
+        } else {
+          this.setState({'filter': {'type': change.type, 'value': change.payload.value}});
+        }
+
+        this.props.onTableEvent(change);
+        this.logger.log('Called Table.handleSearchChange() -->' + JSON.stringify(change));
+      }
+
+      handleToolbarChange(change) {
+        if(change.type === this.props.eventCatalog.toolbar && change.payload.action === 'filter-simple'){
+          this.toggleSimpleFilter();
+        } else if(change.type === this.props.eventCatalog.toolbar && change.payload.action === 'refresh'){
+          if(this.props.isNested){
+            this._hideAllNestedRows();
+          }
+          this.renderInitiatedByRefresh = true;
+        } else if(change.type === this.props.eventCatalog.toolbar && change.payload.action === 'add'){
+
+          this.addRow(change);
+
+        } else if(change.type === this.props.eventCatalog.toolbar && change.payload.action === 'trash-selected'){
+          change.payload.selected = this.getSelected();
+          if(change.payload.promise){
+            change.payload.promise.then(function(response){
+              if(response.success){
+                this.trashData(response.trashed || []);
+                this.forceUpdate();
+              }
+              this.setTableState(this._gridStates.ready);
+            }.bind(this));
+          }
+        } else if(change.type === this.props.eventCatalog.toolbar && change.payload.action === 'trash-all'){
+          change.payload.selected = this.getSelected();
+          if(change.payload.promise){
+            change.payload.promise.then(function(response){
+              if(response.success){
+                this.state.data = [];
+                this.state.selected = [];
+                this.forceUpdate();
+              }
+            }.bind(this));
+          }
+        } else if(change.payload.action === 'download-csv' || change.payload.action === 'download-xml' || change.payload.action === 'download-json') {
+          this._export(change.payload.action);
+        }
+        this.props.onTableEvent(change);
+        this.logger.log('Called Table.handleToolbarChange() -->' + JSON.stringify(change));
+      }
+
+      _handleRowClick(change) {
+        this.props.onTableEvent(change);
+      }
+
+      trashData(models) {
+        this.logger.log('TRASHING from data ' + models);
+        const idAttr = this.state.structure.id;
+        const removeFromSelection = function(modelId){
+          let selModel;
+          const length = this.state.selected.length;
+          const selected = this.state.selected;
+          for (let i = 0; i < length; i++) {
+            selModel = selected[i];
+            if(modelId === selModel){
+              this.state.selected.splice(i, 1);
+              break;
+            }
+          }
+        }.bind(this);
+
+        const removeFromData = function(modelId){
+          let dataModel;
+          const length = this.state.data.length;
+          const data = this.state.data;
+          for (let i = 0; i < length; i++) {
+            dataModel = data[i];
+            if(modelId === dataModel[idAttr]){
+              this.state.data.splice(i, 1);
+              removeFromSelection(modelId);
+              break;
+            }
+          }
+        }.bind(this);
+        const length = models.length;
+        for (let i = 0; i < length; i++) {
+          removeFromData(models[i]);
+        }
+      }
+
+      _hideAllExpandedRows(){
+        let row;
+        Object.keys(this.refs.body.refs).map(function(ref){
+          row = this.refs.body.refs[ref];
+          if(row.state && row.state.isExpanded){
+            row.toggleRowExpansion();
+          }
+        }, this);
+      }
+
+      _hideAllNestedRows(){
+        let row;
+        //this._openNestedRows = {};
+        Object.keys(this.refs.body.refs).map(function(ref){
+          row = this.refs.body.refs[ref];
+          if(row.state.showChildren){
+            row.toggleNestedRow();
+            if(this.props.preserveNestedRowStateOnRender){
+              this._openNestedRows[row.state.model[this.state.structure.id]] = row.state.model[this.state.structure.id];
+            }
+          }
+        }, this);
+      }
+
+      handleSelectionChange(change){
+        //const ns = update(this.state.selected, {$push: [change.payload.id]});
+        const payload = change.payload;
+        if(change.type === this.props.eventCatalog.select){
+          if(payload.isSelected){
+            if(this.props.selectionModel === 'one'){
+              // @TODO see if we can find a better option
+              this.setDeselected(this.state.selected);
+              this.state.selected = [payload.id];
+            } else {
+              this.state.selected.push(payload.id);
+            }
+          } else {
+            if(this.props.selectionModel === 'one'){
+              // @TODO see if we can find a better option
+              this.setDeselected(this.state.selected);
+              this.state.selected = [];
+            } else {
+              const loc = this.state.selected.indexOf(payload.id);
+              if(loc>-1){
+                this.state.selected.splice(loc, 1);
+              }
+            }
+          }
+          //this.setState({'selected': this.state.selected});
+        } else if(change.type === this.props.eventCatalog.selectAll) {
+          let refComp;
+          const _allSelected = [];
+          Object.keys(this.refs.body.refs).map(function(ref){
+            refComp = this.refs.body.refs[ref];
+            if(refComp && refComp.isReactComponent){
+              refComp.setState({'isSelected': payload.isSelected});
+              _allSelected.push(ref);
+            }
+          }, this);
+
+          if(payload.isSelected){
+            Array.prototype.push.apply(this.state.selected, _allSelected);
+            //this.state.selected = Object.keys(this.refs.body.refs);
+          } else {
+            this.state.selected.splice(0, this.state.selected.length);
+          }
 
 
+        }
+
+        //this.logger.log('Called handleSelectionChange() -->' + JSON.stringify(change));
+        //this.logger.log('Selection has -->' + this.state.selected.join(", "));
+
+        //@TODO calling setState is causing slowness will find and fix later.
+        //this.setState({'selected': this.state.selected});
+        if(this.props.showToolbar){
+          this.refs.toolbar.forceUpdate();
+        }
+        this.refs.headerSection.forceUpdate();
+
+        this.props.onTableEvent(change);
+
+        this.logger.log('Selection has -->' + this.state.selected.length + ' rows.');
+      }
+
+      handleInlineActionInvocation(change){
+
+        if(change.type === this.props.eventCatalog.inlineAction){
+          if(change.payload && change.payload.action === 'edit'){
+            this.setTableState(this._gridStates.inlineEditing);
+            if(this.props.useCustomModelEditor){
+              change.payload.promise.then(function(response){
+                this.setTableState(this._gridStates.ready);
+              }.bind(this));
+
+              change.payload.promise.catch(function(error){
+                this.logger.error('Could not save model for error ' + JSON.stringify(error || {}));
+                this.setTableState(this._gridStates.ready);
+              }.bind(this));
+            }
+
+            this.logger.log('Making grid in readonly mode for handleInlineActionInvocation called with mode edit');
+          } else if(change.payload && change.payload.action === 'cancel'){
+            this.setTableState(this._gridStates.ready);
+            this.logger.log('Making grid in ready mode for handleInlineActionInvocation called with cancel');
+          } else if(change.payload && change.payload.action === 'save'){
+            if(change.payload.promise){
+              change.payload.promise.then(function(response){
+                this.setTableState(this._gridStates.ready);
+                this.logger.log('Some additional action on save after promise is resolved by Table main!');
+              }.bind(this));
+            }
+          }
+        }
+
+        this.props.onTableEvent(change);
+
+      }
+
+      /*
+      * Some basic sizing to be done here like
+      * What is the minimun width needed and height we are left with after we make adjustments for various oprions.
+      */
+      _calculateSizing() {
+        if(!this._dimensionAdjust){
+          this._dimensionAdjust = {};
+          const toolbarSize = HtmlUtils.size(ReactDOM.findDOMNode(this.refs.toolbarContainer));
+          const footerSize = HtmlUtils.size(ReactDOM.findDOMNode(this.refs.footerContainer));
+          const headerSize = HtmlUtils.size(ReactDOM.findDOMNode(this.refs.header));
+          this._dimensionAdjust.heightAdjust = ((this.props.showToolbar) ? toolbarSize.h : 0) + headerSize.h + footerSize.h;
+
+          let autoHeight = 300;
+          if(this.props.height==='auto'){
+            if(!this.props.usePagination){
+              autoHeight = (this.state.data.length * 39) + this._dimensionAdjust.heightAdjust;
+            } else {
+              autoHeight = (this.state.pagination.pageSize * 39) + this._dimensionAdjust.heightAdjust;
+            }
+          } else {
+            autoHeight = this.props.height;
+          }
+          this.state.dimension.h = autoHeight - this._dimensionAdjust.heightAdjust;
+          this.logger.log('Table._dimensionAdjust --> ' + JSON.stringify(this._dimensionAdjust));
+        }
+        const parentSize = HtmlUtils.size(ReactDOM.findDOMNode(this).parentNode);
+        //const paginatorSize = HtmlUtils.size(ReactDOM.findDOMNode(this.refs.paginator));
+
+        let width = this.state.structure.width;
+        if(this.props.selectionModel!=='none'){
+          width += this.props.selectCBWidth;
+        }
+        if(this.props.useInlineActions){
+          width += this.props.inlineActionsWidth;
+        }
+        let maxWidth = width
+        if(this.props.flexible){
+          maxWidth = Math.max(parentSize.w, maxWidth);
+        }
+
+        this.state.dimension.w = maxWidth;
+
+        if(this.props.usePagination){
+          //this.refs.paginatorContainer.style.maxWidth = maxWidth;
+        }
+        if(this.props.showToolbar){
+          this.refs.toolbarContainer.style.maxWidth = maxWidth;
+        }
+
+        this.setState({'dimension': this.state.dimension});
+        ReactDOM.findDOMNode(this.refs.body).style.maxHeight = this.state.dimension.h + 'px';
+
+        this.logger.log('Table.state.dimension --> ' + JSON.stringify(this.state.dimension));
+
+      }
+
+      _handleAdjustScroll(change) {
+        const bodyNode = ReactDOM.findDOMNode(this.refs.body);
+        const rowHeight = HtmlUtils.height(bodyNode.getElementsByTagName('tr')[0]) + 1;// 1 added for border.
+
+        const available = HtmlUtils.height(bodyNode) + bodyNode.scrollTop;
+        const whereWeAre = rowHeight*(change.payload.rowIndex+1);
+
+        if(change.payload.open){
+          if(available < (whereWeAre + 50)){ // we may have hit the cornercase for dropdown.
+            bodyNode.scrollTop = bodyNode.scrollTop + change.payload.height;
+            this._adjustedScrollTop = true;
+          }
+        } else {
+          const st = bodyNode.scrollTop + change.payload.height;
+          if(this._adjustedScrollTop && st > 0){
+            bodyNode.scrollTop = bodyNode.scrollTop - change.payload.height;
+          }
+          this._adjustedScrollTop = false;
+        }
+
+      }
+
+      _renderPaginator() {
+
+        return (
+          <div className="paginator-container pull-right" ref="paginatorContainer">
+            <Paginator
+              allowPageSize = {this.props.allowPageSize}
+              currentPage = {this.state.pagination.currentPage}
+              eventCatalog = {this.props.eventCatalog}
+              logger = {this.logger}
+              onPaginatorChange = {this.handlePaginatorChange.bind(this)}
+              pageLinksToShow = {this.props.pageLinksToShow}
+              pageSize = {this.state.pagination.pageSize}
+              pageSizes = {this.props.pagination.pageSizes}
+              pagination = {this.state.pagination}
+              ref = "paginator"
+              totalRecords = {this.state.totalRecords || this.state.data.length} />
+          </div>
+        );
+      }
+
+      _renderToolbar() {
+        const style = {maxWidth: this.state.dimension.w};
+        return (
+          <div className="toolbar-container" ref="toolbarContainer" style={style}>
+            <Toolbar
+              additionalToolbarItems = {this.props.additionalToolbarItems}
+              delay = {this.props.delay}
+              disabledToolbarItems = {this.props.disabledToolbarItems}
+              exculdedToolbarItems = {this.props.exculdedToolbarItems}
+              eventCatalog = {this.props.eventCatalog}
+              icons = {this.props.icons}
+              logger = {this.logger}
+              minLength = {this.props.minLength}
+              onSearchChange = {this.handleSearchChange.bind(this)}
+              onToolbarChange = {this.handleToolbarChange.bind(this)}
+              primaryToolbarItems = {this.props.primaryActions}
+              ref = "toolbar"
+              secondaryToolbarItems = {this.props.secondaryActions}
+              selected = {this.state.selected}
+              showFreeFormSearchBar = {this.props.showFreeFormSearchBar}
+              structure = {this.state.structure}
+              showToolbar = {this.props.showToolbar}
+              toolbarItems = {this.props.toolbarItems} />
+          </div>
+        );
+      }
+
+      _renderFooter() {
+        return (
+          <div className="pull-left">
+            <Message
+              autoClear={this.props.autoClear}
+              message={this.state.message}
+              ref="footerMessage"/>
+          </div>
+        );
+      }
+
+      render() {
+        this.logger.log('Calling Table.render()');
+        let paginatorComponent;
+        if(this.props.usePagination && this.state.pagination){
+          paginatorComponent = this._renderPaginator();
+        }
+        let toolbarComponent;
+        if(this.props.showToolbar && this.props.showToolbar){
+          toolbarComponent = this._renderToolbar();
+        }
+        let footerComponent;
+        if(this.props.showFooter){
+          footerComponent = this._renderFooter();
+        }
+
+        setTimeout(function(){this.gridState = this._gridStates.ready;}.bind(this), 10);
+
+        const gridStyle = {}
+        if(this.props.minWidth){
+          gridStyle['minWidth'] = this.props.minWidth;
+        }
+        const maxWidthStyle = {maxWidth: this.state.dimension.w};
+        const bodyStyle = {'maxHeight': this.state.dimension.h};
+
+        return (
+          <div className="fe-grid" ref="table" style={gridStyle}>
+            {toolbarComponent}
+            <HeaderSection ref="headerSection" maxWidth={this.state.dimension.w} selectionModel={this.props.selectionModel} selected={this.state.selected}></HeaderSection>
+            <div className="grid-container" ref="gridContainer" style={gridStyle}>
+              <div className="grid-scroller" ref="gridScroller" style={{'width': this.state.dimension.w + 2}}>
+                <Header
+                  bordered = {this.props.bordered}
+                  delay = {this.props.delay}
+                  dimension = {this.state.dimension}
+                  eventEmitter = {this.eventEmitter}
+                  eventCatalog = {this.props.eventCatalog}
+                  inlineActionsWidth = {this.props.inlineActionsWidth}
+                  filter = {this.state.filter}
+                  flexible = {this.props.flexible}
+                  icons = {this.props.icons}
+                  isNested = {this.props.isNested}
+                  logger = {this.logger}
+                  minLength = {this.props.minLength}
+                  onHeaderChange = {this.handleHeaderChange.bind(this)}
+                  ref = "header"
+                  selectCBWidth = {this.props.selectCBWidth}
+                  selectionModel = {this.props.selectionModel}
+                  simpleFilterAlwaysVisible = {this.props.simpleFilterAlwaysVisible}
+                  sort = {this.state.sort}
+                  structure = {this.props.structure}
+                  useInlineActions = {this.props.useInlineActions}
+                  useRowExpander = {this.props.useRowExpander} />
+                <Body
+                  bordered = {this.props.bordered}
+                  baseCellEditors = {this.props.baseCellEditors}
+                  baseRenderers = {this.props.baseRenderers}
+                  data = {this.state.data}
+                  dimension = {this.state.dimension}
+                  disabled = {this.state.disabled}
+                  baseCellRenderer = {this.props.baseCellRenderer}
+                  emitRowClick = {this.props.emitRowClick}
+                  eventCatalog = {this.props.eventCatalog}
+                  eventEmitter = {this.eventEmitter}
+                  filter = {this.state.filter}
+                  flexible = {this.props.flexible}
+                  height = {this.props.height}
+                  icons = {this.props.icons}
+                  inlineActions = {this.props.inlineActions}
+                  inlineActionsWidth = {this.props.inlineActionsWidth}
+                  inlineActionsBroker = {this.props.inlineActionsBroker}
+                  isNested = {this.props.isNested}
+                  logger = {this.logger}
+                  nestedKeySplitter = {this.props.nestedKeySplitter}
+                  noDataMessage = {this.props.noDataMessage}
+                  pagination = {this.state.pagination} // todo need to check if we
+                  ref = "body"
+                  selectCBWidth = {this.props.selectCBWidth}
+                  selected = {this.state.selected}
+                  selectionModel = {this.props.selectionModel}
+                  striped = {this.props.striped}
+                  structure = {this.props.structure}
+                  style = {bodyStyle}
+                  truncateOverflow = {this.props.truncateOverflow}
+                  useCustomModelEditor = {this.props.useCustomModelEditor}
+                  useInlineActions = {this.props.useInlineActions}
+                  useRowExpander = {this.props.useRowExpander} />
+                </div>
+            </div>
+            <div className="footer-container" ref="footerContainer" style={maxWidthStyle}>
+              {paginatorComponent}
+              {footerComponent}
+            </div>
+          </div>
+        );
+      }
+
+      // Will trigger a refresh request for the grid.
+      refresh(reloadData){
+        if(reloadData){
+          this.handleToolbarChange(this._generateEventPayload('toolbar', 'refresh'));
+        } else {
+          this.forceUpdate();
+        }
+      }
+
+      _autoRefresh(){
+        if(this._autoRefreshTimer){
+          clearTimeout(this._autoRefreshTimer);
+        }
+        if(this.state.autoRefresh){
+          this._autoRefreshTimer = setTimeout(this.refresh.bind(this), this.state.autoRefreshInterval, true);
+        }
+      }
+
+      enableAutoRefresh(interval){
+        this.setState({
+          autoRefresh: true,
+          autoRefreshInterval: interval || this.props.autoRefreshInterval
+        });
+      }
+
+      disableAutoRefresh(){
+        if(this._autoRefreshTimer){
+          clearTimeout(this._autoRefreshTimer);
+        }
+        this.setState({
+          autoRefresh: false
+        });
+      }
+
+      // toggle a row that can be expanded.
+      toggleRowExpansion(id){
+        if(this.props.useRowExpander){
+          const row = this.refs.body.refs[id];
+          if(row){
+            row.toggleRowExpansion();
+          }
+        }
+      }
+      /**
+      * Set a search for the grid, a text string passed is to ba matched against all the visible columns.
+      *
+      * @param {value} a string.
+      * @param {silent} a boolen if the filer should trigger an event. If silent is true it is assumed that data is filtered and no more query on server/cleint is needed.
+      */
+      setSearch(value, silent) {
+        this.refs.search.setSearch(value, silent);
+      }
+      /**
+      * Set a filter on the grid. For simple filter provide, keys should match the attribure in structure that are visible.
+      * {"filter":{"attr1":"val1", "attr2": "val2"}}
+      *
+      * @param {filterObject} an object as specified above.
+      * @param {silent} a boolen if the filer should trigger an event. If silent is true it is assumed that data is filtered and no more query on server/cleint is needed.
+      * @example grid.setFilter({"address":"418"}, true, true);
+      */
+      setFilter(filterObject, silent, showAppliedFilter){
+        if(filterObject && typeof filterObject === 'object'){
+          this.refs.header.setFilter(filterObject, silent, showAppliedFilter);
+        }
+      }
+
+      toggleSimpleFilter() {
+        this.refs.header.toggleSimpleFilter();
+      }
+
+      setCompoundFilter(){
+
+      }
+
+      /**
+      * Sets the grids state, do not confuse with react state object. This just reflects what state the grid id in like ready, errored etc.
+      * @param gridState string One of valid grid states nemely ('error', 'initializing', 'inlineEditing', 'loading', 'loadingNested', 'ready')
+      * @param message string optional message that we may have to show in the message area of the grid.
+      */
+      setTableState(gridState, message){
+        const domNode = ReactDOM.findDOMNode(this);
+        if(this._gridStates[gridState]){
+          this.setState({gridState});
+          if(gridState === this._gridStates.inlineEditing){
+            HtmlUtils.addClass(domNode, 'inline-editing');
+          } else {
+            HtmlUtils.removeClass(domNode, 'inline-editing');
+          }
+          if(message){
+            this.grid.setMessage(message);
+          }
+        } else {
+          this.logger.error('Table.setTableState() called with an invalid state, should be one of ' + Object.keys(this._gridStates).join(' '));
+        }
+      }
+
+      /**
+      * Set a message that on the grid.
+      * @param message Object Has type and text as keys ex. {type: 'info', text:'An info message'} type can be one of info, success, warning, danger
+      * @param autoClear boolean If set to true message will be cleared with a delay.
+      */
+      setMessage(message, autoClear){
+        //message is an object that has type and text as keys.
+        this.refs.footerMessage.setMessage(message, autoClear);
+      }
+
+      clearMessage(){
+        this.refs.footerMessage.setMessage("", true);
+      }
+
+      /**
+       * Set selected rows on grid.
+       * @param {items} an array of id's that need to be selected in grid.
+       */
+      setSelected(items) {
+        this._setSelection(items, true);
+      }
+
+      /**
+       * Sets disabled row on grid.
+      **/
+      getDisabled() {
+        return this.state.disabled;
+      }
+
+      /**
+       * Sets disabled row on grid.
+      **/
+      setDisabled(items) {
+        const disabledItems = this.state.disabled;
+        if(items && items.length){
+          //@todo will fix properly later right now we just reset disabled as we do not have setEnable API.
+          // Will add after some research on how disabled feature will be utilized.
+          this.setState({'disabled': items});
+          /*
+          items.forEach(item => {
+            if(disabledItems.indexOf(item) === -1){
+              disabledItems.push(item);
+            }
+          });
+          this.setState({'disabled': disabledItems});
+          */
+        }
+      }
+
+      /**
+       * Set deselected rows on grid.
+       * @param {items} an array of id's that need to be deselected in grid.
+       */
+      setDeselected(items) {
+        this._setSelection(items, false);
+      }
+
+      /**
+       * Get selected rows.
+       * @return {array} an array of id's that are selected.
+       */
+      getSelected() {
+        return this.state.selected;
+      }
+
+      /**
+      * Get selected rows models
+      * @return {array} an array of models that are selected.
+      */
+      getSelectedModels() {
+        const that = this;
+        const idAttr = that.state.structure['id'];
+        let _selModels = this.state.data.filter(model => {
+          return that.state.selected.indexOf(model[idAttr]) > -1;
+        });
+
+        return _selModels;
+      }
+
+      updateModelForRow(model) {
+        if(!model[this.state.structure.id]){
+          this.logger.error('Table.updateModelForRow :: Trying to updateModelForRow failed, supplied model does not have id key, please supply model with a valid id/identifier as set in gid structure');
+          return;
+        }
+        const row = this.refs.body.refs[model[this.state.structure.id]];
+        if(!row){
+          this.logger.error('Table.updateModelForRow :: Trying to updateModelForRow failed, supplied model is not part of data for the grid, models that are part of grid data can only be updated.');
+          return;
+        }
+        try {
+          row.setState({model});
+        } catch(error) {
+          this.logger.error('Table.updateModelForRow :: errored out ' + error);
+        }
+      }
+
+      /**
+      * Use this api to update the nested models for a given row. You may have scenarios where you have received new nested models thru polling.
+      * @param modelOrId  model or row id for which we are updating nested models.
+      * @param children an array of models that are nestedModels for this row.
+      */
+      updateNestedModelForRow(modelOrId, nestedModels) {
+        let modelId = modelOrId;
+        if(typeof modelOrId === 'object'){
+          modelId = modelOrId[this.state.structure.id];
+        }
+        const row = this.refs.body.refs[modelId];
+        if(!modelId || !row || typeof nestedModels !== 'object'){
+          this.logger.error('Table.updateNestedModelForRow :: Trying to update failed, supplied modelOrId is not a valid modle in the data.');
+          return;
+        }
+        try {
+          row.state.model.children = nestedModels;
+          this.forceUpdate(); // we have to use force here as we are updating deeply nested data that using setState from react will not help.
+        } catch(error) {
+          this.logger.error('Table.updateNestedModelForRow :: errored out ' + error);
+        }
+      }
+
+      /**
+      * Updates the
+      */
+
+      updateTableDataCollection(data, totalRecords) {
+        if(this.props.useRowExpander && !this.props.preserveRowExpansionOnRender){
+          this._hideAllExpandedRows();
+        }
+        if(data && typeof data === 'object'){
+          this.setState({
+            data,
+            totalRecords,
+            gridState: this._gridStates.ready
+          });
+        }
+      }
+
+      addRow(change) {
+        //@TODO Harjeet Singh a hack for now will fix afetr we have some clarity.
+        const newModel = Object.assign({}, this.state.data[0]);
+        Object.keys(newModel).forEach(function (key) {
+          newModel[key] = '';
+        });
+        newModel[this.state.structure.id] = new Date().getTime();
+        if(change){
+          change.payload.model = newModel;
+        }
 
 
+        this.state.data.splice(0, 0, newModel);
+        this.forceUpdate();
 
-  render() {
-    return (
-      <div>Table</div>
-    );
-  }
+        setTimeout(function(){
+          const row = this.refs.body.refs[newModel[this.state.structure.id]];
+          if(row){
+            row.setMode('edit', true);
+          }
+        }.bind(this), 100);
+      }
+
+      /**
+      * @private set the selection
+      * @param items an array of model ids
+      * @param selected boolean for selection for array provided.
+      **/
+      _setSelection(items, selected){
+        if(!items || items.length === 0){
+          return;
+        }
+        const selectedItems = [];
+        const rows = this.refs.body.refs;
+        const selectItem = function(id){
+          const rowsArray = Object.keys(rows);
+          const len = rowsArray.length;
+          for(let i=0; i<len; i++){
+            if(!rows[rowsArray[i]].tagName && rows[rowsArray[i]].props.model[this.state.structure.id]===id){
+              rows[rowsArray[i]].setState({'isSelected': selected});
+              selectedItems.push(id);
+              return;
+            }
+          }
+        }
+        items.map(selectItem, this);
+
+        this.state.selected = selectedItems;// doing it intentionally as we do not want to cause too many renders.
+
+        // clear up old selection as selection model is one.
+        // if(selected && this.props.selectionModel === 'one'){
+        //  this.state.selected.splice(0, this.state.selected.length)
+        //}
+
+        //Array.prototype.push.apply(this.state.selected, selectedItems);
+
+        this.logger.log('Selection has -->' + this.state.selected.length + ' rows.');
+      }
+
+      _generateEventPayload(type, action){
+        return {
+          type,
+          'payload': {action}
+        };
+      }
+
+      _export(action) {
+        let type = 'JSON';
+        if(action.endsWith('-csv')) {
+          type = 'CSV';
+        } else if(action.endsWith('-xml')) {
+          type = 'XML';
+        }
+
+        Export.triggerDownload('grid-export', type, this.state.data, this.state.structure, this.props.ignoreHiddenForExport);
+      }
 
 }
 
@@ -245,7 +1144,7 @@ const propTypes = {
   // @TODO mode to messageCatalog what test to show if there is no data.
   noDataMessage: PropTypes.string,
   // a function that can be provided as a prop to interface with grid events.
-  onGridEvent: PropTypes.func,
+  onTableEvent: PropTypes.func,
   // data state object refer defaults.
   pagination: PropTypes.object,
   // number of page linke to show.
@@ -321,7 +1220,7 @@ const defaultProps = {
   flexible: true,
   headerFilterPredicate: 'OR',
   height: '300',
-  logger: new Logger('Grid', {logLevel: 10}),
+  logger: new Logger('Table', {logLevel: 10}),
   logLevel: 10,
   messageCatalog: Defaults.messageCatalog,
   minLength: 3,
@@ -347,7 +1246,7 @@ const defaultProps = {
   usePagination: false,
   useRowExpander: false,
   //inlineActionsBroker: (model, action) => {return (model && action);},
-  onGridEvent: (payload) => {this.logger.log('Default onGridEvent handller called with payload -->' + JSON.stringify(payload));},
+  onTableEvent: (payload) => {this.logger.log('Default onTableEvent handller called with payload -->' + JSON.stringify(payload));},
   baseCellRenderer: (column, model) => { return '<span class="empty-cell">NA</span>'}
 };
 Table.propTypes = propTypes;

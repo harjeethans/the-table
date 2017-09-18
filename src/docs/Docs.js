@@ -1,134 +1,122 @@
 import React, { Component } from 'react';
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
+
 import './Docs.css';
 import '../sass/index.css';
+//import '../../node_modules/material-components-web/dist/material-components-web.css';
 
-import {Table} from '../lib/table/index'
+import {Button, Table, Icon, IconButton} from '../lib/index'
 
 class Docs extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <h2>Welcome to the-table  <i className="material-icons">face</i> </h2>
+        <Router>
+          <div className="mdc-layout mdc-js-layout mdc-layout--fixed-header">
+            <header className="mdc-layout__header">
+            <div className="mdc-layout__header-row">
+              <span className="mdc-layout-title">the-table</span>
+              <nav className="mdc-navigation mdc-layout--large-screen-only">
+                <Link className="mdc-navigation__link" to="/">About</Link>
+                <Link className="mdc-navigation__link" to="/about">About</Link>
+                <Link className="mdc-navigation__link" to="/topics">Getting Started</Link>
+                <Link className="mdc-navigation__link" to="/components">Components</Link>
+                <Link className="mdc-navigation__link" to="/faq">FAQ</Link>
+              </nav>
+              <div className="mdc-layout-spacer"></div>
+              <nav className="mdc-navigation mdc-layout--large-screen-only">
+              <Link className="mdc-navigation__link" to="https://github.com/harjeethans/the-table">GitHub</Link>
+              </nav>
+            </div>
+          </header>
+          <div className="mdc-layout__drawer">
+            <span className="mdc-layout-title">materialistic</span>
+            <nav className="mdc-navigation">
+              <Link className="mdc-navigation__link" to="https://github.com/harjeethans/the-table">GitHub</Link>
+            </nav>
+          </div>
+          <main className="mdc-layout__content">
+            {this.props.children}
+          </main>
+          <div>
+            <Route exact path="/" component={Home}/>
+            <Route path="/about" component={About}/>
+            <Route path="/topics" component={Topics}/>
+          </div>
+
         </div>
-        <p className="App-intro">
-        <Table>
-
-
-        </Table>
-
-          <div classNameName="App">
-
-          <div id="demo">
-          <h1>Material Design inspired React Table</h1>
-
-          <div className="table-responsive-vertical shadow-z-1">
-          <table id="table" className="table table-hover table-mc-light-blue">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Link</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td data-title="ID">1</td>
-              <td data-title="Name">Material Design Color Palette</td>
-              <td data-title="Link">
-                <a href="https://github.com/zavoloklom/material-design-color-palette"  >GitHub</a>
-              </td>
-              <td data-title="Status">Completed</td>
-            </tr>
-            <tr>
-              <td data-title="ID">2</td>
-              <td data-title="Name">Material Design Iconic Font</td>
-              <td data-title="Link">
-                <a href="https://codepen.io/zavoloklom/pen/uqCsB"  >Codepen</a>
-                <a href="https://github.com/zavoloklom/material-design-iconic-font"  >GitHub</a>
-              </td>
-              <td data-title="Status">Completed</td>
-            </tr>
-            <tr>
-              <td data-title="ID">3</td>
-              <td data-title="Name">Material Design Hierarchical Display</td>
-              <td data-title="Link">
-                <a href="https://codepen.io/zavoloklom/pen/eNaEBM"  >Codepen</a>
-                <a href="https://github.com/zavoloklom/material-design-hierarchical-display"  >GitHub</a>
-              </td>
-              <td data-title="Status">Completed</td>
-            </tr>
-            <tr>
-              <td data-title="ID">4</td>
-              <td data-title="Name">Material Design Sidebar</td>
-              <td data-title="Link"><a href="https://codepen.io/zavoloklom/pen/dIgco"  >Codepen</a></td>
-              <td data-title="Status">Completed</td>
-            </tr>
-            <tr>
-              <td data-title="ID">5</td>
-              <td data-title="Name">Material Design Tiles</td>
-              <td data-title="Link">
-                <a href="https://codepen.io/zavoloklom/pen/wtApI"  >Codepen</a>
-              </td>
-              <td data-title="Status">Completed</td>
-            </tr>
-            <tr>
-              <td data-title="ID">6</td>
-              <td data-title="Name">Material Design Typography</td>
-              <td data-title="Link">
-                <a href="https://codepen.io/zavoloklom/pen/IkaFL"  >Codepen</a>
-                <a href="https://github.com/zavoloklom/material-design-typography"  >GitHub</a>
-              </td>
-              <td data-title="Status">Completed</td>
-            </tr>
-            <tr>
-              <td data-title="ID">7</td>
-              <td data-title="Name">Material Design Buttons</td>
-              <td data-title="Link">
-                <a href="https://codepen.io/zavoloklom/pen/Gubja"  >Codepen</a>
-              </td>
-              <td data-title="Status">In progress</td>
-            </tr>
-            <tr>
-              <td data-title="ID">8</td>
-              <td data-title="Name">Material Design Form Elements</td>
-              <td data-title="Link">
-                <a href="https://codepen.io/zavoloklom/pen/yaozl"  >Codepen</a>
-              </td>
-              <td data-title="Status">In progress</td>
-            </tr>
-            <tr>
-              <td data-title="ID">9</td>
-              <td data-title="Name">Material Design Email Template</td>
-              <td data-title="Link">
-                <a href="https://codepen.io/zavoloklom/pen/qEVqzx"  >Codepen</a>
-              </td>
-              <td data-title="Status">Completed</td>
-            </tr>
-            <tr>
-              <td data-title="ID">10</td>
-              <td data-title="Name">Material Design Animation Timing (old one)</td>
-              <td data-title="Link">
-                <a href="https://codepen.io/zavoloklom/pen/Jbrho"  >Codepen</a>
-              </td>
-              <td data-title="Status">Completed</td>
-            </tr>
-          </tbody>
-          </table>
-          </div>
-
-          </div>
-
-          </div>
-
-
-
-
-        </p>
-      </div>
+        </Router>
     );
   }
 }
+
+const Home = () => (
+  <div className="docs-sample">
+    <Button accent={true}>accent</Button>&nbsp;
+    <Button compact={true}>compact</Button>&nbsp;
+    <Button dense={true}>dense</Button>&nbsp;
+    <Button primary={true}>primary</Button>&nbsp;
+    <Button raised={true}>raised</Button>&nbsp;
+    <IconButton primary={true} iconName="search"></IconButton>
+
+      <select className="mdc-select">
+      <option value="" default selected>Pick a food</option>
+      <option value="grains">Bread, Cereal, Rice, and Pasta</option>
+      <option value="vegetables">Vegetables</option>
+      <optgroup label="Fruits">
+        <option value="apple">Apple</option>
+        <option value="oranges">Orange</option>
+        <option value="banana">Banana</option>
+      </optgroup>
+      <option value="dairy">Milk, Yogurt, and Cheese</option>
+      <option value="meat">Meat, Poultry, Fish, Dry Beans, Eggs, and Nuts</option>
+      <option value="fats">Fats, Oils, and Sweets</option>
+    </select>
+  </div>
+)
+
+const About = () => (
+  <div>
+    <h2>About</h2>
+  </div>
+)
+
+const Topics = ({ match }) => (
+  <div>
+    <h2>Topics</h2>
+    <ul>
+      <li>
+        <Link to={`${match.url}/rendering`}>
+          Rendering with React
+        </Link>
+      </li>
+      <li>
+        <Link to={`${match.url}/components`}>
+          Components
+        </Link>
+      </li>
+      <li>
+        <Link to={`${match.url}/props-v-state`}>
+          Props v. State
+        </Link>
+      </li>
+    </ul>
+
+    <Route path={`${match.url}/:topicId`} component={Topic}/>
+    <Route exact path={match.url} render={() => (
+      <h3>Please select a topic.</h3>
+    )}/>
+  </div>
+)
+
+const Topic = ({ match }) => (
+  <div>
+    <h3>{match.params.topicId}</h3>
+  </div>
+)
 
 export default Docs;

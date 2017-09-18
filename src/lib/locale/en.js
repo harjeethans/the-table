@@ -38,7 +38,7 @@ module.exports = {
   'Refresh': 'Refresh',
   'RowsPerPage': 'Rows/Page',
   'RowsSelected': 'rows selected',
-  'SearchPh': 'Search...',
+  'Search': 'Search...',
   'Selected': 'Selected',
   'Settings': 'Settings',
   'to': 'to',

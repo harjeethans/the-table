@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import PropTypes from 'prop-types';
+
 
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 
 import Defaults from './Defaults';
 //import {Overlay, Popover} from 'react-bootstrap';
-import Fa from './bootstrap/Fa';
+import Icon from '../common/components/Icon';
 
 class CellPopover extends React.Component {
 
@@ -114,18 +115,18 @@ class CellPopover extends React.Component {
       <div
         className="column-popover">
         {this.props.generateCellContent(this.props.column, this.props.model, this.props.structure, this.props.eventEmitter, this.props.rowIndex, this.props.nestedKeySplitter)}
-        <Fa
+        <Icon
           faIconClass={faClasses}
           onClick={this.onClick.bind(this)}
           ref="popoverTarget">
-        </Fa>
+        </Icon>
         <div
           className = {popoverClasses}
           container = {container}
           containerPadding = {this.options.containerPadding}
           onEntered = {this.onShow.bind(this)}
           ref = "overlay"
-          rootClose = {true}
+          rootClose = {1===1}
           onHide = {this.onHide.bind(this)}
           placement = {this.options.placement}
           show = {this.state.show}
@@ -154,16 +155,16 @@ CellPopover.state = {
 };
 
 CellPopover.propTypes = {
-  baseOptions:  PropTypes.object,
-  column:  PropTypes.object, // column metadata
-  eventCatalog:  PropTypes.object, // catalog of all the events supported by the grid, these venets have specific payload associated.
-  eventEmitter:  PropTypes.object, // event emitter for pub/sub
-  generateCellContent:  PropTypes.func,
-  options:  PropTypes.object, // options object
-  model:  PropTypes.object, // refer docs/structure.md file for how to map a structure for a given model.
-  nestedKeySplitter:  PropTypes.string, //  incase we are looking for a nested attr in a model what splitter to use.
-  rowIndex:  PropTypes.number, // index of row in teh table.
-  structure:  PropTypes.object // structure reference.
+  baseOptions: PropTypes.object,
+  column: PropTypes.object, // column metadata
+  eventCatalog: PropTypes.object, // catalog of all the events supported by the grid, these venets have specific payload associated.
+  eventEmitter: PropTypes.object, // event emitter for pub/sub
+  generateCellContent: PropTypes.func,
+  options: PropTypes.object, // options object
+  model: PropTypes.object, // refer docs/structure.md file for how to map a structure for a given model.
+  nestedKeySplitter: PropTypes.string, //  incase we are looking for a nested attr in a model what splitter to use.
+  rowIndex: PropTypes.number, // index of row in teh table.
+  structure: PropTypes.object // structure reference.
 };
 
 CellPopover.defaultProps = {

@@ -2,8 +2,8 @@ import React from 'react';
 //import ReactDOM from 'react-dom';
 //import {Overlay, Popover} from 'react-bootstrap';
 
-import Util from './common/Util';
-import I18N from './locale/I18N';
+import Util from '../common/Util';
+import I18N from '../locale/I18N';
 import CellPopover from './CellPopover';
 
 
@@ -17,6 +17,7 @@ class Renderers {
    * @param {object} options - over-ride for the options
    *
    * popover type take following options
+   * everything at http://react-bootstrap.github.io/components.html#popovers
    * plus onShow (callback), onHide (callback), height(integer), width(integer), scrollPopoverInView (boolean)
    */
   constructor(options = {}) {
@@ -40,8 +41,6 @@ class Renderers {
           return this._booleanRenderer(col, model, structure, eventEmitter, rowIndex, nestedKeySplitter);
         case 'popover':
           return this._popoverRenderer(col, model, structure, eventEmitter, rowIndex, nestedKeySplitter);
-        default:
-          return null;
       }
     }
   }

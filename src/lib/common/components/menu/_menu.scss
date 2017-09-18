@@ -1,0 +1,17 @@
+.mdc-menu {
+  position: relative;
+  background: $background-mdc-menu;
+  &__container{
+    width: 100%;
+    position: relative;
+  }
+  &--small {
+    width: 150px;
+  }
+  &--medium {
+    width: 250px
+  }
+  &--large {
+    width: 400px;
+  }
+}
