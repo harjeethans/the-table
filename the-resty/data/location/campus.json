@@ -1,0 +1,229 @@
+{
+    "totalCount": 28,
+    "identifier": "id",
+    "items": [{
+        "id": 100,
+        "location": "LDN Campus",
+        "description": "Main United Kingdom",
+        "mse_data_source": "MSE-LDN",
+        "country": "UK",
+        "continent": "Europe",
+        "hasChildren": true
+    }, {
+        "id": 101,
+        "location": "NTN Campus",
+        "description": "Israel main campus",
+        "mse_data_source": "MSE-NTN",
+        "country": "Israel",
+        "continent": "Asia",
+        "hasChildren": false
+    }, {
+        "id": 102,
+        "location": "SJ Campus",
+        "description": "US main campus for engineering",
+        "mse_data_source": "MSE-SJ",
+        "country": "USA",
+        "continent": "North America",
+        "hasChildren": true
+    }, {
+        "id": 103,
+        "location": "BLR Campus",
+        "description": "India campus",
+        "mse_data_source": "MSE-BLR",
+        "country": "India",
+        "continent": "Asia",
+        "hasChildren": true
+    }, {
+        "id": 104,
+        "location": "GLA Campus",
+        "description": "Glasgow R&D",
+        "mse_data_source": "MSE-GLA",
+        "country": "UK",
+        "continent": "Asia",
+        "hasChildren": false
+    }, {
+        "id": 105,
+        "location": "RTC Campus",
+        "description": "US East coast",
+        "mse_data_source": "MSE-RTC",
+        "country": "USA",
+        "continent": "North America",
+        "hasChildren": true
+    }, {
+        "id": 106,
+        "location": "AUS Campus",
+        "description": "US Southern Campus",
+        "mse_data_source": "MSE-AUS",
+        "country": "USA",
+        "continent": "North America",
+        "hasChildren": true
+    }, {
+        "id": 107,
+        "location": "LDN Campus 1",
+        "description": "Main United Kingdom",
+        "mse_data_source": "MSE-LDN",
+        "country": "UK",
+        "continent": "Europe",
+        "hasChildren": true
+    }, {
+        "id": 108,
+        "location": "NTN Campus 1",
+        "description": "Israel main campus",
+        "mse_data_source": "MSE-NTN",
+        "country": "Israel",
+        "continent": "Asia",
+        "hasChildren": true
+    }, {
+        "id": 109,
+        "location": "SJ Campus 1",
+        "description": "US main campus for engineering",
+        "mse_data_source": "MSE-SJ",
+        "country": "USA",
+        "continent": "North America",
+        "hasChildren": true
+    }, {
+        "id": 110,
+        "location": "BLR Campus 1",
+        "description": "India campus",
+        "mse_data_source": "MSE-BLR",
+        "country": "India",
+        "continent": "Asia",
+        "hasChildren": true
+    }, {
+        "id": 111,
+        "location": "GLA Campus 1",
+        "description": "Glasgow R&D",
+        "mse_data_source": "MSE-GLA",
+        "country": "UK",
+        "continent": "Asia",
+        "hasChildren": true
+    }, {
+        "id": 112,
+        "location": "RTC Campus 1",
+        "description": "US East coast",
+        "mse_data_source": "MSE-RTC",
+        "country": "USA",
+        "continent": "North America",
+        "hasChildren": true
+    }, {
+        "id": 113,
+        "location": "AUS Campus 1",
+        "description": "US Southern Campus",
+        "mse_data_source": "MSE-AUS",
+        "country": "USA",
+        "continent": "North America",
+        "hasChildren": true
+    }, {
+        "id": 114,
+        "location": "LDN Campus 2",
+        "description": "Main United Kingdom",
+        "mse_data_source": "MSE-LDN",
+        "country": "UK",
+        "continent": "Europe",
+        "hasChildren": true
+    }, {
+        "id": 115,
+        "location": "NTN Campus 2",
+        "description": "Israel main campus",
+        "mse_data_source": "MSE-NTN",
+        "country": "Israel",
+        "continent": "Asia",
+        "hasChildren": true
+    }, {
+        "id": 116,
+        "location": "SJ Campus 2",
+        "description": "US main campus for engineering",
+        "mse_data_source": "MSE-SJ",
+        "country": "USA",
+        "continent": "North America",
+        "hasChildren": true
+    }, {
+        "id": 117,
+        "location": "BLR Campus 2",
+        "description": "India campus",
+        "mse_data_source": "MSE-BLR",
+        "country": "India",
+        "continent": "Asia",
+        "hasChildren": true
+    }, {
+        "id": 118,
+        "location": "GLA  Campus 2",
+        "description": "Glasgow R&D",
+        "mse_data_source": "MSE-GLA",
+        "country": "UK",
+        "continent": "Asia",
+        "hasChildren": true
+    }, {
+        "id": 119,
+        "location": "RTC Campus 2",
+        "description": "US East coast",
+        "mse_data_source": "MSE-RTC",
+        "country": "USA",
+        "continent": "North America",
+        "hasChildren": true
+    }, {
+        "id": 120,
+        "location": "AUS Campus 2",
+        "description": "US Southern Campus",
+        "mse_data_source": "MSE-AUS",
+        "country": "USA",
+        "continent": "North America",
+        "hasChildren": true
+    }, {
+        "id": 121,
+        "location": "LDN Campus 3",
+        "description": "Main United Kingdom",
+        "mse_data_source": "MSE-LDN",
+        "country": "UK",
+        "continent": "Europe",
+        "hasChildren": true
+    }, {
+        "id": 122,
+        "location": "NTN Campus 3",
+        "description": "Israel main campus",
+        "mse_data_source": "MSE-NTN",
+        "country": "Israel",
+        "continent": "Asia",
+        "hasChildren": true
+    }, {
+        "id": 123,
+        "location": "SJ Campus 3",
+        "description": "US main campus for engineering",
+        "mse_data_source": "MSE-SJ",
+        "country": "USA",
+        "continent": "North America",
+        "hasChildren": true
+    }, {
+        "id": 124,
+        "location": "BLR Campus 3",
+        "description": "India campus",
+        "mse_data_source": "MSE-BLR",
+        "country": "India",
+        "continent": "Asia",
+        "hasChildren": true
+    }, {
+        "id": 125,
+        "location": "GLA  Campus 3",
+        "description": "Glasgow R&D",
+        "mse_data_source": "MSE-GLA",
+        "country": "UK",
+        "continent": "Asia",
+        "hasChildren": true
+    }, {
+        "id": 126,
+        "location": "RTC Campus 3",
+        "description": "US East coast",
+        "mse_data_source": "MSE-RTC",
+        "country": "USA",
+        "continent": "North America",
+        "hasChildren": true
+    }, {
+        "id": 127,
+        "location": "AUS Campus 3",
+        "description": "US Southern Campus",
+        "mse_data_source": "MSE-AUS",
+        "country": "USA",
+        "continent": "North America",
+        "hasChildren": true
+    }]
+}

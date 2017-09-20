@@ -1,0 +1,53 @@
+{
+    "totalCount": 10,
+    "identifier": "id",
+    "items": [{
+        "id": 150,
+        "location": "Floor 1",
+        "description": "Business 1",
+        "mse_data_source": "MSE-FLR_1-5",
+        "country": "NA",
+        "continent": "NA",
+        "hasChildren": true
+    }, {
+        "id": 151,
+        "location": "Floor 2",
+        "description": "Business 2",
+        "mse_data_source": "MSE-FLR_1-5",
+        "country": "NA",
+        "continent": "NA",
+        "hasChildren": false
+    }, {
+        "id": 152,
+        "location": "Floor 3",
+        "description": "Business 3",
+        "mse_data_source": "MSE-FLR_1-5",
+        "country": "NA",
+        "continent": "NA",
+        "hasChildren": true
+    }, {
+        "id": 153,
+        "location": "Floor 4",
+        "description": "Business 4",
+        "mse_data_source": "MSE-FLR_1-5",
+        "country": "NA",
+        "continent": "NA",
+        "hasChildren": true
+    }, {
+        "id": 154,
+        "location": "Floor 5",
+        "description": "Business 5",
+        "mse_data_source": "MSE-FLR_1-5",
+        "country": "NA",
+        "continent": "NA",
+        "hasChildren": false
+    }, {
+        "id": 155,
+        "location": "Floor 6",
+        "description": "Business 6",
+        "mse_data_source": "MSE-FLR_5-10",
+        "country": "NA",
+        "continent": "NA",
+        "hasChildren": true
+    }]
+}

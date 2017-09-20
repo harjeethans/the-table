@@ -1,0 +1,236 @@
+{
+  "items": [{
+    "id": "01842a82-d993-4a6d-9edf-2057241888b1",
+    "meta": {
+      "created": "2016-08-16T20:49:31.022Z",
+      "modified": "2016-08-16T20:49:31.024Z",
+      "tags": []
+    },
+    "org_id": "aa427b33-e85a-4f13-80e3-499d03e21cc8",
+    "primary_id": "01842a82-d993-4a6d-9edf-2057241888b1",
+    "profile": {
+      "emails": [{
+        "primary": true,
+        "value": "supportadmin@fireeye.com"
+      }],
+      "username": "supportadmin"
+    },
+    "type": "primary",
+    "status": {
+      "active": true,
+      "enrolled": true,
+      "locked": false
+    }
+  }, {
+    "id": "04ab3e4d-b124-47bc-a011-20ce2f82fb4f",
+    "meta": {
+      "created": "2016-08-16T20:49:28.519Z",
+      "modified": "2016-08-16T20:49:28.563Z",
+      "tags": []
+    },
+    "org_id": "aa427b33-e85a-4f13-80e3-499d03e21cc8",
+    "primary_id": "04ab3e4d-b124-47bc-a011-20ce2f82fb4f",
+    "profile": {
+      "emails": [{
+        "primary": true,
+        "value": "password@fireeye.com"
+      }],
+      "username": "password"
+    },
+    "type": "primary",
+    "status": {
+      "active": true,
+      "enrolled": true,
+      "locked": false
+    }
+  }, {
+    "id": "16fa707b-b04c-475e-bf72-5a4096101ef2",
+    "meta": {
+      "created": "2016-09-01T09:03:58.985Z",
+      "modified": "2016-09-01T09:05:20.831Z",
+      "tags": []
+    },
+    "org_id": "aa427b33-e85a-4f13-80e3-499d03e21cc8",
+    "primary_id": "16fa707b-b04c-475e-bf72-5a4096101ef2",
+    "profile": {
+      "emails": [{
+        "primary": true,
+        "value": "a@w.com"
+      }],
+      "nickname": "2",
+      "phone_numbers": [{
+        "primary": true,
+        "value": "32132131233"
+      }],
+      "timezone": "America/Anchorage",
+      "username": "a@w.com"
+    },
+    "type": "primary",
+    "status": {
+      "active": true,
+      "enrolled": true,
+      "locked": false
+    }
+  }, {
+    "id": "1b30479c-9f15-4cea-b707-16700c021830",
+    "meta": {
+      "created": "2016-09-06T06:46:51.877Z",
+      "modified": "2016-09-06T06:46:51.877Z",
+      "tags": []
+    },
+    "org_id": "aa427b33-e85a-4f13-80e3-499d03e21cc8",
+    "primary_id": "1b30479c-9f15-4cea-b707-16700c021830",
+    "profile": {
+      "emails": [{
+        "primary": true,
+        "value": "bhautik@test.com"
+      }],
+      "username": "bhautik@test.com"
+    },
+    "type": "primary",
+    "status": {
+      "active": true,
+      "enrolled": false,
+      "locked": false
+    }
+  }, {
+    "id": "35ba28df-90ad-4590-a113-ce23d6091ee6",
+    "meta": {
+      "created": "2016-08-16T20:49:29.825Z",
+      "modified": "2016-08-16T20:49:29.827Z",
+      "tags": []
+    },
+    "org_id": "aa427b33-e85a-4f13-80e3-499d03e21cc8",
+    "primary_id": "35ba28df-90ad-4590-a113-ce23d6091ee6",
+    "profile": {
+      "emails": [{
+        "primary": true,
+        "value": "admin@fireeye.com"
+      }],
+      "username": "admin"
+    },
+    "type": "primary",
+    "status": {
+      "active": true,
+      "enrolled": true,
+      "locked": false
+    }
+  }, {
+    "id": "59f31e2f-6633-4633-9f3b-983e72033964",
+    "meta": {
+      "created": "2016-08-16T20:49:29.026Z",
+      "modified": "2016-08-31T09:03:16.034Z",
+      "tags": []
+    },
+    "org_id": "aa427b33-e85a-4f13-80e3-499d03e21cc8",
+    "primary_id": "59f31e2f-6633-4633-9f3b-983e72033964",
+    "profile": {
+      "emails": [{
+        "primary": true,
+        "value": "2fa@fireeye.com"
+      }],
+      "username": "twofactor"
+    },
+    "type": "primary",
+    "status": {
+      "active": true,
+      "enrolled": true,
+      "locked": false
+    }
+  }, {
+    "id": "6c5de460-ca95-4db1-9b2b-f96885e926ee",
+    "meta": {
+      "created": "2016-09-01T09:07:40.426Z",
+      "modified": "2016-09-01T09:08:54.022Z",
+      "tags": []
+    },
+    "org_id": "aa427b33-e85a-4f13-80e3-499d03e21cc8",
+    "primary_id": "6c5de460-ca95-4db1-9b2b-f96885e926ee",
+    "profile": {
+      "emails": [{
+        "primary": true,
+        "value": "w@e.com"
+      }],
+      "nickname": "121",
+      "phone_numbers": [{
+        "primary": true,
+        "value": "12343123"
+      }],
+      "timezone": "America/Anchorage",
+      "username": "w@e.com"
+    },
+    "type": "primary",
+    "status": {
+      "active": true,
+      "enrolled": false,
+      "locked": false
+    }
+  }, {
+    "id": "83623527-5024-4ca7-97b2-91924ef908e8",
+    "meta": {
+      "created": "2016-08-16T20:49:29.426Z",
+      "modified": "2016-08-29T07:27:33.941Z",
+      "tags": []
+    },
+    "org_id": "aa427b33-e85a-4f13-80e3-499d03e21cc8",
+    "primary_id": "83623527-5024-4ca7-97b2-91924ef908e8",
+    "profile": {
+      "emails": [{
+        "primary": true,
+        "value": "superadmin@fireeye.com"
+      }],
+      "job_title": "xyz",
+      "username": "superadmin"
+    },
+    "type": "primary",
+    "status": {
+      "active": true,
+      "enrolled": true,
+      "locked": false
+    }
+  }, {
+    "id": "a851ee84-5da2-4226-8160-22ae728b9af9",
+    "meta": {
+      "created": "2016-08-16T20:49:30.221Z",
+      "modified": "2016-08-16T20:49:30.224Z",
+      "tags": []
+    },
+    "org_id": "aa427b33-e85a-4f13-80e3-499d03e21cc8",
+    "primary_id": "a851ee84-5da2-4226-8160-22ae728b9af9",
+    "profile": {
+      "emails": [{
+        "primary": true,
+        "value": "scim@fireeye.com"
+      }],
+      "username": "scim"
+    },
+    "type": "primary",
+    "status": {
+      "active": true,
+      "enrolled": true,
+      "locked": false
+    }
+  }, {
+    "id": "b65c3c6d-1960-43ff-8997-ea85ab0ac89d",
+    "meta": {
+      "created": "2016-08-16T20:49:30.629Z",
+      "modified": "2016-08-30T07:16:13.425Z",
+      "tags": []
+    },
+    "org_id": "aa427b33-e85a-4f13-80e3-499d03e21cc8",
+    "primary_id": "b65c3c6d-1960-43ff-8997-ea85ab0ac89d",
+    "profile": {
+      "emails": [{
+        "primary": true,
+        "value": "support@fireeye.com"
+      }],
+      "username": "support"
+    },
+    "type": "primary",
+    "status": {
+      "active": true,
+      "enrolled": true,
+      "locked": false
+    }
+  }]
+}

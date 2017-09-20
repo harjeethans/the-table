@@ -1,0 +1,61 @@
+{
+    "totalCount": 7,
+    "identifier": "id",
+    "items": [{
+        "id": 1000,
+        "location": "Building 1",
+        "description": "Security",
+        "mse_data_source": "MSE-TODO",
+        "country": "TODO",
+        "continent": "TODO",
+        "hasChildren": true
+    }, {
+        "id": 1001,
+        "location": "Building 2",
+        "description": "Marketing",
+        "mse_data_source": "MSE-TODO",
+        "country": "TODO",
+        "continent": "TODO",
+        "hasChildren": true
+    }, {
+        "id": 1002,
+        "location": "Building 3",
+        "description": "Administration",
+        "mse_data_source": "MSE-TODO",
+        "country": "TODO",
+        "continent": "TODO",
+        "hasChildren": true
+    }, {
+        "id": 1003,
+        "location": "Building 4",
+        "description": "R&D",
+        "mse_data_source": "MSE-TODO",
+        "country": "TODO",
+        "continent": "TODO",
+        "hasChildren": true
+    }, {
+        "id": 1004,
+        "location": "Building 5",
+        "description": "Networks",
+        "mse_data_source": "MSE-TODO",
+        "country": "TODO",
+        "continent": "TODO",
+        "hasChildren": true
+    }, {
+        "id": 1005,
+        "location": "Building 6",
+        "description": "Routing",
+        "mse_data_source": "MSE-TODO",
+        "country": "TODO",
+        "continent": "TODO",
+        "hasChildren": true
+    }, {
+        "id": 1006,
+        "location": "Building 7",
+        "description": "Collaboration",
+        "mse_data_source": "MSE-TODO",
+        "country": "TODO",
+        "continent": "TODO",
+        "hasChildren": true
+    }]
+}

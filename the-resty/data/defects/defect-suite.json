@@ -1,0 +1,582 @@
+{
+   "totalCount":64,
+   "identifier":"id",
+   "items":[
+  {
+    "id":"DS90",
+    "name":"3.5 Automation green reports",
+    "state":"5 of 6 closed\n",
+    "hasChildren":5,
+    "severity":"-",
+    "project":"WebEx Social",
+    "owner":"Aleksandar Georgiev"
+  },
+  {
+    "id":"DS89",
+    "name":"Solr4 upgrade",
+    "state":"8 of 9 closed\n",
+    "hasChildren":6,
+    "severity":"-",
+    "project":"WebEx Social",
+    "owner":"Valentin Velikov"
+  },
+  {
+    "id":"DS88",
+    "name":"High level triaged defects for System Readiness",
+    "state":"4 of 6 closed\n",
+    "hasChildren":7,
+    "severity":"",
+    "project":"2.4 R2-D2",
+    "owner":"Aleksandar Georgiev"
+  },
+  {
+    "id":"DS87",
+    "name":"Synthetic Monitor",
+    "state":"9 of 9 closed\n",
+    "hasChildren":8,
+    "severity":"",
+    "project":"1.2.7 Maya",
+    "owner":"Nikolay Kanov"
+  },
+  {
+    "id":"DS86",
+    "name":"Centralized Credentials Management (PaPass)",
+    "state":"60 of 61 closed\n",
+    "hasChildren":4,
+    "severity":"",
+    "project":"1. Product Dev",
+    "owner":"Radostin Tsanev"
+  },
+  {
+    "id":"DS85",
+    "name":"CWC Plug-in and Video",
+    "state":"31 of 40 closed\n",
+    "hasChildren":5,
+    "severity":"",
+    "project":"1.2.1 Aquila",
+    "owner":"Pepa Krastnikova"
+  },
+  {
+    "id":"DS83",
+    "name":"Automation Green reports",
+    "state":"3 of 8 closed\n",
+    "hasChildren":6,
+    "severity":"",
+    "project":"WebEx Social",
+    "owner":"Aleksandar Georgiev"
+  },
+  {
+    "id":"DS82",
+    "name":"Selenium actions issues",
+    "state":"9 of 9 closed\n",
+    "hasChildren":7,
+    "severity":"",
+    "project":"WebEx Social",
+    "owner":"Aleksandra Gencheva"
+  },
+  {
+    "id":"DS81",
+    "name":"Defects observed during parallel execution using HUB",
+    "state":"1 of 3 closed\n",
+    "hasChildren":8,
+    "severity":"",
+    "project":"WebEx Social",
+    "owner":"Aleksandar Georgiev"
+  },
+  {
+    "id":"DS80",
+    "name":"Android WxS",
+    "state":"38 of 48 closed\n",
+    "hasChildren":9,
+    "severity":"",
+    "project":"1.2.4 Orion",
+    "owner":"Radostin Dzhegalov"
+  },
+  {
+    "id":"DS79",
+    "name":"Jabber SDK Plugin",
+    "state":"49 of 57 closed\n",
+    "hasChildren":23,
+    "severity":"",
+    "project":"1. Product Dev",
+    "owner":"Radostin Dzhegalov"
+  },
+  {
+    "id":"DS78",
+    "name":"ecp-alpha blockers",
+    "state":"2 of 2 closed\n",
+    "hasChildren":23,
+    "severity":"",
+    "project":"WebEx Social",
+    "owner":"Lisa Tsao"
+  },
+  {
+    "id":"DS77",
+    "name":"Sametime 8.5.2 IFR1",
+    "state":"19 of 19 closed\n",
+    "hasChildren":4,
+    "severity":"",
+    "project":"1.2 Sofia",
+    "owner":"Anatoliy Atanasov"
+  },
+  {
+    "id":"DS76",
+    "name":"Alerts/ Announcments email notifications",
+    "state":"24 of 24 closed\n",
+    "hasChildren":34,
+    "severity":"",
+    "project":"1.2.1 Aquila",
+    "owner":"Veselin Maslenkov"
+  },
+  {
+    "id":"DS75",
+    "name":"Chat issues",
+    "state":"1 of 2 closed\n",
+    "hasChildren":21,
+    "severity":"",
+    "project":"1.2.1 Aquila",
+    "owner":"Veselin Maslenkov"
+  },
+  {
+    "id":"DS74",
+    "name":"Presence Issues",
+    "state":"32 of 34 closed\n",
+    "hasChildren":23,
+    "severity":"",
+    "project":"1.2.1 Aquila",
+    "owner":"Atanas Dyulgerov"
+  },
+  {
+    "id":"DS73",
+    "name":"Decoupled chat",
+    "state":"27 of 29 closed\n",
+    "hasChildren":45,
+    "severity":"",
+    "project":"1.2.1 Aquila",
+    "owner":"Atanas Dyulgerov"
+  },
+  {
+    "id":"DS69",
+    "name":"Jabber Chat integration",
+    "state":"27 of 30 closed\n",
+    "hasChildren":11,
+    "severity":"",
+    "project":"1.2.1 Aquila",
+    "owner":"Veselin Maslenkov"
+  },
+  {
+    "id":"DS68",
+    "name":"Autobot UI issues on OS X",
+    "state":"1 of 1 closed\n",
+    "hasChildren":21,
+    "severity":"",
+    "project":"2.4 R2-D2",
+    "owner":"Neno Dimitrov"
+  },
+  {
+    "id":"DS67",
+    "name":"UC Integration - Chat",
+    "state":"11 of 17 closed\n",
+    "hasChildren":12,
+    "severity":"",
+    "project":"1.2 Sofia",
+    "owner":"Jo"
+  },
+  {
+    "id":"DS66",
+    "name":"Defects that need to be fixed in resource files",
+    "state":"6 of 12 closed\n",
+    "hasChildren":43,
+    "severity":"",
+    "project":"2.3 I18N & L10N",
+    "owner":"Peter Popov"
+  },
+  {
+    "id":"DS65",
+    "name":"Open API bugs",
+    "state":"203 of 209 closed\n",
+    "hasChildren":2,
+    "severity":"",
+    "project":"1.3 GE",
+    "owner":"Valentin Velikov"
+  },
+  {
+    "id":"DS57",
+    "name":"VVM - Visual Voice Message",
+    "state":"130 of 131 closed\n",
+    "hasChildren":34,
+    "severity":"",
+    "project":"1.2.1 Aquila",
+    "owner":"Veselin Maslenkov"
+  },
+  {
+    "id":"DS56",
+    "name":"Email Client Plugin",
+    "state":"50 of 50 closed\n",
+    "hasChildren":76,
+    "severity":"",
+    "project":"1.2 Sofia",
+    "owner":"Maria Kirova"
+  },
+  {
+    "id":"DS53",
+    "name":"Sametime 8.5.2",
+    "state":"17 of 17 closed\n",
+    "hasChildren":54,
+    "severity":"",
+    "project":"1.2 Sofia",
+    "owner":"Valentin Velikov"
+  },
+  {
+    "id":"DS52",
+    "name":"Video Call & Chat",
+    "state":"724 of 765 closed\n",
+    "hasChildren":33,
+    "severity":"",
+    "project":"1.2.4 Orion",
+    "owner":"Radostin Dzhegalov"
+  },
+  {
+    "id":"DS50",
+    "name":"Aggregated Calendar",
+    "state":"502 of 506 closed\n",
+    "hasChildren":22,
+    "severity":"",
+    "project":"1.2.1 Aquila",
+    "owner":"Pepa Krastnikova"
+  },
+  {
+    "id":"DS49",
+    "name":"SF 2.5.2",
+    "state":"32 of 32 closed\n",
+    "hasChildren":67,
+    "severity":"",
+    "project":"WebEx Social",
+    "owner":"Aleksandar Georgiev"
+  },
+  {
+    "id":"DS48",
+    "name":"Translation agency handbacks",
+    "state":"11 of 11 closed\n",
+    "hasChildren":54,
+    "severity":"",
+    "project":"1.2 Sofia",
+    "owner":"Radostin Tsanev"
+  },
+  {
+    "id":"DS47",
+    "name":"Webex Meeting",
+    "state":"3 of 3 closed\n",
+    "hasChildren":45,
+    "severity":"",
+    "project":"1.2 Sofia",
+    "owner":"Jo"
+  },
+  {
+    "id":"DS46",
+    "name":"SF2",
+    "state":"15 of 16 closed\n",
+    "hasChildren":34,
+    "severity":"",
+    "project":"WebEx Social",
+    "owner":"Todor Minakov"
+  },
+  {
+    "id":"DS45",
+    "name":"SF",
+    "state":"61 of 61 closed\n",
+    "hasChildren":34,
+    "severity":"",
+    "project":"WebEx Social",
+    "owner":"Todor Minakov"
+  },
+  {
+    "id":"DS44",
+    "name":"TODO - Integration",
+    "state":"54 of 55 closed\n",
+    "hasChildren":32,
+    "severity":"",
+    "project":"1.2.4 Orion",
+    "owner":"Radostin Dzhegalov"
+  },
+  {
+    "id":"DS43",
+    "name":"Web Content List",
+    "state":"1 of 1 closed\n",
+    "hasChildren":56,
+    "severity":"",
+    "project":"1.2.4 Orion",
+    "owner":"Valentin Velikov"
+  },
+  {
+    "id":"DS42",
+    "name":"My Communities",
+    "state":"1 of 1 closed\n",
+    "hasChildren":43,
+    "severity":"",
+    "project":"1.2.4 Orion",
+    "owner":"Valentin Velikov"
+  },
+  {
+    "id":"DS41",
+    "name":"Language specific",
+    "state":"2 of 2 closed\n",
+    "hasChildren":53,
+    "severity":"",
+    "project":"1.2.4 Orion",
+    "owner":"Valentin Velikov"
+  },
+  {
+    "id":"DS40",
+    "name":"Document Library",
+    "state":"3 of 5 closed\n",
+    "hasChildren":34,
+    "severity":"",
+    "project":"1.2.1 Aquila",
+    "owner":"Veselin Maslenkov"
+  },
+  {
+    "id":"DS38",
+    "name":"RSS",
+    "state":"2 of 2 closed\n",
+    "hasChildren":22,
+    "severity":"",
+    "project":"1.2.4 Orion",
+    "owner":"Valentin Velikov"
+  },
+  {
+    "id":"DS37",
+    "name":"Reported Content Manager",
+    "state":"6 of 6 closed\n",
+    "hasChildren":1,
+    "severity":"",
+    "project":"1.2.4 Orion",
+    "owner":"Radostin Dzhegalov"
+  },
+  {
+    "id":"DS36",
+    "name":"Links",
+    "state":"10 of 10 closed\n",
+    "hasChildren":2,
+    "severity":"",
+    "project":"1.2.4 Orion",
+    "owner":"Valentin Velikov"
+  },
+  {
+    "id":"DS35",
+    "name":"Post Versions Dialog",
+    "state":"5 of 5 closed\n",
+    "hasChildren":3,
+    "severity":"",
+    "project":"1.2.1 Aquila",
+    "owner":"Veselin Maslenkov"
+  },
+  {
+    "id":"DS33",
+    "name":"PCI Calendar Portlet",
+    "state":"22 of 22 closed\n",
+    "hasChildren":5,
+    "severity":"",
+    "project":"1.2 Sofia",
+    "owner":"Jo"
+  },
+  {
+    "id":"DS32",
+    "name":"Contacts",
+    "state":"4 of 4 closed\n",
+    "hasChildren":43,
+    "severity":"",
+    "project":"1.2.1 Aquila",
+    "owner":"Veselin Maslenkov"
+  },
+  {
+    "id":"DS31",
+    "name":"Community Calendar",
+    "state":"19 of 19 closed\n",
+    "hasChildren":2,
+    "severity":"",
+    "project":"1.2.1 Aquila",
+    "owner":"Veselin Maslenkov"
+  },
+  {
+    "id":"DS30",
+    "name":"People landing page",
+    "state":"2 of 2 closed\n",
+    "hasChildren":6,
+    "severity":"",
+    "project":"1.2.4 Orion",
+    "owner":"Radostin Dzhegalov"
+  },
+  {
+    "id":"DS29",
+    "name":"General",
+    "state":"5 of 5 closed\n",
+    "hasChildren":4,
+    "severity":"",
+    "project":"1.2.4 Orion",
+    "owner":"Radostin Dzhegalov"
+  },
+  {
+    "id":"DS28",
+    "name":"IFrame",
+    "state":"2 of 2 closed\n",
+    "hasChildren":5,
+    "severity":"",
+    "project":"1.2.4 Orion",
+    "owner":"Radostin Dzhegalov"
+  },
+  {
+    "id":"DS27",
+    "name":"Featured Content",
+    "state":"3 of 4 closed\n",
+    "hasChildren":4,
+    "severity":"",
+    "project":"1.2.4 Orion",
+    "owner":"Radostin Dzhegalov"
+  },
+  {
+    "id":"DS26",
+    "name":"Bookmarks",
+    "state":"2 of 2 closed\n",
+    "hasChildren":3,
+    "severity":"",
+    "project":"1.2.4 Orion",
+    "owner":"Radostin Dzhegalov"
+  },
+  {
+    "id":"DS25",
+    "name":"Blog Aggregator",
+    "state":"1 of 1 closed\n",
+    "hasChildren":23,
+    "severity":"",
+    "project":"1.2.1 Aquila",
+    "owner":""
+  },
+  {
+    "id":"DS24",
+    "name":"Report Content Dialog",
+    "state":"2 of 2 closed\n",
+    "hasChildren":43,
+    "severity":"",
+    "project":"1.2.4 Orion",
+    "owner":"Radostin Dzhegalov"
+  },
+  {
+    "id":"DS23",
+    "name":"Hover cards",
+    "state":"1 of 1 closed\n",
+    "hasChildren":23,
+    "severity":"",
+    "project":"1.2.4 Orion",
+    "owner":"Valentin Velikov"
+  },
+  {
+    "id":"DS22",
+    "name":"Search Results page",
+    "state":"15 of 15 closed\n",
+    "hasChildren":23,
+    "severity":"",
+    "project":"1.2.4 Orion",
+    "owner":"Valentin Velikov"
+  },
+  {
+    "id":"DS21",
+    "name":"Community Members",
+    "state":"10 of 10 closed\n",
+    "hasChildren":45,
+    "severity":"",
+    "project":"1.2.1 Aquila",
+    "owner":"Pepa Krastnikova"
+  },
+  {
+    "id":"DS20",
+    "name":"Settings (End-user)",
+    "state":"2 of 2 closed\n",
+    "hasChildren":34,
+    "severity":"",
+    "project":"1.2.4 Orion",
+    "owner":"Radostin Dzhegalov"
+  },
+  {
+    "id":"DS19",
+    "name":"Action portlet",
+    "state":"1 of 1 closed\n",
+    "hasChildren":32,
+    "severity":"",
+    "project":"1.2.4 Orion",
+    "owner":"Valentin Velikov"
+  },
+  {
+    "id":"DS17",
+    "name":"Header (index.jsp)",
+    "state":"8 of 8 closed\n",
+    "hasChildren":34,
+    "severity":"",
+    "project":"1.2.4 Orion",
+    "owner":"Radostin Dzhegalov"
+  },
+  {
+    "id":"DS16",
+    "name":"Login Page",
+    "state":"6 of 6 closed\n",
+    "hasChildren":2,
+    "severity":"",
+    "project":"1.2.4 Orion",
+    "owner":"Radostin Dzhegalov"
+  },
+  {
+    "id":"DS15",
+    "name":"Welcome portlet",
+    "state":"11 of 11 closed\n",
+    "hasChildren":8,
+    "severity":"",
+    "project":"1.2.4 Orion",
+    "owner":"Radostin Dzhegalov"
+  },
+  {
+    "id":"DS14",
+    "name":"Content Publisher",
+    "state":"2 of 2 closed\n",
+    "hasChildren":7,
+    "severity":"",
+    "project":"1.2.4 Orion",
+    "owner":"Radostin Dzhegalov"
+  },
+  {
+    "id":"DS13",
+    "name":"Library",
+    "state":"12 of 12 closed\n",
+    "hasChildren":5,
+    "severity":"",
+    "project":"1.2.4 Orion",
+    "owner":"Radostin Dzhegalov"
+  },
+  {
+    "id":"DS12",
+    "name":"Communities Blog",
+    "state":"13 of 13 closed\n",
+    "hasChildren":3,
+    "severity":"",
+    "project":"1.2.4 Orion",
+    "owner":"Ivaylo Rusev"
+  },
+  {
+    "id":"DS11",
+    "name":"My Profile",
+    "state":"7 of 7 closed\n",
+    "hasChildren":5,
+    "severity":"",
+    "project":"1.2.4 Orion",
+    "owner":"Radostin Dzhegalov"
+  },
+  {
+    "id":"DS10",
+    "name":"Communities",
+    "state":"26 of 26 closed\n",
+    "hasChildren":2,
+    "severity":"",
+    "project":"1.2.4 Orion",
+    "owner":"Valentin Velikov"
+  }
+]
+}

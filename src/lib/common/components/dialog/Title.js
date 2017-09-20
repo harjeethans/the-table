@@ -1,4 +1,5 @@
-import React, { PropTypes }  from 'react';
+import React  from 'react';
+import PropTypes from 'prop-types';
 
 function Title(props) {
 
@@ -9,7 +10,9 @@ function Title(props) {
   } = props;
 
   return (
-    <h4 className={className} {...elementProps} >{title}</h4>
+    <header className={className} {...elementProps} >
+      <h2 className="mdc-dialog__header__title">{title}</h2>
+    </header>
   );
 }
 
@@ -19,7 +22,7 @@ Title.PropTypes = {
 };
 
 Title.defaultProps = {
-  className: 'mdl-dialog__title',
+  className: 'mdc-dialog__header',
   title: 'Dialog Title'
 }
 

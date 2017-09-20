@@ -1,7 +1,9 @@
-import React, { PropTypes }  from 'react';
+import React from 'react';
+
+import PropTypes from 'prop-types';
+
 import classnames from 'classnames';
 
-import Button from '../button/Button';
 import RenderInContainer from './RenderInContainer';
 import Title from './Title';
 import Content from './Content';
@@ -13,9 +15,9 @@ class Dialog extends React.Component {
     const {baseClass, children, className, container, size, underlay} = this.props;
 
     const classes = classnames(baseClass, {
-      'mdl-dialog--small': (size === 'S'),
-      'mdl-dialog--medium': (size === 'M'),
-      'mdl-dialog--large': (size === 'L')
+      'mdc-dialog--small': (size === 'S'),
+      'mdc-dialog--medium': (size === 'M'),
+      'mdc-dialog--large': (size === 'L')
     });
 
     let open;
@@ -39,13 +41,13 @@ Dialog.Actions = Actions;
 
 Dialog.propTypes = {
   baseClass: PropTypes.string,
-  container: React.PropTypes.object,
+  container: PropTypes.object,
   size: PropTypes.oneOf(['S', 'M','L']), // small , medium , large
   underlay: PropTypes.bool
 }
 
 Dialog.defaultProps = {
-  baseClass: 'mdl-dialog',
+  baseClass: 'mdc-dialog',
   size: 'M',
   underlay: true
 }

@@ -10,45 +10,54 @@ import './Docs.css';
 import '../sass/index.css';
 //import '../../node_modules/material-components-web/dist/material-components-web.css';
 
-import {Button, Table, Icon, IconButton} from '../lib/index'
+import Buttons from './components/Buttons';
+import Menus from './components/Menus';
+import Dialogs from './components/Dialogs';
+import {BasicTable} from './table';
 
 class Docs extends Component {
   render() {
     return (
         <Router>
-          <div className="mdc-layout mdc-js-layout mdc-layout--fixed-header">
-            <header className="mdc-layout__header">
-            <div className="mdc-layout__header-row">
-              <span className="mdc-layout-title">the-table</span>
-              <nav className="mdc-navigation mdc-layout--large-screen-only">
-                <Link className="mdc-navigation__link" to="/">About</Link>
-                <Link className="mdc-navigation__link" to="/about">About</Link>
-                <Link className="mdc-navigation__link" to="/topics">Getting Started</Link>
-                <Link className="mdc-navigation__link" to="/components">Components</Link>
-                <Link className="mdc-navigation__link" to="/faq">FAQ</Link>
-              </nav>
-              <div className="mdc-layout-spacer"></div>
-              <nav className="mdc-navigation mdc-layout--large-screen-only">
-              <Link className="mdc-navigation__link" to="https://github.com/harjeethans/the-table">GitHub</Link>
-              </nav>
+          <div className="the-table-docs">
+            <div className="mdc-layout mdc-js-layout mdc-layout--fixed-header">
+              <header className="mdc-toolbar mdc-toolbar--fixed mdc-toolbar--platform">
+              <div className="mdc-toolbar__row">
+                <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
+                  <Link className="mdc-toolbar__title-link" to="/">
+                    <h4 className="mdc-toolbar__title mdc-toolbar__title--full">the-table</h4>
+                  </Link>
+                  <Link className="mdc-toolbar__title-link" to="/about">
+                    <h1 className="mdc-toolbar__title mdc-toolbar__title--full">About</h1>
+                  </Link>
+                  <Link className="mdc-toolbar__title-link" to="/topics">
+                    <h1 className="mdc-toolbar__title mdc-toolbar__title--full">Getting Started</h1>
+                  </Link>
+                  <Link className="mdc-toolbar__title-link" to="/components">
+                    <h1 className="mdc-toolbar__title mdc-toolbar__title--full">Components</h1>
+                  </Link>
+                  <Link className="mdc-toolbar__title-link" to="/table">
+                    <h1 className="mdc-toolbar__title mdc-toolbar__title--full">Table</h1>
+                  </Link>
+                  <Link className="mdc-toolbar__title-link" to="/faq">
+                    <h1 className="mdc-toolbar__title mdc-toolbar__title--full"> FAQ </h1>
+                  </Link>
+                </section>
+              </div>
+            </header>
+            <main className="mdc-layout__content">
+              {this.props.children}
+            </main>
+            <div>
+              <Route exact path="/" component={Home}/>
+              <Route path="/about" component={About}/>
+              <Route path="/topics" component={Topics}/>
+              <Route path="/components" component={Components}/>
+              <Route path="/table" component={BT}/>
             </div>
-          </header>
-          <div className="mdc-layout__drawer">
-            <span className="mdc-layout-title">materialistic</span>
-            <nav className="mdc-navigation">
-              <Link className="mdc-navigation__link" to="https://github.com/harjeethans/the-table">GitHub</Link>
-            </nav>
           </div>
-          <main className="mdc-layout__content">
-            {this.props.children}
-          </main>
-          <div>
-            <Route exact path="/" component={Home}/>
-            <Route path="/about" component={About}/>
-            <Route path="/topics" component={Topics}/>
           </div>
 
-        </div>
         </Router>
     );
   }
@@ -56,32 +65,126 @@ class Docs extends Component {
 
 const Home = () => (
   <div className="docs-sample">
-    <Button accent={true}>accent</Button>&nbsp;
-    <Button compact={true}>compact</Button>&nbsp;
-    <Button dense={true}>dense</Button>&nbsp;
-    <Button primary={true}>primary</Button>&nbsp;
-    <Button raised={true}>raised</Button>&nbsp;
-    <IconButton primary={true} iconName="search"></IconButton>
-
-      <select className="mdc-select">
-      <option value="" default selected>Pick a food</option>
-      <option value="grains">Bread, Cereal, Rice, and Pasta</option>
-      <option value="vegetables">Vegetables</option>
-      <optgroup label="Fruits">
-        <option value="apple">Apple</option>
-        <option value="oranges">Orange</option>
-        <option value="banana">Banana</option>
-      </optgroup>
-      <option value="dairy">Milk, Yogurt, and Cheese</option>
-      <option value="meat">Meat, Poultry, Fish, Dry Beans, Eggs, and Nuts</option>
-      <option value="fats">Fats, Oils, and Sweets</option>
-    </select>
+    HOME
   </div>
 )
 
 const About = () => (
   <div>
     <h2>About</h2>
+  </div>
+)
+
+const Components = () => (
+  <div className="docs-sample">
+    <Buttons></Buttons>
+    <Menus></Menus>
+    <Dialogs></Dialogs>
+  </div>
+)
+
+const BT = () => (
+  <BasicTable></BasicTable>
+)
+
+const Tables = () => (
+  <div>
+    <h2>Table</h2>
+      <div className="table-responsive-vertical shadow-z-1">
+    <table className="table table-hover table-mc-light-blue">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Link</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-title="ID">1</td>
+          <td data-title="Name">Material Design Color Palette</td>
+          <td data-title="Link">
+            GitHub
+          </td>
+          <td data-title="Status">Completed</td>
+        </tr>
+        <tr>
+          <td data-title="ID">2</td>
+          <td data-title="Name">Material Design Iconic Font</td>
+          <td data-title="Link">
+            Codepen
+          </td>
+          <td data-title="Status">Completed</td>
+        </tr>
+        <tr>
+          <td data-title="ID">3</td>
+          <td data-title="Name">Material Design Hierarchical Display</td>
+          <td data-title="Link">
+            GitHub
+          </td>
+          <td data-title="Status">Completed</td>
+        </tr>
+        <tr>
+          <td data-title="ID">4</td>
+          <td data-title="Name">Material Design Sidebar</td>
+            <td data-title="Link">
+              GitHub
+            </td>
+
+          <td data-title="Status">Completed</td>
+        </tr>
+        <tr>
+          <td data-title="ID">5</td>
+          <td data-title="Name">Material Design Tiles</td>
+          <td data-title="Link">
+            Codepen
+          </td>
+          <td data-title="Status">Completed</td>
+        </tr>
+        <tr>
+          <td data-title="ID">6</td>
+          <td data-title="Name">Material Design Typography</td>
+          <td data-title="Link">
+            GitHub
+          </td>
+          <td data-title="Status">Completed</td>
+        </tr>
+        <tr>
+          <td data-title="ID">7</td>
+          <td data-title="Name">Material Design Buttons</td>
+          <td data-title="Link">
+            Codepen
+          </td>
+          <td data-title="Status">In progress</td>
+        </tr>
+        <tr>
+          <td data-title="ID">8</td>
+          <td data-title="Name">Material Design Form Elements</td>
+          <td data-title="Link">
+            Codepen
+          </td>
+          <td data-title="Status">In progress</td>
+        </tr>
+        <tr>
+          <td data-title="ID">9</td>
+          <td data-title="Name">Material Design Email Template</td>
+          <td data-title="Link">
+            Codepen
+          </td>
+          <td data-title="Status">Completed</td>
+        </tr>
+        <tr>
+          <td data-title="ID">10</td>
+          <td data-title="Name">Material Design Animation Timing (old one)</td>
+          <td data-title="Link">
+            Codepen
+          </td>
+          <td data-title="Status">Completed</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   </div>
 )
 

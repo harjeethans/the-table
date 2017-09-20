@@ -1,0 +1,37 @@
+{
+    "totalCount": 10,
+    "identifier": "id",
+    "items": [{
+        "id": 170,
+        "location": "North Zone",
+        "description": "Business N",
+        "mse_data_source": "MSE-ZONE_NS",
+        "country": "NA",
+        "continent": "NA",
+        "hasChildren": false
+    }, {
+        "id": 171,
+        "location": "South Zone",
+        "description": "Business S",
+        "mse_data_source": "MSE-ZONE_NS",
+        "country": "NA",
+        "continent": "NA",
+        "hasChildren": false
+    }, {
+        "id": 172,
+        "location": "East Zone",
+        "description": "Business E",
+        "mse_data_source": "MSE-ZONE_EW",
+        "country": "NA",
+        "continent": "NA",
+        "hasChildren": false
+    }, {
+        "id": 173,
+        "location": "West Zone",
+        "description": "Business W",
+        "mse_data_source": "MSE-ZONE_EW",
+        "country": "NA",
+        "continent": "NA",
+        "hasChildren": false
+    }]
+}

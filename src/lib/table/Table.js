@@ -53,7 +53,7 @@ class Table extends Component {
 
       this.state = {autoRefresh, autoRefreshInterval, data, dimension, disabled, filter, message, pagination, selected, sort, structure, totalRecords };
 
-      this.props.logger.setLogLevel(this.props.logLevel);
+      //this.props.logger.setLogLevel(this.props.logLevel);
       this.logger = this.props.logger;
 
       this._calculateSizing = this._calculateSizing.bind(this);
@@ -604,7 +604,7 @@ class Table extends Component {
       }
 
       _renderPaginator() {
-
+        //@TODO totalRecords = {this.state.totalRecords || this.state.data.length}
         return (
           <div className="paginator-container pull-right" ref="paginatorContainer">
             <Paginator
@@ -618,7 +618,7 @@ class Table extends Component {
               pageSizes = {this.props.pagination.pageSizes}
               pagination = {this.state.pagination}
               ref = "paginator"
-              totalRecords = {this.state.totalRecords || this.state.data.length} />
+               />
           </div>
         );
       }

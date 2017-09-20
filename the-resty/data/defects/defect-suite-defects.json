@@ -1,0 +1,734 @@
+{
+   "totalCount":81,
+   "identifier":"formatted_id",
+   "items":[
+  {
+    "formatted_id":"DE22949",
+    "name":"[Documentation ] To be documented default SOLR4 disk space under /opt should be at least 60GB",
+    "severity":"1 - Catastrophic",
+    "priority":"1 - release blocker",
+    "owner":"Aleksandar Georgiev",
+    "state":"Submitted",
+    "project":"2.10 Tech Pubs"
+  },
+  {
+    "formatted_id":"DE22930",
+    "name":"User is not able to Decline the incoming call",
+    "severity":"2 - Severe",
+    "priority":"1 - release blocker",
+    "owner":"Valentin Velikov",
+    "state":"Submitted",
+    "project":"1.2.4 Orion"
+  },
+  {
+    "formatted_id":"DE22723",
+    "name":"Unable to open a public post on ecp-alpha",
+    "severity":"2 - Severe",
+    "priority":"1 - release blocker",
+    "owner":"Aleksandar Georgiev",
+    "state":"Open",
+    "project":"1.2.6 Nomad"
+  },
+  {
+    "formatted_id":"DE18045",
+    "name":"[Win7/FF16/IE9]Action:selenium.ecp.calendar.VerifyEventNotInList fails",
+    "severity":"2 - Severe",
+    "priority":"2 - high",
+    "owner":"Nikolay Kanov",
+    "state":"Submitted",
+    "project":"1.2.6 Nomad"
+  },
+  {
+    "formatted_id":"DE22843",
+    "name":"#tags are not indexed when created in comments",
+    "severity":"2 - Severe",
+    "priority":"2 - high",
+    "owner":"Radostin Tsanev",
+    "state":"Open",
+    "project":"1.3 GE"
+  },
+  {
+    "formatted_id":"DE22588",
+    "name":"High Response Time for GetComments Open API calls",
+    "severity":"2 - Severe",
+    "priority":"2 - high",
+    "owner":"Pepa Krastnikova",
+    "state":"Open",
+    "project":"1.2.7 Maya"
+  },
+  {
+    "formatted_id":"DE22964",
+    "name":"3.5 Metrics : Reset Metrics shell scripts are not able to reset metrics - averageCommunityMembershipsPerUser and averageConnectionsPerUser",
+    "severity":"2 - Severe",
+    "priority":"1 - release blocker",
+    "owner":"Aleksandar Georgiev",
+    "state":"Submitted",
+    "project":"1.1 San Jose"
+  },
+  {
+    "formatted_id":"DE22870",
+    "name":"\"Missing security token.\" upon successful membership request",
+    "severity":"2 - Severe",
+    "priority":"2 - high",
+    "owner":"Aleksandra Gencheva",
+    "state":"Open",
+    "project":"1.3 GE"
+  },
+  {
+    "formatted_id":"DE22969",
+    "name":"Membership requests are not accepted automatically when changing community type to Open",
+    "severity":"2 - Severe",
+    "priority":"1 - release blocker",
+    "owner":"Aleksandar Georgiev",
+    "state":"Submitted",
+    "project":"1.2.7 Maya"
+  },
+  {
+    "formatted_id":"DE22924",
+    "name":"3.5 External Post Feature: Activity is not bumping up/updating when we edit an external post.",
+    "severity":"2 - Severe",
+    "priority":"1 - release blocker",
+    "owner":"Radostin Dzhegalov",
+    "state":"Submitted",
+    "project":"1.1 San Jose"
+  },
+  {
+    "formatted_id":"DE22918",
+    "name":"When comments and replies are also present on a post created on a backDate, then this will always be shown at the top in Watchlist. This activity won�۪t go away on doing a refresh too(migration flag value for creating post/comment is true)",
+    "severity":"2 - Severe",
+    "priority":"1 - release blocker",
+    "owner":"Radostin Dzhegalov",
+    "state":"Submitted",
+    "project":"1.1 San Jose"
+  },
+  {
+    "formatted_id":"DE22819",
+    "name":"IE8: Chat does not work",
+    "severity":"2 - Severe",
+    "priority":"2 - high",
+    "owner":"Lisa Tsao",
+    "state":"Submitted",
+    "project":"1.2.4 Orion"
+  },
+  {
+    "formatted_id":"DE21959",
+    "name":"user can get \"maximum concurrrent session\" alert on mobile and portal if the iOS client is killed multiple times",
+    "severity":"2 - Severe",
+    "priority":"3 - medium",
+    "owner":"Anatoliy Atanasov",
+    "state":"Submitted",
+    "project":"1.2.4 Orion"
+  },
+  {
+    "formatted_id":"DE22950",
+    "name":"Links from the edit user settings page don't work",
+    "severity":"2 - Severe",
+    "priority":"1 - release blocker",
+    "owner":"Veselin Maslenkov",
+    "state":"Submitted",
+    "project":"1.2.1 Aquila"
+  },
+  {
+    "formatted_id":"DE22968",
+    "name":"[iCal] Reminder is not working for Outlook",
+    "severity":"2 - Severe",
+    "priority":"1 - release blocker",
+    "owner":"Veselin Maslenkov",
+    "state":"Submitted",
+    "project":"1.2.6 Nomad"
+  },
+  {
+    "formatted_id":"DE18046",
+    "name":"[Win7/Chrome]Action:selenium.ecp.calendar.VerifyEventInList fails with error 'Failed to find an event with title Meeting'",
+    "severity":"2 - Severe",
+    "priority":"2 - high",
+    "owner":"Atanas Dyulgerov",
+    "state":"Submitted",
+    "project":"1.2.6 Nomad"
+  },
+  {
+    "formatted_id":"DE22919",
+    "name":"SocketTimeoutException: Read timed out during automation runs",
+    "severity":"2 - Severe",
+    "priority":"1 - release blocker",
+    "owner":"Atanas Dyulgerov",
+    "state":"Open",
+    "project":"1.3 GE"
+  },
+  {
+    "formatted_id":"DE21052",
+    "name":"Quad can't connect to solr sometimes",
+    "severity":"2 - Severe",
+    "priority":"1 - release blocker",
+    "owner":"Veselin Maslenkov",
+    "state":"Open",
+    "project":"1.2 Sofia"
+  },
+  {
+    "formatted_id":"DE3740",
+    "name":"Quad documentation should note Solr and search-cache nodes' /opt directory size should be increased as the log and index sizes grow",
+    "severity":"2 - Severe",
+    "priority":"2 - high",
+    "owner":"Neno Dimitrov",
+    "state":"Submitted",
+    "project":"2.10 Tech Pubs"
+  },
+  {
+    "formatted_id":"DE22935",
+    "name":"[iCal][Automation] Weekly Recurrence pattern not working",
+    "severity":"2 - Severe",
+    "priority":"2 - high",
+    "owner":"Jo",
+    "state":"Submitted",
+    "project":"1.2.6 Nomad"
+  },
+  {
+    "formatted_id":"DE22714",
+    "name":"Unified user and pass are kept in plain text on the director",
+    "severity":"2 - Severe",
+    "priority":"1 - release blocker",
+    "owner":"Peter Popov",
+    "state":"Submitted",
+    "project":"1.2.7 Maya"
+  },
+  {
+    "formatted_id":"DE22970",
+    "name":"3.5 Metrics : averageCommunityMembershipsPerUser is not getting incremented",
+    "severity":"2 - Severe",
+    "priority":"1 - release blocker",
+    "owner":"Valentin Velikov",
+    "state":"Open",
+    "project":"1.1 San Jose"
+  },
+  {
+    "formatted_id":"DE22822",
+    "name":"Mismatch with # of index documents",
+    "severity":"2 - Severe",
+    "priority":"1 - release blocker",
+    "owner":"Veselin Maslenkov",
+    "state":"Open",
+    "project":"1.2 Sofia"
+  },
+  {
+    "formatted_id":"DE22922",
+    "name":"Missing JPG documents after full re-index in 100k DB",
+    "severity":"2 - Severe",
+    "priority":"2 - high",
+    "owner":"Maria Kirova",
+    "state":"Submitted",
+    "project":"1.3 GE"
+  },
+  {
+    "formatted_id":"DE22841",
+    "name":"Test Plans that have set-up test cases should use incremental reindex",
+    "severity":"2 - Severe",
+    "priority":"2 - high",
+    "owner":"Valentin Velikov",
+    "state":"Submitted",
+    "project":"1.3 GE"
+  },
+  {
+    "formatted_id":"DE22928",
+    "name":"Any user can modify any other user's comment/reply on a post using openapi",
+    "severity":"2 - Severe",
+    "priority":"1 - release blocker",
+    "owner":"Radostin Dzhegalov",
+    "state":"Submitted",
+    "project":"1.1 San Jose"
+  },
+  {
+    "formatted_id":"DE22933",
+    "name":"[iCal][Automation] Yearly Recurrence pattern not working",
+    "severity":"2 - Severe",
+    "priority":"2 - high",
+    "owner":"Pepa Krastnikova",
+    "state":"Submitted",
+    "project":"1.2.6 Nomad"
+  },
+  {
+    "formatted_id":"DE20129",
+    "name":"Issue seen with the Apply button in Control Panel Onboarding page",
+    "severity":"3 - Moderate",
+    "priority":"3 - medium",
+    "owner":"Aleksandar Georgiev",
+    "state":"Submitted",
+    "project":"WebEx Social"
+  },
+  {
+    "formatted_id":"DE20759",
+    "name":"Disclose hidden community when post is turned to public",
+    "severity":"3 - Moderate",
+    "priority":"2 - high",
+    "owner":"Radostin Tsanev",
+    "state":"Submitted",
+    "project":"1.2.4 Orion"
+  },
+  {
+    "formatted_id":"DE22878",
+    "name":"External Posts: Global search response shown cisco code QUAD-402,500,504 even though the header shown 200 ok.",
+    "severity":"3 - Moderate",
+    "priority":"3 - medium",
+    "owner":"Jo",
+    "state":"Submitted",
+    "project":"1.1 San Jose"
+  },
+  {
+    "formatted_id":"DE22963",
+    "name":"3.5 Metrics : Response of TotalMetrics shows zero for all the metrices except averageCommunityMembershipsPerUser, averageConnectionsPerUser",
+    "severity":"3 - Moderate",
+    "priority":"1 - release blocker",
+    "owner":"Todor Minakov",
+    "state":"Submitted",
+    "project":"1.1 San Jose"
+  },
+  {
+    "formatted_id":"DE22845",
+    "name":"CSCui74605: LAR import fails if layoutID duplication exist",
+    "severity":"3 - Moderate",
+    "priority":"1 - release blocker",
+    "owner":"Todor Minakov",
+    "state":"Submitted",
+    "project":"1.2.7 Maya"
+  },
+  {
+    "formatted_id":"DE22966",
+    "name":"Calendar event should not change its created date",
+    "severity":"3 - Moderate",
+    "priority":"3 - medium",
+    "owner":"Radostin Dzhegalov",
+    "state":"Submitted",
+    "project":"1.2.6 Nomad"
+  },
+  {
+    "formatted_id":"DE21809",
+    "name":"Unclear error message when  exceeding SharePoint file size limit",
+    "severity":"3 - Moderate",
+    "priority":"3 - medium",
+    "owner":"Valentin Velikov",
+    "state":"Submitted",
+    "project":"WebEx Social"
+  },
+  {
+    "formatted_id":"DE14819",
+    "name":"[Arabic] Text truncation - maybe align issue",
+    "severity":"3 - Moderate",
+    "priority":"3 - medium",
+    "owner":"Valentin Velikov",
+    "state":"Submitted",
+    "project":"2.3 I18N & L10N"
+  },
+  {
+    "formatted_id":"DE22905",
+    "name":"Action: selenium.ecp.watchlist.OpenWatchlist does not work",
+    "severity":"3 - Moderate",
+    "priority":"3 - medium",
+    "owner":"Valentin Velikov",
+    "state":"Submitted",
+    "project":"1.2.4 Orion"
+  },
+  {
+    "formatted_id":"DE22871",
+    "name":"ecp.ui.portlets.vvm.ShowAlternativeAccount failed with Unable to locate element",
+    "severity":"3 - Moderate",
+    "priority":"2 - high",
+    "owner":"Veselin Maslenkov",
+    "state":"Submitted",
+    "project":"1.2 Sofia"
+  },
+  {
+    "formatted_id":"DE22956",
+    "name":"WS Admin can't change scope of a post",
+    "severity":"3 - Moderate",
+    "priority":"1 - release blocker",
+    "owner":"Valentin Velikov",
+    "state":"Submitted",
+    "project":"1.2.7 Maya"
+  },
+  {
+    "formatted_id":"DE22773",
+    "name":"[CSCuf73678] IWE Content Publisher guest image permissions not applied to new images",
+    "severity":"3 - Moderate",
+    "priority":"3 - medium",
+    "owner":"Radostin Dzhegalov",
+    "state":"Submitted",
+    "project":"1.2.6 Nomad"
+  },
+  {
+    "formatted_id":"DE22904",
+    "name":"Users are seen with their last status from WxS instead of with their updated presence from Jabber",
+    "severity":"3 - Moderate",
+    "priority":"2 - high",
+    "owner":"Valentin Velikov",
+    "state":"Submitted",
+    "project":"1.2.1 Aquila"
+  },
+  {
+    "formatted_id":"DE22938",
+    "name":"Counter tool",
+    "severity":"3 - Moderate",
+    "priority":"3 - medium",
+    "owner":"Veselin Maslenkov",
+    "state":"Submitted",
+    "project":"1.3 GE"
+  },
+  {
+    "formatted_id":"DE22398",
+    "name":"Marking a response as an answer reverses the order of the comments",
+    "severity":"3 - Moderate",
+    "priority":"3 - medium",
+    "owner":"Jo",
+    "state":"Open",
+    "project":"1.2.6 Nomad"
+  },
+  {
+    "formatted_id":"DE20726",
+    "name":"[CUP] \"Do not disturb\" shown instead of \"Offline\"",
+    "severity":"3 - Moderate",
+    "priority":"2 - high",
+    "owner":"Veselin Maslenkov",
+    "state":"Open",
+    "project":"1.2.1 Aquila"
+  },
+  {
+    "formatted_id":"DE22855",
+    "name":"Incorrect WxS presence when sign out from Jabber",
+    "severity":"3 - Moderate",
+    "priority":"3 - medium",
+    "owner":"Veselin Maslenkov",
+    "state":"Submitted",
+    "project":"1.2.1 Aquila"
+  },
+  {
+    "formatted_id":"DE22908",
+    "name":"Error message when a futureDate is set as createDate for a comment or reply is incorrect",
+    "severity":"3 - Moderate",
+    "priority":"2 - high",
+    "owner":"Radostin Dzhegalov",
+    "state":"Submitted",
+    "project":"1.1 San Jose"
+  },
+  {
+    "formatted_id":"DE22561",
+    "name":"Files in deactivated community are accessible",
+    "severity":"3 - Moderate",
+    "priority":"2 - high",
+    "owner":"Radostin Dzhegalov",
+    "state":"Open",
+    "project":"1.2.7 Maya"
+  },
+  {
+    "formatted_id":"DE22726",
+    "name":"POST https does not upload security files",
+    "severity":"3 - Moderate",
+    "priority":"2 - high",
+    "owner":"Radostin Dzhegalov",
+    "state":"Submitted",
+    "project":"1.2.7 Maya"
+  },
+  {
+    "formatted_id":"DE22957",
+    "name":"[PaPass] Webex SSO status shows \"MA\"",
+    "severity":"3 - Moderate",
+    "priority":"2 - high",
+    "owner":"Radostin Dzhegalov",
+    "state":"Submitted",
+    "project":"1.2.6 Nomad"
+  },
+  {
+    "formatted_id":"DE20319",
+    "name":"Presence not updated when switching preferred client",
+    "severity":"3 - Moderate",
+    "priority":"3 - medium",
+    "owner":"Radostin Dzhegalov",
+    "state":"Open",
+    "project":"1.2.1 Aquila"
+  },
+  {
+    "formatted_id":"DE22873",
+    "name":"CSCuj16624 profile > featured content > wiki with post, any guest can change post",
+    "severity":"3 - Moderate",
+    "priority":"3 - medium",
+    "owner":"",
+    "state":"Submitted",
+    "project":"1.2.1 Aquila"
+  },
+  {
+    "formatted_id":"DE22803",
+    "name":"Zookeeper2 is at stopped state in topology",
+    "severity":"3 - Moderate",
+    "priority":"1 - release blocker",
+    "owner":"Radostin Dzhegalov",
+    "state":"Submitted",
+    "project":"1.3 GE"
+  },
+  {
+    "formatted_id":"DE22831",
+    "name":"[CSCue06661] - Users are reindexed every time SSO login is invoked",
+    "severity":"3 - Moderate",
+    "priority":"1 - release blocker",
+    "owner":"Valentin Velikov",
+    "state":"Submitted",
+    "project":"1.3 GE"
+  },
+  {
+    "formatted_id":"DE22832",
+    "name":"[CSCui36205] - Recommendation & Metrics mapreduce temp collections should be cleaned up",
+    "severity":"3 - Moderate",
+    "priority":"3 - medium",
+    "owner":"Valentin Velikov",
+    "state":"Open",
+    "project":"1.3 GE"
+  },
+  {
+    "formatted_id":"DE22880",
+    "name":"[CSCuh70388] - Full sync marks users inactive due to memcached errors",
+    "severity":"3 - Moderate",
+    "priority":"1 - release blocker",
+    "owner":"Pepa Krastnikova",
+    "state":"Submitted",
+    "project":"1.3 GE"
+  },
+  {
+    "formatted_id":"DE22386",
+    "name":"Fast search returns community by its old name",
+    "severity":"3 - Moderate",
+    "priority":"2 - high",
+    "owner":"Radostin Dzhegalov",
+    "state":"Submitted",
+    "project":"1.3 GE"
+  },
+  {
+    "formatted_id":"DE22951",
+    "name":"Doubled Number of documents to be Re-Index \"\"MESSAGE_BOARD_PORTLET\"\"",
+    "severity":"3 - Moderate",
+    "priority":"2 - high",
+    "owner":"Valentin Velikov",
+    "state":"Submitted",
+    "project":"1.3 GE"
+  },
+  {
+    "formatted_id":"DE22958",
+    "name":"totalResults property always returns -1",
+    "severity":"3 - Moderate",
+    "priority":"3 - medium",
+    "owner":"Radostin Dzhegalov",
+    "state":"Submitted",
+    "project":"1.3.2 Briza"
+  },
+  {
+    "formatted_id":"DE22867",
+    "name":"[CSCuj34839] community > library > posts sub page when hidden shows blank page",
+    "severity":"3 - Moderate",
+    "priority":"3 - medium",
+    "owner":"Radostin Dzhegalov",
+    "state":"Submitted",
+    "project":"1.2.6 Nomad"
+  },
+  {
+    "formatted_id":"DE22940",
+    "name":"Add post as a link allows invalid refId",
+    "severity":"3 - Moderate",
+    "priority":"3 - medium",
+    "owner":"Radostin Dzhegalov",
+    "state":"Submitted",
+    "project":"1.2.6 Nomad"
+  },
+  {
+    "formatted_id":"DE22449",
+    "name":"Permissions: User is allowed to delete a folder with no permissions on its content",
+    "severity":"3 - Moderate",
+    "priority":"3 - medium",
+    "owner":"Radostin Dzhegalov",
+    "state":"Open",
+    "project":"1.2.1 Aquila"
+  },
+  {
+    "formatted_id":"DE22461",
+    "name":"[CUP] Unable to set custom status after switching from built-in mode",
+    "severity":"3 - Moderate",
+    "priority":"3 - medium",
+    "owner":"Radostin Dzhegalov",
+    "state":"Open",
+    "project":"1.2.1 Aquila"
+  },
+  {
+    "formatted_id":"DE22817",
+    "name":"HTML and CSS are executable in comment section",
+    "severity":"3 - Moderate",
+    "priority":"2 - high",
+    "owner":"Ivaylo Rusev",
+    "state":"Submitted",
+    "project":"1.2.4 Orion"
+  },
+  {
+    "formatted_id":"DE22946",
+    "name":"Partial keyword global search behaves differently among openapi and portal.",
+    "severity":"3 - Moderate",
+    "priority":"3 - medium",
+    "owner":"Radostin Dzhegalov",
+    "state":"Submitted",
+    "project":"1.1 San Jose"
+  },
+  {
+    "formatted_id":"DE22766",
+    "name":"CSCug63466: Importing community LAR fails",
+    "severity":"3 - Moderate",
+    "priority":"1 - release blocker",
+    "owner":"Valentin Velikov",
+    "state":"Submitted",
+    "project":"1.2.7 Maya"
+  },
+  {
+    "formatted_id":"DE22595",
+    "name":"[SOLR4] Search in Following/ Followers is not working.",
+    "severity":"3 - Moderate",
+    "priority":"3 - medium",
+    "owner":"Aleksandar Georgiev",
+    "state":"Submitted",
+    "project":"1.3 GE"
+  },
+  {
+    "formatted_id":"DE22646",
+    "name":"Autocomplete stops working after the 24th character",
+    "severity":"3 - Moderate",
+    "priority":"3 - medium",
+    "owner":"Valentin Velikov",
+    "state":"Open",
+    "project":"1.3 GE"
+  },
+  {
+    "formatted_id":"DE22753",
+    "name":"ERROR [POST] - [SimpleAsyncTaskExecutor-2] - [] - []: Cannot retrieve meta data (geo seach attributes) for post: 14900031",
+    "severity":"3 - Moderate",
+    "priority":"1 - release blocker",
+    "owner":"Aleksandar Georgiev",
+    "state":"Submitted",
+    "project":"1.3 GE"
+  },
+  {
+    "formatted_id":"DE22842",
+    "name":"[SOLR4]A poll can't be found through solr 4 search after another user  replays to it.",
+    "severity":"3 - Moderate",
+    "priority":"3 - medium",
+    "owner":"Nikolay Kanov",
+    "state":"Submitted",
+    "project":"1.3 GE"
+  },
+  {
+    "formatted_id":"DE22952",
+    "name":"Wrong \"\"receivedMessagesCount\": 237,\" blocks Re-Index",
+    "severity":"3 - Moderate",
+    "priority":"2 - high",
+    "owner":"Radostin Tsanev",
+    "state":"Submitted",
+    "project":"1.3 GE"
+  },
+  {
+    "formatted_id":"DE22967",
+    "name":"Fast search for users returns the list grouped.",
+    "severity":"3 - Moderate",
+    "priority":"3 - medium",
+    "owner":"Pepa Krastnikova",
+    "state":"Submitted",
+    "project":"1.3.2 Briza"
+  },
+  {
+    "formatted_id":"DE22851",
+    "name":"Add links to post, www is not recognized as a url",
+    "severity":"3 - Moderate",
+    "priority":"3 - medium",
+    "owner":"Aleksandar Georgiev",
+    "state":"Submitted",
+    "project":"1.2.6 Nomad"
+  },
+  {
+    "formatted_id":"DE22960",
+    "name":"Test incremental reindex with big load",
+    "severity":"3 - Moderate",
+    "priority":"2 - high",
+    "owner":"Aleksandra Gencheva",
+    "state":"Submitted",
+    "project":"2.2 Performance"
+  },
+  {
+    "formatted_id":"DE22916",
+    "name":"3.5 Metrics Automation : selenium.ecp.communities.Join fails",
+    "severity":"3 - Moderate",
+    "priority":"1 - release blocker",
+    "owner":"Aleksandar Georgiev",
+    "state":"Submitted",
+    "project":"1.1 San Jose"
+  },
+  {
+    "formatted_id":"DE22765",
+    "name":"CSCui44125: backup script fails to write to backup NFS location",
+    "severity":"3 - Moderate",
+    "priority":"1 - release blocker",
+    "owner":"Radostin Dzhegalov",
+    "state":"Submitted",
+    "project":"1.2.7 Maya"
+  },
+  {
+    "formatted_id":"DE22467",
+    "name":"Automation (Control Panel) : selenium.controlpanel.portal.roles.OpenAssignMemberPage action is failing",
+    "severity":"3 - Moderate",
+    "priority":"1 - release blocker",
+    "owner":"Radostin Dzhegalov",
+    "state":"Submitted",
+    "project":"1. Product Dev"
+  },
+  {
+    "formatted_id":"DE22959",
+    "name":"Unhiding reported comment mentioning a community",
+    "severity":"3 - Moderate",
+    "priority":"2 - high",
+    "owner":"Lisa Tsao",
+    "state":"Submitted",
+    "project":"1.3 GE"
+  },
+  {
+    "formatted_id":"DE22810",
+    "name":"Video buttons disappears, if the user receives a call while dialing another user",
+    "severity":"3 - Moderate",
+    "priority":"2 - high",
+    "owner":"Anatoliy Atanasov",
+    "state":"Submitted",
+    "project":"1.2.4 Orion"
+  },
+  {
+    "formatted_id":"DE22649",
+    "name":"Filter users in community doesn't return the admin",
+    "severity":"3 - Moderate",
+    "priority":"2 - high",
+    "owner":"Veselin Maslenkov",
+    "state":"Submitted",
+    "project":"1.3 GE"
+  },
+  {
+    "formatted_id":"DE22879",
+    "name":"[CSCuf02594] - Webex Social returning duplicate results in search",
+    "severity":"3 - Moderate",
+    "priority":"1 - release blocker",
+    "owner":"Veselin Maslenkov",
+    "state":"Submitted",
+    "project":"1.3 GE"
+  },
+  {
+    "formatted_id":"DE22947",
+    "name":"ecp.openapi.users.suggestions.InjectSuggestions doesn't work",
+    "severity":"3 - Moderate",
+    "priority":"3 - medium",
+    "owner":"Atanas Dyulgerov",
+    "state":"Open",
+    "project":"1.3 GE"
+  },
+  {
+    "formatted_id":"DE22838",
+    "name":"[CSCuj14581] Unable to create link to new post from a public post",
+    "severity":"3 - Moderate",
+    "priority":"3 - medium",
+    "owner":"Atanas Dyulgerov",
+    "state":"Submitted",
+    "project":"1.2.6 Nomad"
+  }
+]}

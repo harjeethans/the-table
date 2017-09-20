@@ -1,6 +1,7 @@
-import React, { PropTypes }  from 'react';
+import React  from 'react';
+import PropTypes from 'prop-types';
+
 import ReactDOM from 'react-dom';
-import classnames from 'classnames';
 
 class RenderInContainer extends React.Component {
 
@@ -31,7 +32,9 @@ class RenderInContainer extends React.Component {
   componentWillUnmount() {
     ReactDOM.unmountComponentAtNode(this.popup);
     this.props.container.removeChild(this.popup);
-    this.props.container.removeChild(this._underlayNode);
+    if(this._underlayNode){
+      this.props.container.removeChild(this._underlayNode);
+    }
   }
 
   _renderLayer() {

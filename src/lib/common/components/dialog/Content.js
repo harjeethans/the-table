@@ -1,4 +1,5 @@
-import React, { PropTypes }  from 'react';
+import React  from 'react';
+import PropTypes from 'prop-types';
 
 function Content(props) {
 
@@ -20,7 +21,7 @@ Content.PropTypes = {
 };
 
 Content.defaultProps = {
-  className: 'mdl-dialog__content'
+  className: 'mdc-dialog__body'
 }
 
 export default Content;

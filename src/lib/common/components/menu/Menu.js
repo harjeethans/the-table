@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 
 import classnames from 'classnames';
 
-import Button from '../button/Button';
+import Button from '../form/Button';
+import IconButton from '../form/IconButton';
 
 
 const modifierClasses = {
@@ -24,9 +25,24 @@ class Menu extends React.Component {
     this.close = this.close.bind(this);
     this.toggle = this.toggle.bind(this);
 
+    const position = this.props.position;
+    let style = {
+      transform: 'scale(1, 1)'
+    }
+
+    if(position === 'TL'){
+      style = Object.assign({}, style, {
+        transformOrigin: 'left bottom 0px',
+        left: 0,
+        top: 0
+      });
+    }
+
     this.state = {
-      isOpen: false
+      isOpen: false,
+      style
     };
+
 
   }
 
@@ -67,31 +83,27 @@ class Menu extends React.Component {
   }
 
   render() {
-    const {baseClass, children, className, icon, label, ripple, size} = this.props;
+    const {baseClass, children, className, icon, label} = this.props;
 
-    const classes = classnames(baseClass, {
-      'mdc-menu--open': this.state.isOpen,
-      'mdc-menu--small': (size === 'S'),
-      'mdc-menu--medium': (size === 'M'),
-      'mdc-menu--large': (size === 'L'),
-      'ripple-effect': ripple
-    }, className);
+    const classes = classnames(baseClass, className);
     const containerClasses = classnames({
-      'mdc-menu__container': true,
-      'is-visible': this.state.isOpen
+      'mdc-simple-menu': true,
+      'mdc-simple-menu--open': this.state.isOpen
     })
 
-    let labelNode = label;
+    let target;
     if(icon){
-      labelNode = <i className="material-icons">{icon}</i>
+      target = <IconButton onClick={this.toggle} primary={true} iconName={icon}></IconButton>
+    } else {
+      target = <Button onClick={this.toggle}>{label}</Button>
     }
 
 
     return (
       <div className={classes}>
-        <Button onClick={this.toggle} icon={(icon)}>{labelNode}</Button>
-        <div className={containerClasses} onClick={this.onClick}>
-          <ul className="mdc-menu mdc-shadow--2dp mdc-menu--bottom-left mdc-js-menu mdc-js-ripple-effect">
+        {target}
+        <div className={containerClasses} onClick={this.onClick} style={this.state.style}>
+          <ul className="mdc-simple-menu__items mdc-list">
             {children}
           </ul>
         </div>
@@ -113,14 +125,12 @@ Menu.propTypes = {
   label: PropTypes.string, //label for the menu
   onClick: PropTypes.func, // callback for onMouseEnter
   ripple: PropTypes.bool,
-  position: PropTypes.oneOf(['BL', 'BR','TL','TR']),
-  size: PropTypes.oneOf(['A', 'S', 'M','L']) // custom, small , medium , large
+  position: PropTypes.oneOf(['BL', 'BR','TL','TR'])
 }
 
 Menu.defaultProps = {
-  baseClass: 'mdc-menu--container',
-  position: 'BL',
-  size: 'S'
+  baseClass: 'mdc-menu-anchor',
+  position: 'TL'
 }
 
 export default Menu;

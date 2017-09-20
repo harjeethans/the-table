@@ -1,0 +1,493 @@
+{
+    "items": [{
+        "id": 100,
+        "name": "LDN Campus",
+        "description": "Main United Kingdom",
+        "se_data_source": "MSE-LDN",
+        "country": "UK",
+        "continent": "Europe",
+        "hasChildren": "TRUE",
+        "parentId": 0,
+        "type": "campus"
+    }, {
+        "id": 101,
+        "name": "NTN Campus",
+        "description": "Israel main campus",
+        "se_data_source": "MSE-NTN",
+        "country": "Israel",
+        "continent": "Asia",
+        "hasChildren": "TRUE",
+        "parentId": 0,
+        "type": "campus"
+    }, {
+        "id": 102,
+        "name": "SJ Campus",
+        "description": "US main campus for engineering",
+        "se_data_source": "MSE-SJ",
+        "country": "USA",
+        "continent": "North America",
+        "hasChildren": "TRUE",
+        "parentId": 0,
+        "type": "campus"
+    }, {
+        "id": 103,
+        "name": "BLR Campus",
+        "description": "India campus",
+        "se_data_source": "MSE-BLR",
+        "country": "India",
+        "continent": "Asia",
+        "hasChildren": "FALSE",
+        "parentId": 0,
+        "type": "campus"
+    }, {
+        "id": 104,
+        "name": "GLA Campus",
+        "description": "Glasgow R&D",
+        "se_data_source": "MSE-GLA",
+        "country": "UK",
+        "continent": "Asia",
+        "hasChildren": "TRUE",
+        "parentId": 0,
+        "type": "campus"
+    }, {
+        "id": 105,
+        "name": "RTC Campus",
+        "description": "US East coast",
+        "se_data_source": "MSE-RTC",
+        "country": "USA",
+        "continent": "North America",
+        "hasChildren": "TRUE",
+        "parentId": 0,
+        "type": "campus"
+    }, {
+        "id": 106,
+        "name": "AUS Campus",
+        "description": "US Southern Campus",
+        "se_data_source": "MSE-AUS",
+        "country": "USA",
+        "continent": "North America",
+        "hasChildren": "TRUE",
+        "parentId": 0,
+        "type": "campus"
+    }, {
+        "id": 107,
+        "name": "LDN Campus 1",
+        "description": "Main United Kingdom",
+        "se_data_source": "MSE-LDN",
+        "country": "UK",
+        "continent": "Europe",
+        "hasChildren": "TRUE",
+        "parentId": 0,
+        "type": "campus"
+    }, {
+        "id": 108,
+        "name": "NTN Campus 1",
+        "description": "Israel main campus",
+        "se_data_source": "MSE-NTN",
+        "country": "Israel",
+        "continent": "Asia",
+        "hasChildren": "TRUE",
+        "parentId": 0,
+        "type": "campus"
+    }, {
+        "id": 109,
+        "name": "SJ Campus 1",
+        "description": "US main campus for engineering",
+        "se_data_source": "MSE-SJ",
+        "country": "USA",
+        "continent": "North America",
+        "hasChildren": "TRUE",
+        "parentId": 0,
+        "type": "campus"
+    }, {
+        "id": 110,
+        "name": "BLR Campus 1",
+        "description": "India campus",
+        "se_data_source": "MSE-BLR",
+        "country": "India",
+        "continent": "Asia",
+        "hasChildren": "TRUE",
+        "parentId": 0,
+        "type": "campus"
+    }, {
+        "id": 111,
+        "name": "GLA Campus 1",
+        "description": "Glasgow R&D",
+        "se_data_source": "MSE-GLA",
+        "country": "UK",
+        "continent": "Asia",
+        "hasChildren": "TRUE",
+        "parentId": 0,
+        "type": "campus"
+    }, {
+        "id": 112,
+        "name": "RTC Campus 1",
+        "description": "US East coast",
+        "se_data_source": "MSE-RTC",
+        "country": "USA",
+        "continent": "North America",
+        "hasChildren": "FALSE",
+        "parentId": 0,
+        "type": "campus"
+    }, {
+        "id": 113,
+        "name": "AUS Campus 1",
+        "description": "US Southern Campus",
+        "se_data_source": "MSE-AUS",
+        "country": "USA",
+        "continent": "North America",
+        "hasChildren": "TRUE",
+        "parentId": 0,
+        "type": "campus"
+    }, {
+        "id": 114,
+        "name": "LDN Campus 2",
+        "description": "Main United Kingdom",
+        "se_data_source": "MSE-LDN",
+        "country": "UK",
+        "continent": "Europe",
+        "hasChildren": "FALSE",
+        "parentId": 0,
+        "type": "campus"
+    }, {
+        "id": 115,
+        "name": "NTN Campus 2",
+        "description": "Israel main campus",
+        "se_data_source": "MSE-NTN",
+        "country": "Israel",
+        "continent": "Asia",
+        "hasChildren": "TRUE",
+        "parentId": 0,
+        "type": "campus"
+    }, {
+        "id": 116,
+        "name": "SJ Campus 2",
+        "description": "US main campus for engineering",
+        "se_data_source": "MSE-SJ",
+        "country": "USA",
+        "continent": "North America",
+        "hasChildren": "TRUE",
+        "parentId": 0,
+        "type": "campus"
+    }, {
+        "id": 117,
+        "name": "BLR Campus 2",
+        "description": "India campus",
+        "se_data_source": "MSE-BLR",
+        "country": "India",
+        "continent": "Asia",
+        "hasChildren": "FALSE",
+        "parentId": 0,
+        "type": "campus"
+    }, {
+        "id": 118,
+        "name": "GLA  Campus 2",
+        "description": "Glasgow R&D",
+        "se_data_source": "MSE-GLA",
+        "country": "UK",
+        "continent": "Asia",
+        "hasChildren": "TRUE",
+        "parentId": 0,
+        "type": "campus"
+    }, {
+        "id": 119,
+        "name": "RTC Campus 2",
+        "description": "US East coast",
+        "se_data_source": "MSE-RTC",
+        "country": "USA",
+        "continent": "North America",
+        "hasChildren": "TRUE",
+        "parentId": 0,
+        "type": "campus"
+    }, {
+        "id": 120,
+        "name": "AUS Campus 2",
+        "description": "US Southern Campus",
+        "se_data_source": "MSE-AUS",
+        "country": "USA",
+        "continent": "North America",
+        "hasChildren": "TRUE",
+        "parentId": 0,
+        "type": "campus"
+    }, {
+        "id": 121,
+        "name": "LDN Campus 3",
+        "description": "Main United Kingdom",
+        "se_data_source": "MSE-LDN",
+        "country": "UK",
+        "continent": "Europe",
+        "hasChildren": "TRUE",
+        "parentId": 0,
+        "type": "campus"
+    }, {
+        "id": 122,
+        "name": "NTN Campus 3",
+        "description": "Israel main campus",
+        "se_data_source": "MSE-NTN",
+        "country": "Israel",
+        "continent": "Asia",
+        "hasChildren": "FALSE",
+        "parentId": 0,
+        "type": "campus"
+    }, {
+        "id": 123,
+        "name": "SJ Campus 3",
+        "description": "US main campus for engineering",
+        "se_data_source": "MSE-SJ",
+        "country": "USA",
+        "continent": "North America",
+        "hasChildren": "TRUE",
+        "parentId": 0,
+        "type": "campus"
+    }, {
+        "id": 124,
+        "name": "BLR Campus 3",
+        "description": "India campus",
+        "se_data_source": "MSE-BLR",
+        "country": "India",
+        "continent": "Asia",
+        "hasChildren": "TRUE",
+        "parentId": 0,
+        "type": "campus"
+    }, {
+        "id": 125,
+        "name": "GLA  Campus 3",
+        "description": "Glasgow R&D",
+        "se_data_source": "MSE-GLA",
+        "country": "UK",
+        "continent": "Asia",
+        "hasChildren": "TRUE",
+        "parentId": 0,
+        "type": "campus"
+    }, {
+        "id": 126,
+        "name": "RTC Campus 3",
+        "description": "US East coast",
+        "se_data_source": "MSE-RTC",
+        "country": "USA",
+        "continent": "North America",
+        "hasChildren": "TRUE",
+        "parentId": 0,
+        "type": "campus"
+    }, {
+        "id": 127,
+        "name": "AUS Campus 3",
+        "description": "US Southern Campus",
+        "se_data_source": "MSE-AUS",
+        "country": "USA",
+        "continent": "North America",
+        "hasChildren": "TRUE",
+        "parentId": 0,
+        "type": "campus"
+    }, {
+        "id": 1000,
+        "name": "Building 1",
+        "description": "Security",
+        "se_data_source": "MSE-TODO",
+        "country": "TODO",
+        "continent": "TODO",
+        "hasChildren": "TRUE",
+        "parentId": 100,
+        "type": "bldg"
+    }, {
+        "id": 1001,
+        "name": "Building 2",
+        "description": "Marketing",
+        "se_data_source": "MSE-TODO",
+        "country": "TODO",
+        "continent": "TODO",
+        "hasChildren": "TRUE",
+        "parentId": 100,
+        "type": "bldg"
+    }, {
+        "id": 1002,
+        "name": "Building 3",
+        "description": "Administration",
+        "se_data_source": "MSE-TODO",
+        "country": "TODO",
+        "continent": "TODO",
+        "hasChildren": "TRUE",
+        "parentId": 100,
+        "type": "bldg"
+    }, {
+        "id": 1003,
+        "name": "Building 4",
+        "description": "R&D",
+        "se_data_source": "MSE-TODO",
+        "country": "TODO",
+        "continent": "TODO",
+        "hasChildren": "TRUE",
+        "parentId": 100,
+        "type": "bldg"
+    }, {
+        "id": 1004,
+        "name": "Building 5",
+        "description": "Networks",
+        "se_data_source": "MSE-TODO",
+        "country": "TODO",
+        "continent": "TODO",
+        "hasChildren": "TRUE",
+        "parentId": 101,
+        "type": "bldg"
+    }, {
+        "id": 1005,
+        "name": "Building 6",
+        "description": "Routing",
+        "se_data_source": "MSE-TODO",
+        "country": "TODO",
+        "continent": "TODO",
+        "hasChildren": "TRUE",
+        "parentId": 101,
+        "type": "bldg"
+    }, {
+        "id": 1006,
+        "name": "Building 7",
+        "description": "Collaboration",
+        "se_data_source": "MSE-TODO",
+        "country": "TODO",
+        "continent": "TODO",
+        "hasChildren": "TRUE",
+        "parentId": 101,
+        "type": "bldg"
+    }, {
+        "id": 150,
+        "name": "Floor 1",
+        "description": "Business 1",
+        "se_data_source": "MSE-FLR_1-5",
+        "country": "NA",
+        "continent": "NA",
+        "hasChildren": "TRUE",
+        "parentId": 1000,
+        "type": "floor"
+    }, {
+        "id": 151,
+        "name": "Floor 2",
+        "description": "Business 2",
+        "se_data_source": "MSE-FLR_1-5",
+        "country": "NA",
+        "continent": "NA",
+        "hasChildren": "FALSE",
+        "parentId": 1000,
+        "type": "floor"
+    }, {
+        "id": 152,
+        "name": "Floor 3",
+        "description": "Business 3",
+        "se_data_source": "MSE-FLR_1-5",
+        "country": "NA",
+        "continent": "NA",
+        "hasChildren": "TRUE",
+        "parentId": 1000,
+        "type": "floor"
+    }, {
+        "id": 153,
+        "name": "Floor 4",
+        "description": "Business 4",
+        "se_data_source": "MSE-FLR_1-5",
+        "country": "NA",
+        "continent": "NA",
+        "hasChildren": "TRUE",
+        "parentId": 1000,
+        "type": "floor"
+    }, {
+        "id": 154,
+        "name": "Floor 5",
+        "description": "Business 5",
+        "se_data_source": "MSE-FLR_1-5",
+        "country": "NA",
+        "continent": "NA",
+        "hasChildren": "FALSE",
+        "parentId": 1001,
+        "type": "floor"
+    }, {
+        "id": 155,
+        "name": "Floor 6",
+        "description": "Business 6",
+        "se_data_source": "MSE-FLR_5-10",
+        "country": "NA",
+        "continent": "NA",
+        "hasChildren": "TRUE",
+        "parentId": 1001,
+        "type": "floor"
+    }, {
+        "id": 156,
+        "name": "Floor 7",
+        "description": "Business 7",
+        "se_data_source": "MSE-FLR_5-10",
+        "country": "NA",
+        "continent": "NA",
+        "hasChildren": "FALSE",
+        "parentId": 1001,
+        "type": "floor"
+    }, {
+        "id": 157,
+        "name": "Floor 8",
+        "description": "Business 8",
+        "se_data_source": "MSE-FLR_5-10",
+        "country": "NA",
+        "continent": "NA",
+        "hasChildren": "TRUE",
+        "parentId": 1001,
+        "type": "floor"
+    }, {
+        "id": 158,
+        "name": "Floor 9",
+        "description": "Business 9",
+        "se_data_source": "MSE-FLR_5-10",
+        "country": "NA",
+        "continent": "NA",
+        "hasChildren": "TRUE",
+        "parentId": 1002,
+        "type": "floor"
+    }, {
+        "id": 159,
+        "name": "Floor 10",
+        "description": "Business 10",
+        "se_data_source": "MSE-FLR_5-10",
+        "country": "NA",
+        "continent": "NA",
+        "hasChildren": "FALSE",
+        "parentId": 1002,
+        "type": "floor"
+    }, {
+        "id": 170,
+        "name": "North Zone",
+        "description": "Business N",
+        "se_data_source": "MSE-ZONE_NS",
+        "country": "NA",
+        "continent": "NA",
+        "hasChildren": "FALSE",
+        "parentId": 150,
+        "type": "zone"
+    }, {
+        "id": 171,
+        "name": "South Zone",
+        "description": "Business S",
+        "se_data_source": "MSE-ZONE_NS",
+        "country": "NA",
+        "continent": "NA",
+        "hasChildren": "FALSE",
+        "parentId": 150,
+        "type": "zone"
+    }, {
+        "id": 172,
+        "name": "East Zone",
+        "description": "Business E",
+        "se_data_source": "MSE-ZONE_EW",
+        "country": "NA",
+        "continent": "NA",
+        "hasChildren": "FALSE",
+        "parentId": 151,
+        "type": "zone"
+    }, {
+        "id": 173,
+        "name": "West Zone",
+        "description": "Business W",
+        "se_data_source": "MSE-ZONE_EW",
+        "country": "NA",
+        "continent": "NA",
+        "hasChildren": "FALSE",
+        "parentId": 151,
+        "type": "zone"
+    }]
+}

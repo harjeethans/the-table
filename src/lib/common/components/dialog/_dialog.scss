@@ -17,6 +17,32 @@ dialog {
 
 dialog[open] {
   display: block;
+  visibility: visible;
+}
+
+.mdc-dialog {
+  &__header {
+    padding: 0;
+  }
+}
+dialog {
+  &.mdc-dialog {
+    top: 250px;
+    width: fit-content;
+    height: fit-content;
+    padding: 15px;
+    z-index: 999;
+    border-width: 1px;
+    &--small {
+      width: 300px;
+    }
+    &--medium {
+      width: 500px;
+    }
+    &--large {
+      width: 800px;
+    }
+  }
 }
 
 dialog + .backdrop {
@@ -43,21 +69,6 @@ dialog.fixed {
   position: fixed;
   top: 50%;
   transform: translate(0, -50%);
-}
-
-.mdc-dialog {
-  top: 250px;
-  width: auto;
-  z-index: 999;
-  &--small {
-    width: 300px;
-  }
-  &--medium {
-    width: 500px;
-  }
-  &--large {
-    width: 800px;
-  }
 }
 
 .mdc-dialog--underlay {
