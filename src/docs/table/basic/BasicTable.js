@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import ReactDOM from 'react-dom';
 import {Table} from 'the-table';
-
+import Metadata from './Metadata';
 
 const peopleStructure = {
   id: '_id',
@@ -86,7 +86,6 @@ const _code = {
 
 
 class BasicTable extends React.Component{
-
 
   getPeopleData(queryParams){
 
@@ -203,8 +202,9 @@ class BasicTable extends React.Component{
           sort={this.props.sort}
           showToolbar={this.props.showToolbar}
           striped={false}
+          toolbarItems= {Metadata.toolbarItems}
           usePagination={this.props.usePagination}
-          showFreeFormSearchBar= {false}
+          showFreeFormSearchBar= {true}
           dataState={this.props.dataState}>
         </Table>
       </div>

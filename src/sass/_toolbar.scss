@@ -1,4 +1,4 @@
-.fe-table {
+.the-table {
   &.inline-editing {
     .toolbar-container {
       opacity: $opacityOnEditMode;
@@ -8,6 +8,10 @@
     padding: 10px $cell-padding - 2;
     .toolbar {
       height: 33px;
+      display: flex;
+      .primary {
+        flex-grow: 1;
+      }
       .settings {
         display: inline-block;
         position: relative;

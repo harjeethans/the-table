@@ -90,14 +90,19 @@ class Toolbar extends React.Component {
   }
 
   renderPrimaryToolbar() {
-    const primaryClasses = classNames('primary', 'pull-left');
+    const primaryClasses = classNames('primary');
     const tbData = (this.state && this.state.primaryToolbarItems) ? this.state.primaryToolbarItems : [];
     return this.renderToolbar(tbData, primaryClasses, false);
   }
 
   renderSecondaryToolbar() {
-    const secondaryClasses = classNames('secondary', 'pull-right');
+    const secondaryClasses = classNames('secondary');
     const tbData = (this.state && this.state.secondaryToolbarItems) ? this.state.secondaryToolbarItems : [];
+    return this.renderToolbar(tbData, secondaryClasses, true);
+  }
+
+  renderToolbar(toolbarItems, toolbarClasses, pullRight) {
+
     const search = function(){
       if(this.props.showFreeFormSearchBar){
         return (
@@ -113,10 +118,6 @@ class Toolbar extends React.Component {
       }
     }.bind(this);
 
-    return this.renderToolbar(tbData, secondaryClasses, true, search());
-  }
-
-  renderToolbar(toolbarItems, toolbarClasses, pullRight, search) {
     const getLabel = function(item){
       if(item.iconClass) {
         return <Icon iconName={item.iconName}></Icon>
@@ -138,7 +139,7 @@ class Toolbar extends React.Component {
     const createDropdown = function(item, i){
       if(item.items){
         return (
-          <button title={item.label} key={i} pullRight={pullRight} id={`dropdown-${i}`}>
+          <button title={item.label} key={i} id={`dropdown-${i}`}>
             <button>
               {getLabel(item)}
             </button>
@@ -184,7 +185,7 @@ class Toolbar extends React.Component {
     //var toolbarItems = (this.state && this.state.primaryToolbarItems) ? this.state.primaryToolbarItems : [];
     return (
       <div className={toolbarClasses}>
-        {search}
+        {this.props.showFreeFormSearchBar && search()}
         <button className={toolbarClasses}>
           {toolbarItems.map(createDropdown, this)}
         </button>
@@ -201,24 +202,12 @@ class Toolbar extends React.Component {
    */
   digestToolbarItems() {
 
-    if(this.props.additionalToolbarItems && this.props.additionalToolbarItems>0){
-      this.props.toolbarItems.push(...this.props.additionalToolbarItems);
-    }
-
     const primary = this.props.toolbarItems.filter(function(action){
       return action['type'] === "primary";
     });
     const secondary = this.props.toolbarItems.filter(function(action){
       return action['type'] === "secondary";
     });
-
-    if(this.props.primaryToolbarItems && this.props.primaryToolbarItems.length>0){
-      primary.push(...this.props.primaryToolbarItems);
-    }
-
-    if(this.props.secondaryToolbarItems && this.props.secondaryToolbarItems.length>0){
-      secondary.push(...this.props.secondaryToolbarItems);
-    }
 
     this.setState({
       primaryToolbarItems: primary,
@@ -245,7 +234,6 @@ class Toolbar extends React.Component {
 }
 
 Toolbar.propTypes = {
-  additionalToolbarItems : PropTypes.array, // additional toolbar items if any in the following format.
   confirmationMessage: PropTypes.string, // confirmation messgae to display if not provided by toolbar item.
   confirmationTitle: PropTypes.string,
   delay: PropTypes.number, // time in ms to be used for all delaying, like use typeing in for a search etc.

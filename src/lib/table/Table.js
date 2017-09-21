@@ -1118,6 +1118,8 @@ const propTypes = {
   filter: PropTypes.object,
   // set to true will make the table layout fexible meaning adjusting to parent container's width. The widths sets in structurs will be the minimun that will force a scrollbar if needed.
   flexible: PropTypes.bool,
+  // primary will place the freeform search bar in primary toolbar, secondary in the secondary toolbar.
+  freeFormSearchBarLocation: PropTypes.oneOf(['primary','secondary']),
   // if set to true will generate an event when user clicks on a row. the events will have model and column reference for the click event.
   emitRowClick: PropTypes.bool,
   // when a user types multiple conditions in header filter what predicate to use in that scenario.
@@ -1164,8 +1166,6 @@ const propTypes = {
   preserveRowExpansionOnRender: PropTypes.bool,
   // if we need to keep the nested rows open after we refresh the table.
   preserveNestedRowStateOnRender: PropTypes.bool,
-  // actions belonging to primary area of the toolbar, these would be merged with the type primary in the toolbarItems
-  primaryActions: PropTypes.array,
   // catalog of all the private events used internally by the table.
   privateEventCatalog: PropTypes.object,
   // actions belonging to secondary area of the toolbar, these would be merged with the type secondary in the toolbarItems.
@@ -1219,6 +1219,7 @@ const defaultProps = {
   delay: 500,
   eventCatalog: Defaults.eventCatalog,
   emitRowClick: false,
+  freeFormSearchBarLocation: 'secondary',
   icons: Defaults.icons,
   ignoreHiddenForExport: false,
   inlineActions: Defaults.inlineActions,
@@ -1236,7 +1237,6 @@ const defaultProps = {
   pagination: Defaults.pagination,
   pageLinksToShow: 3,
   preserveRowExpansionOnRender: false,
-  primaryActions: [],
   privateEventCatalog: Defaults.privateEventCatalog,
   selectionModel: 'all',
   selectCBWidth: 32,
@@ -1245,7 +1245,7 @@ const defaultProps = {
   showFooter: true,
   simpleFilterAlwaysVisible: false,
   striped: false,
-  toolbarItems: Defaults.toolbarItems,
+  toolbarItems: [],
   totalRecords: 0,
   truncateOverflow: false,
   useCustomModelEditor: false,

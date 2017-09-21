@@ -318,19 +318,22 @@ dialog.fixed {
     .the-table .table-container .header table tr.simple-filter .fa.close-filter-icon {
       margin: 0px; }
 
-.fe-table.inline-editing .toolbar-container {
+.the-table.inline-editing .toolbar-container {
   opacity: 0.5; }
 
-.fe-table .toolbar-container {
+.the-table .toolbar-container {
   padding: 10px 6px; }
-  .fe-table .toolbar-container .toolbar {
-    height: 33px; }
-    .fe-table .toolbar-container .toolbar .settings {
+  .the-table .toolbar-container .toolbar {
+    height: 33px;
+    display: flex; }
+    .the-table .toolbar-container .toolbar .primary {
+      flex-grow: 1; }
+    .the-table .toolbar-container .toolbar .settings {
       display: inline-block;
       position: relative; }
-      .fe-table .toolbar-container .toolbar .settings .btn.settings-open {
+      .the-table .toolbar-container .toolbar .settings .btn.settings-open {
         color: #3fa1d0; }
-      .fe-table .toolbar-container .toolbar .settings .settings-container {
+      .the-table .toolbar-container .toolbar .settings .settings-container {
         position: absolute;
         border: 1px solid #8e8e8e;
         background-color: #fff;
@@ -340,7 +343,7 @@ dialog.fixed {
         padding: 10px;
         z-index: 1000;
         min-width: 400px; }
-        .fe-table .toolbar-container .toolbar .settings .settings-container ul li {
+        .the-table .toolbar-container .toolbar .settings .settings-container ul li {
           padding: 10px;
           border: 2px dashed transparent; }
 
