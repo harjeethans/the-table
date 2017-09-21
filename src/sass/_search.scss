@@ -1,0 +1,19 @@
+.table-search {
+  position: relative;
+  margin: 0 10px;
+  display: inline-block;
+  .search-input {
+    border-radius: 18px;
+    padding-right: 35px;
+  }
+  button {
+    position: absolute;
+    top: 1px;
+    right: 0;
+    border: 0 none;
+    padding-left: 0;
+    &:hover, &:focus, &:active {
+      background: none !important;
+    }
+  }
+}

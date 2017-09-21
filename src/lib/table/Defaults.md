@@ -105,7 +105,7 @@ GridEvent
    * moveDown
 
 
-## Grid API (functions that can be invoked on the grid)
+## Grid API (functions that can be invoked on the table)
 
 * setSelected
 * getSelected
@@ -174,7 +174,7 @@ const structure = {
   const listeners = {
     'onGridEvent': this.handleGridEvent.bind(this)
   }
-  
+
   const defaultControl = {
     paging: {
       pageSize: 20,

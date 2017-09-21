@@ -28,7 +28,7 @@ class Header extends React.Component {
 
   render(){
     const containerClasses = classNames('header', {'simple-filter-visible': this.state.simpleFilterVisible});
-    const tableClasses = classNames('grid', {'flexible': this.props.flexible}, {'table-bordered': this.props.bordered});
+    const tableClasses = classNames('table', {'flexible': this.props.flexible}, {'table-bordered': this.props.bordered});
     const colGroup = this.renderColgroup();
     let headerColumns;
     if(this.props.showHeader){
@@ -356,17 +356,17 @@ Header.propTypes = {
   bordered: PropTypes.bool,
   delay: PropTypes.number, // delay
   dimension: PropTypes.object, // {w:100, h:100}
-  eventCatalog: PropTypes.object, // catalog of all the events supported by the grid, these venets have specific payload associated.
+  eventCatalog: PropTypes.object, // catalog of all the events supported by the table, these venets have specific payload associated.
   eventEmitter: PropTypes.object, // event emitter for pub/sub
   filter: PropTypes.object, // filter if set.
   flexible: PropTypes.bool, // set to true will make the table layout fexible meaning adjusting to parent container's width. The widths sets in structurs will be the minimun that will force a scrollbar if needed.
   icons: PropTypes.object,
   inlineActionsWidth: PropTypes.number, // width reserved for inline actions if used.
-  isNested: PropTypes.bool, // if the grid is nested.
+  isNested: PropTypes.bool, // if the table is nested.
   onHeaderChange: PropTypes.func, // callback to execute when a header change event happens.
   logger: PropTypes.object.isRequired, // logger.
   minLength: PropTypes.number, // minLength
-  privateEventCatalog: PropTypes.object, // private catalog of all the internal events used by the grid.
+  privateEventCatalog: PropTypes.object, // private catalog of all the internal events used by the table.
   selectCBWidth: PropTypes.number, // check box used for selection.
   selectionModel: PropTypes.string, // all/some/none meaning select all available, some has no select all, and non is non selectable.
   simpleFilterAlwaysVisible: PropTypes.bool, // if the simple filter is always visible or visible at times.

@@ -1,0 +1,144 @@
+.fe-table {
+  .table-container {
+    .header {
+      table {
+        border: none;
+        table-layout: fixed;
+        margin: 0;
+        &.flexible {
+          width: 100%;
+        }
+        th,td {
+          border-top: 1px solid $table-border-color;
+          border-bottom: 1px solid $table-border-color;
+          input[type=checkbox] {
+            margin: 0px 0px 4px 2px;
+          }
+          &:last-child {
+            border-right: none;
+          }
+
+          &.select-all {
+            padding-left: 8px;
+            padding-right: 5px;
+          }
+
+          .sort-indicator {
+            border: 5px solid transparent;
+            cursor: pointer;
+            padding-left: 5px;
+            padding-right: 5px;
+            &__ascending {
+              top: -7px;
+              &--applied {
+                border-color: $table-sort-applied-indicator;
+                border-bottom-color: transparent;
+              }
+            }
+            &__descending {
+              bottom: -7px;
+              &--applied {
+                border-color: $table-sort-applied-indicator;
+                border-top-color: transparent;
+              }
+            }
+          }
+
+          &.sortable {
+            cursor: context-menu;
+            &:hover {
+              .sort-indicator {
+                &__ascending {
+                  top: -7px;
+                  border-color: $table-sortable-indicator;
+                  border-bottom-color: transparent;
+                  &--applied {
+                    border-color: $table-sort-applied-indicator;
+                    border-bottom-color: transparent;
+                  }
+                }
+              }
+            }
+
+          }
+
+          .filter-input {
+            &__rounded {
+              border-radius: 15px;
+            }
+          }
+
+          .search-box::-webkit-search-cancel-button {
+           -webkit-appearance: searchfield-cancel-button;
+          }
+          .search-box::-moz-search-cancel-button {
+           -moz-appearance: searchfield-cancel-button;
+          }
+
+          &.in-filter {
+            background: $table-infilter-cell-background;
+          }
+
+          .inline-actions {
+            line-height: 20px;
+            padding-left: 5px;
+            padding-right: 5px;
+            &__align {
+              padding-top: 20px;
+            }
+          }
+          .resize-handle {
+            border: 2px solid $table-border-color;
+            height: 18px;
+            cursor: col-resize;
+          }
+          .header-cell-container {
+            position: relative;
+            padding-left: 5px;
+            padding-right: 5px;
+            .header-text {
+              padding: 0px 5px 5px 5px;
+            }
+          }
+          .form-control {
+            &[disabled] {
+              background-color: transparent;
+              border-color: transparent;
+              box-shadow: none;
+            }
+            &::placeholder {
+              color: $table-input-placeholder-color;
+            }
+          }
+
+        }
+        tr {
+          &.simple-filter {
+            td {
+              padding-top:0px;
+            }
+            input {
+              float: left;
+              padding-right: 20px;
+            }
+            .fa {
+              position: relative;
+              margin-left: -20px;
+              margin-top: 7px;
+              color: #8e8e8e;
+              cursor: pointer;
+              &.close-filter-icon {
+                margin: 0px;
+              }
+            }
+          }
+        }
+      }
+      &.simple-filter-visible {
+        th {
+
+        }
+      }
+    }
+  }
+}

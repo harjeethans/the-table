@@ -9,7 +9,7 @@ import classnames from 'classnames';
 import I18N from '../locale/I18N';
 
 const baseClasses = {
-  'grid-modal': true
+  'table-modal': true
 };
 
 class GridModal extends React.Component {

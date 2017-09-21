@@ -1,2 +1,71 @@
-$ripple-effect-background-color: rgba(255,255,255,0.3);
-$background-mdc-menu: #fff !default;
+$white: #fff !default;
+$black: #000 !default;
+// greys
+$color__grey--dark8: #8e8e8e !default;
+$color__grey--dark7: #aaaaaa !default;
+$color__grey--dark6: #d7d7f7 !default;
+$color__grey--dark5: #e1e1e1 !default;
+$color__grey--dark4: #f1f1f1 !default;
+$color__grey--dark3: #f5f5f5 !default;
+$color__grey--dark2: #f9f9f9 !default;
+$color__grey--dark1: #ffffff !default;
+// dangers
+$color__danger--3: #d55555 !default;
+$color__danger--2: #db504a !default;
+$color__danger--1: #ff6f59 !default;
+// action
+$color__action--default: #444444 !default;
+$color__action--default-light: #515761 !default;
+$color__action--default-lighter: #757f8f !default;
+$color__action--highlight: #3fa1d0 !default;
+$color__action--highlight-light: #56b7e5 !default;
+$color__action--safe: #44aa8b !default;
+$color__action--danger: #bd4040 !default;
+$color__action--danger-light: #d55555 !default;
+// icon colors
+$table-icon: $black !default;
+$table-icon-hover: $color__action--highlight !default;
+$table-icon-disabled: $color__grey--dark8 !default;
+// table table colors
+$table-sortable-indicator: $color__grey--dark5 !default;
+$table-sort-applied-indicator: $color__action--default !default;
+
+//cell borders.
+$table-border-color: $color__grey--dark6 !default;
+$table-row-border-color: $color__grey--dark6 !default;
+
+$table-cell-border-top-color: $color__grey--dark6 !default;
+$table-cell-border-bottom-color: $color__grey--dark6 !default;
+$table-cell-border-left-color: $color__grey--dark6 !default;
+$table-cell-border-right-color: $color__grey--dark6 !default;
+
+$table-input-placeholder-color: $color__action--default !default;
+$table-infilter-cell-background: $color__grey--dark5 !default;
+
+$table-odd-row: $color__grey--dark3 !default;
+$table-even-row: $white !default;
+$table-row-hover: $color__grey--dark3 !default;
+$table-row-active: #cbe8ef !default;
+$table-row-disabled: $color__grey--dark5 !default;
+$table-nested-row: $color__grey--dark8 !default;
+$paginator-color: $color__action--highlight !default;
+$paginator-border: transparent !default;
+$paginator-hover-bg: $color__grey--dark5 !default;
+$paginator-hover-border: $color__action--default-light !default;
+$paginator-hover-color: $color__action--default-light !default;
+$paginator-active-color: $color__action--default-light !default;
+$paginator-active-border: $color__action--default-light !default;
+$paginator-disabled-color: $color__action--default !default;
+$paginator-disabled-bg: $white !default;
+$paginator-disabled-border: $white !default;
+$action-color: $color__action--highlight !default;
+$action-bg: $white !default;
+$action-border: $paginator-border !default;
+$action-hover-color: $table-icon-hover !default;
+$action-hover-bg: transparent !default;
+$action-hover-border: transparent !default;
+$action-disabled-color: $paginator-disabled-color !default;
+$action-disabled-bg: $paginator-disabled-bg !default;
+$action-disabled-border: $paginator-disabled-border !default;
+$inline-color: $color__grey--dark6 !default;
+$inline-hover-color: $table-icon-hover !default;

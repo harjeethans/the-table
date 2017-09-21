@@ -159,7 +159,7 @@ class InlineActions extends React.Component {
 InlineActions.propTypes = {
   confirmationMessage: PropTypes.string, // confirmation messgae to display if not provided by toolbar item.
   confirmationTitle: PropTypes.string,
-  eventCatalog: PropTypes.object, // catalog of all the events supported by the grid, these venets have specific payload associated.
+  eventCatalog: PropTypes.object, // catalog of all the events supported by the table, these venets have specific payload associated.
   eventEmitter: PropTypes.object, // event emitter for pub/sub
   icons: PropTypes.object,
   inlineActions: PropTypes.array, // set of available inline actions.

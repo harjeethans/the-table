@@ -1,0 +1,96 @@
+.fe-table {
+  .paginator-container {
+    height: 30px;
+    .page-size {
+      width: 60px;
+      background: transparent;
+    }
+    .paginator {
+      margin: 0;
+      height: 30px;
+      &__list {
+          display: inline-block;
+          padding-left: 0;
+          margin: 0;
+          border-radius: $border-radius-base;
+          font-size: 11px;
+        }
+
+        &__item {
+          display: inline-block; // Remove list-style and block-level defaults
+          margin: 0 10px;
+          position: relative;
+          top: 3px;
+
+          &--active {
+            .paginator__link {
+              &,
+              &:focus,
+              &:hover {
+                color: $paginator-active-color;
+                border-color: $paginator-border;
+                cursor: default;
+              }
+            }
+
+            &::before {
+              display: block;
+              content: ' ';
+              width: 15px;
+              position: relative;
+              background-color: $paginator-active-color;
+              height: 2px;
+              top: 25px;
+              left: 3px;
+            }
+          }
+
+          &.disabled {
+            .paginator__link {
+              &,
+              &:focus,
+              &:hover {
+                color: $paginator-disabled-color;
+                border: none;
+                cursor: $cursor-disabled;
+              }
+            }
+          }
+        }
+
+        &__entries {
+          top: 0px;
+        }
+
+        &__link {
+          position: relative;
+          display: block;
+          float: left; // Collapse white-space
+          padding: $padding-xs-vertical - 1 $padding-xs-horizontal + 1;
+          line-height: $line-height-computed;
+          text-decoration: none;
+          color: $paginator-color;
+          border: 1px solid $paginator-border;
+          border-radius: 4px;
+          font-size: 11px;
+
+          &:focus,
+          &:hover {
+            color: $paginator-hover-color;
+            border-color: $paginator-hover-border;
+          }
+        }
+
+      nav {
+        margin: 0;
+        display: inline-block;
+        .info-label {
+          line-height: 17px;
+        }
+      }
+      .entires-per-page-label {
+        margin: 0px 5px;
+      }
+    }
+  }
+}

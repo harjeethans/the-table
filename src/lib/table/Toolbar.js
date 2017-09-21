@@ -251,7 +251,7 @@ Toolbar.propTypes = {
   delay: PropTypes.number, // time in ms to be used for all delaying, like use typeing in for a search etc.
   disabledToolbarItems: PropTypes.array, // toolbar items disabled , provide action-id s from Defaults.toolbarItems
   exculdedToolbarItems: PropTypes.array, // toolbar items exculded , provide action-id s from Defaults.toolbarItems
-  eventCatalog: PropTypes.object, // catalog of all the events supported by the grid, these venets have specific payload associated.
+  eventCatalog: PropTypes.object, // catalog of all the events supported by the table, these venets have specific payload associated.
   icons: PropTypes.object,
   logger: PropTypes.object.isRequired, // logger.
   minLength: PropTypes.number, // minimum characters that user needs to type for things like search.
@@ -259,7 +259,7 @@ Toolbar.propTypes = {
   onToolbarChange: PropTypes.func,
   primaryToolbarItems: PropTypes.array, // actions belonging to primary area of the toolbar, these would be merged with the type primary in the toolbarItems
   secondaryToolbarItems: PropTypes.array, // actions belonging to secondary area of the toolbar, these would be merged with the type secondary in the toolbarItems.
-  selected: PropTypes.array, // reference to selected on grid as some toolbar items are selection aware.
+  selected: PropTypes.array, // reference to selected on table as some toolbar items are selection aware.
   showFreeFormSearchBar: PropTypes.bool, // if we need to show the free form search bar on the right side of the toolbar section.
   structure: PropTypes.object, // refer docs/structure.md file for how to map a structure for a given model.
   showToolbar: PropTypes.bool, // to show toolbar bt default.

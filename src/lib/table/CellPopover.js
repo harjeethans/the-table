@@ -16,7 +16,7 @@ class CellPopover extends React.Component {
     super(props);
     this.options = Object.assign({
       iconClass: 'fa-bullseye',
-      cssClass: 'fe-grid-popover',
+      cssClass: 'fe-table-popover',
       containerPadding: 5,
       height: 400,
       placement: 'bottom',
@@ -53,7 +53,7 @@ class CellPopover extends React.Component {
   onShow(popover){
     // we have been supplied a dom ndoe we should append it now.
     if(this._tempPopoverContent){
-      const containerNode = popover.getElementsByClassName('fe-grid-popover-content');
+      const containerNode = popover.getElementsByClassName('fe-table-popover-content');
       if(containerNode && containerNode.length>0){
         containerNode[0].appendChild(this._tempPopoverContent);
       }
@@ -157,7 +157,7 @@ CellPopover.state = {
 CellPopover.propTypes = {
   baseOptions: PropTypes.object,
   column: PropTypes.object, // column metadata
-  eventCatalog: PropTypes.object, // catalog of all the events supported by the grid, these venets have specific payload associated.
+  eventCatalog: PropTypes.object, // catalog of all the events supported by the table, these venets have specific payload associated.
   eventEmitter: PropTypes.object, // event emitter for pub/sub
   generateCellContent: PropTypes.func,
   options: PropTypes.object, // options object

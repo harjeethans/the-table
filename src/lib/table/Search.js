@@ -52,7 +52,7 @@ class Search extends React.Component {
   render(){
 
     return (
-      <div className="grid-search">
+      <div className="table-search">
         <input
           className="form-control input-sm search-input"
           onChange={this.handleChange}

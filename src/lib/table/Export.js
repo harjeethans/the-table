@@ -76,7 +76,7 @@ const translate = function(type, data, structure, ignoreHidden) {
 }
 
 export default {
-  triggerDownload(name='fe-grid', type, data, structure, ignoreHidden) {
+  triggerDownload(name='fe-table', type, data, structure, ignoreHidden) {
     const stamp = new Date().getTime();
     let fileType, _txt, blob, url, _a;
 

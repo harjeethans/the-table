@@ -34,7 +34,7 @@ class Body extends React.Component {
   render (){
     const rows = [];
     const containerClasses = classNames('body', {'auto-height': this.props.height === 'auto'});
-    const tableClasses = classNames('grid', {'flexible': this.props.flexible}, {'ellipsis': this.props.truncateOverflow}, {'table-bordered': this.props.bordered}, {'table-striped': this.props.striped});
+    const tableClasses = classNames('table', {'flexible': this.props.flexible}, {'ellipsis': this.props.truncateOverflow}, {'table-bordered': this.props.bordered}, {'table-striped': this.props.striped});
     const colGroup = this.renderColgroup();
     // this.logger.log("Rows to render::" + this.props.data.length);
 
@@ -170,28 +170,28 @@ Body.propTypes = {
   baseCellEditors: PropTypes.object, // base cell editors when row is in edit mode to be used.
   baseRenderers: PropTypes.object, // base rebderers to be used.
   bordered: PropTypes.bool, // if border is needed.
-  data: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),// data that grid is going to render.
+  data: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),// data that table is going to render.
   dimension: PropTypes.object, // {w:100, h:100}
   disabled: PropTypes.array, // an array of models that have to be shown disabled.
   baseCellRenderer: PropTypes.func, // renderer for empty cell contents.
   emitRowClick: PropTypes.bool, // if set to true will generate an event when user clicks on a row. the events will have model and column reference for the click event.
   eventEmitter: PropTypes.object, // event emitter for pub/sub
   pagination: PropTypes.object, // data state object refer defaults.
-  filter: PropTypes.object, //filter object as set on grid search/simple/compound are supported
+  filter: PropTypes.object, //filter object as set on table search/simple/compound are supported
   flexible: PropTypes.bool, // set to true will make the table layout fexible meaning adjusting to parent container's width. The widths sets in structurs will be the minimun that will force a scrollbar if needed.
   height: PropTypes.string,
   icons: PropTypes.object,
   inlineActions: PropTypes.array,
   inlineActionsBroker: PropTypes.func, // a function that determines how to locate actions for a given model as all actions may not be available for all models.
   inlineActionsWidth: PropTypes.number, // width reserved for inline actions if used.
-  isNested: PropTypes.bool, // if the grid is nested.
+  isNested: PropTypes.bool, // if the table is nested.
   nestedKeySplitter: PropTypes.string, //  incase we are looking for a nested attr in a model what splitter to use.
   noDataMessage: PropTypes.string, // what test to show if there is no data.
   parentId: PropTypes.string, //parentId if any, nested rows will have a parent.
   selectCBWidth: PropTypes.number, // check box used for selection.
   selectionModel: PropTypes.string, // all/some/none meaning select all available, some has no select all, and non is non selectable.
   selected: PropTypes.array, // an array of models that have to be shown selected, helps in preselection situations.
-  striped: PropTypes.bool, // if the grid needs stripes.
+  striped: PropTypes.bool, // if the table needs stripes.
   structure: PropTypes.object, // refer docs/structure.md file for how to map a structure for a given model.
   truncateOverflow: PropTypes.bool, // if we do not have enough width to display the cell content, ellipsis it.
   useCustomModelEditor: PropTypes.bool, // if set to false the base cell editors that enable inline editors will not be used, instead an event will be fired informing user to edit a given model in editor of their choise.

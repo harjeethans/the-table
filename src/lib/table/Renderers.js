@@ -41,6 +41,8 @@ class Renderers {
           return this._booleanRenderer(col, model, structure, eventEmitter, rowIndex, nestedKeySplitter);
         case 'popover':
           return this._popoverRenderer(col, model, structure, eventEmitter, rowIndex, nestedKeySplitter);
+        default :
+          return null;
       }
     }
   }

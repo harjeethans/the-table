@@ -18,7 +18,7 @@ export default {
     'plus': 'plus-circle',
     'search': 'search'
   },
-  // all the events that are emitted by the grid.
+  // all the events that are emitted by the table.
   eventCatalog: {
     'adjustScroll': 'adjustScroll',
     'collapseRow': 'collapseRow',

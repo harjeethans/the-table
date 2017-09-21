@@ -343,7 +343,7 @@ class Row extends React.Component {
     } else if(mode === 'edit') {
       this._generateInlineAction('edit', true);
     } else {
-      this.logger.warn('Supported modes for a grid row are edit/view please supply supported mode.');
+      this.logger.warn('Supported modes for a table row are edit/view please supply supported mode.');
     }
 
 
@@ -454,14 +454,14 @@ Row.propTypes = {
   emitRowClick: PropTypes.bool, // if set to true will generate an event when user clicks on a row. the events will have model and column reference for the click event.
   eventCatalog: PropTypes.object,
   eventEmitter: PropTypes.object, // event emitter for pub/sub
-  filter: PropTypes.object, //filter object as set on grid search/simple/compound are supported
+  filter: PropTypes.object, //filter object as set on table search/simple/compound are supported
   icons: PropTypes.object,
   inlineActions: PropTypes.array,
   inlineActionsBroker: PropTypes.func, // a function that determines how to locate actions for a given model as all actions may not be available for all models.
   inlineActionsWidth: PropTypes.number, // width reserved for inline actions if used.
   isDisabled: PropTypes.bool, // disabled indicator.
   isLastRow: PropTypes.bool, // true if this happens to be the last row.
-  isNested: PropTypes.bool, // if the grid is nested.
+  isNested: PropTypes.bool, // if the table is nested.
   isSelected: PropTypes.bool, // selection indicator.
   lastChildForLevel: PropTypes.bool, // indicator for last row for a given level, css selector will not help need to add for that.
   model: PropTypes.object, // refer docs/structure.md file for how to map a structure for a given model.

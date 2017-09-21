@@ -1,0 +1,88 @@
+/*
+<label class="sel-checkbox__multi">
+   <input class="sel-checkbox__multi__input " type="checkbox" name="example-radio-group">
+   <span class="sel-checkbox__multi__checkbox"></span>
+ </label>
+*/
+.sel-checkbox {
+  &__multi {
+    @include user-select(none);
+    box-sizing: border-box;
+    color: $color__action--default;
+    margin: 0;
+    &__checkbox:before {
+      width: $sel-checkbox-size;
+      height: $sel-checkbox-size;
+      content: ' ';
+      border: 1px solid $color__grey--dark8;
+      border-radius: $border-radius-base;
+      display: inline-block;
+      vertical-align: text-bottom;
+      overflow: hidden;
+    }
+    &__checkbox:hover {
+      &:before {
+        border-color: $color__action--default;
+      }
+    }
+    &__input {
+      display: none;
+      + .sel-checkbox__multi {
+        cursor: pointer;
+      }
+      &:checked + .sel-checkbox__multi__checkbox:before {
+        color: $color__action--default-light;
+        border-color: $color__action--default-light;
+        font-family: $font-family-icon;
+        content: $fa-var-check;
+        text-align: center;
+      }
+    }
+  }
+}
+
+/*
+<label class="sel-checkbox__single">
+   <input class="sel-checkbox__single__input " type="checkbox">
+   <span class="sel-checkbox__single__checkbox"></span>
+ </label>
+*/
+
+.sel-checkbox {
+  &__single {
+    @include user-select(none);
+    box-sizing: border-box;
+    color: $color__action--default;
+    position: relative;
+    margin: 0;
+    &__checkbox {
+      width: $sel-checkbox-size + 1;
+      height: $sel-checkbox-size + 1;
+      border-radius: 50%;
+      background-color: $color__grey--dark1;
+      border: 1px solid $color__grey--dark8;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    &__checkbox:hover {
+      border-color: $color__action--default;
+    }
+    &__input {
+      display: none;
+      &:checked + .sel-checkbox__single__checkbox:before {
+        content: '';
+        width: ($sel-checkbox-size + 2)/2;
+        height: ($sel-checkbox-size + 2)/2;
+        background-color: $color__action--default-light;
+        border-color: $color__action--default-light;
+        border-radius: 50%;
+        font-family: $font-family-icon;
+        text-align: center;
+        position: absolute;
+        z-index: 1;
+        left: 4px;
+        top: 5px;
+      }
+    }
+  }
+}

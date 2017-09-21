@@ -204,7 +204,7 @@ PaginatorConfigurable.state = {
 PaginatorConfigurable.propTypes = {
   currentPage: PropTypes.number,
   defaults:  PropTypes.object, // refrence to defaults lile buttons supported and their labels/icocs etc.
-  eventCatalog: PropTypes.object, // catalog of all the events supported by the grid, these venets have specific payload associated.
+  eventCatalog: PropTypes.object, // catalog of all the events supported by the table, these venets have specific payload associated.
   logger: PropTypes.object.isRequired, // logger.
   onPaginatorChange: PropTypes.func,
   pageSize: PropTypes.number,

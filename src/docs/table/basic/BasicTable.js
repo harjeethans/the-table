@@ -185,6 +185,7 @@ class BasicTable extends React.Component{
         <Table
           allowPageSize = {true}
           bordered={true}
+          data={[]}
           disabled={this.props.disabled}
           emitRowClick = {false}
           ref="grid"
@@ -228,7 +229,7 @@ BasicTable.propTypes = {
 
 BasicTable.defaultProps = {
   structure: peopleStructure,
-  peopleServiceUrl: '/js/data/sample-s.json', // /js/data/sample-s.json without proxy.  /restapi/people
+  peopleServiceUrl: '/data/sample-s.json', // /js/data/sample-s.json without proxy.  /restapi/people
   flexible: false,
   disabled: ['564bab57e14a8bde47f06044', '564bab573e82341b9d8648aa'],
   height: '600',

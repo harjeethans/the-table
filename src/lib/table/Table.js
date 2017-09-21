@@ -34,8 +34,8 @@ class Table extends Component {
       // determine column position meaning sort the columns by position.
       this._processColumns(props.structure);
 
-      // the states grid may have at a given time, listen to events for what state wr are in, private so do not set directly.
-      this._gridStates = {
+      // the states table may have at a given time, listen to events for what state wr are in, private so do not set directly.
+      this._tableStates = {
         'error' : 'error',
         'initializing': 'initializing',
         'inlineEditing' : 'inlineEditing',
@@ -43,7 +43,7 @@ class Table extends Component {
         'loadingNested' : 'loadingNested',
         'ready' : 'ready'
       };
-      this.gridState = this._gridStates.initializing;
+      this.tableState = this._tableStates.initializing;
 
 
       const { autoRefresh, autoRefreshInterval, data, disabled, filter, message, selected, sort, structure, totalRecords } = this.props;
@@ -62,7 +62,7 @@ class Table extends Component {
       // reference for expanded rows.
       //this._expandedRows = {};
       this._openNestedRows = {};
-      // added as for a nested grid when we have open nodes , we need to maintin open state on refresh.
+      // added as for a nested table when we have open nodes , we need to maintin open state on refresh.
       this.renderInitiatedByRefresh = false;
       this._autoRefreshTimer = null;
 
@@ -100,6 +100,12 @@ class Table extends Component {
         this._debouncedOnTableEvent.cancel();
       }
 
+    }
+
+    getChildContext() {
+    return {
+      logger: this.props.logger
+      }
     }
 
     unmountTable(){
@@ -158,7 +164,7 @@ class Table extends Component {
     }
 
     componentWillUpdate(/*nextProps, nextState*/){
-      this.gridState = this._gridStates.initializing;
+      this.tableState = this._tableStates.initializing;
     }
 
 
@@ -266,7 +272,7 @@ class Table extends Component {
             delete this._openNestedRows[change.payload.model[this.state.structure.id]];
           }
 
-          this.setTableState(this._gridStates.ready);
+          this.setTableState(this._tableStates.ready);
           if(change.payload.resolve){
             change.payload.resolve();
           }
@@ -346,7 +352,7 @@ class Table extends Component {
                 this.trashData(response.trashed || []);
                 this.forceUpdate();
               }
-              this.setTableState(this._gridStates.ready);
+              this.setTableState(this._tableStates.ready);
             }.bind(this));
           }
         } else if(change.type === this.props.eventCatalog.toolbar && change.payload.action === 'trash-all'){
@@ -495,26 +501,26 @@ class Table extends Component {
 
         if(change.type === this.props.eventCatalog.inlineAction){
           if(change.payload && change.payload.action === 'edit'){
-            this.setTableState(this._gridStates.inlineEditing);
+            this.setTableState(this._tableStates.inlineEditing);
             if(this.props.useCustomModelEditor){
               change.payload.promise.then(function(response){
-                this.setTableState(this._gridStates.ready);
+                this.setTableState(this._tableStates.ready);
               }.bind(this));
 
               change.payload.promise.catch(function(error){
                 this.logger.error('Could not save model for error ' + JSON.stringify(error || {}));
-                this.setTableState(this._gridStates.ready);
+                this.setTableState(this._tableStates.ready);
               }.bind(this));
             }
 
-            this.logger.log('Making grid in readonly mode for handleInlineActionInvocation called with mode edit');
+            this.logger.log('Making table in readonly mode for handleInlineActionInvocation called with mode edit');
           } else if(change.payload && change.payload.action === 'cancel'){
-            this.setTableState(this._gridStates.ready);
-            this.logger.log('Making grid in ready mode for handleInlineActionInvocation called with cancel');
+            this.setTableState(this._tableStates.ready);
+            this.logger.log('Making table in ready mode for handleInlineActionInvocation called with cancel');
           } else if(change.payload && change.payload.action === 'save'){
             if(change.payload.promise){
               change.payload.promise.then(function(response){
-                this.setTableState(this._gridStates.ready);
+                this.setTableState(this._tableStates.ready);
                 this.logger.log('Some additional action on save after promise is resolved by Table main!');
               }.bind(this));
             }
@@ -676,21 +682,21 @@ class Table extends Component {
           footerComponent = this._renderFooter();
         }
 
-        setTimeout(function(){this.gridState = this._gridStates.ready;}.bind(this), 10);
+        setTimeout(function(){this.tableState = this._tableStates.ready;}.bind(this), 10);
 
-        const gridStyle = {}
+        const tableStyle = {}
         if(this.props.minWidth){
-          gridStyle['minWidth'] = this.props.minWidth;
+          tableStyle['minWidth'] = this.props.minWidth;
         }
         const maxWidthStyle = {maxWidth: this.state.dimension.w};
         const bodyStyle = {'maxHeight': this.state.dimension.h};
 
         return (
-          <div className="fe-grid" ref="table" style={gridStyle}>
+          <div className="fe-table" ref="table" style={tableStyle}>
             {toolbarComponent}
             <HeaderSection ref="headerSection" maxWidth={this.state.dimension.w} selectionModel={this.props.selectionModel} selected={this.state.selected}></HeaderSection>
-            <div className="grid-container" ref="gridContainer" style={gridStyle}>
-              <div className="grid-scroller" ref="gridScroller" style={{'width': this.state.dimension.w + 2}}>
+            <div className="table-container" ref="tableContainer" style={tableStyle}>
+              <div className="table-scroller" ref="tableScroller" style={{'width': this.state.dimension.w + 2}}>
                 <Header
                   bordered = {this.props.bordered}
                   delay = {this.props.delay}
@@ -757,7 +763,7 @@ class Table extends Component {
         );
       }
 
-      // Will trigger a refresh request for the grid.
+      // Will trigger a refresh request for the table.
       refresh(reloadData){
         if(reloadData){
           this.handleToolbarChange(this._generateEventPayload('toolbar', 'refresh'));
@@ -801,7 +807,7 @@ class Table extends Component {
         }
       }
       /**
-      * Set a search for the grid, a text string passed is to ba matched against all the visible columns.
+      * Set a search for the table, a text string passed is to ba matched against all the visible columns.
       *
       * @param {value} a string.
       * @param {silent} a boolen if the filer should trigger an event. If silent is true it is assumed that data is filtered and no more query on server/cleint is needed.
@@ -810,12 +816,12 @@ class Table extends Component {
         this.refs.search.setSearch(value, silent);
       }
       /**
-      * Set a filter on the grid. For simple filter provide, keys should match the attribure in structure that are visible.
+      * Set a filter on the table. For simple filter provide, keys should match the attribure in structure that are visible.
       * {"filter":{"attr1":"val1", "attr2": "val2"}}
       *
       * @param {filterObject} an object as specified above.
       * @param {silent} a boolen if the filer should trigger an event. If silent is true it is assumed that data is filtered and no more query on server/cleint is needed.
-      * @example grid.setFilter({"address":"418"}, true, true);
+      * @example table.setFilter({"address":"418"}, true, true);
       */
       setFilter(filterObject, silent, showAppliedFilter){
         if(filterObject && typeof filterObject === 'object'){
@@ -832,29 +838,29 @@ class Table extends Component {
       }
 
       /**
-      * Sets the grids state, do not confuse with react state object. This just reflects what state the grid id in like ready, errored etc.
-      * @param gridState string One of valid grid states nemely ('error', 'initializing', 'inlineEditing', 'loading', 'loadingNested', 'ready')
-      * @param message string optional message that we may have to show in the message area of the grid.
+      * Sets the tables state, do not confuse with react state object. This just reflects what state the table id in like ready, errored etc.
+      * @param tableState string One of valid table states nemely ('error', 'initializing', 'inlineEditing', 'loading', 'loadingNested', 'ready')
+      * @param message string optional message that we may have to show in the message area of the table.
       */
-      setTableState(gridState, message){
+      setTableState(tableState, message){
         const domNode = ReactDOM.findDOMNode(this);
-        if(this._gridStates[gridState]){
-          this.setState({gridState});
-          if(gridState === this._gridStates.inlineEditing){
+        if(this._tableStates[tableState]){
+          this.setState({tableState});
+          if(tableState === this._tableStates.inlineEditing){
             HtmlUtils.addClass(domNode, 'inline-editing');
           } else {
             HtmlUtils.removeClass(domNode, 'inline-editing');
           }
           if(message){
-            this.grid.setMessage(message);
+            this.table.setMessage(message);
           }
         } else {
-          this.logger.error('Table.setTableState() called with an invalid state, should be one of ' + Object.keys(this._gridStates).join(' '));
+          this.logger.error('Table.setTableState() called with an invalid state, should be one of ' + Object.keys(this._tableStates).join(' '));
         }
       }
 
       /**
-      * Set a message that on the grid.
+      * Set a message that on the table.
       * @param message Object Has type and text as keys ex. {type: 'info', text:'An info message'} type can be one of info, success, warning, danger
       * @param autoClear boolean If set to true message will be cleared with a delay.
       */
@@ -868,22 +874,22 @@ class Table extends Component {
       }
 
       /**
-       * Set selected rows on grid.
-       * @param {items} an array of id's that need to be selected in grid.
+       * Set selected rows on table.
+       * @param {items} an array of id's that need to be selected in table.
        */
       setSelected(items) {
         this._setSelection(items, true);
       }
 
       /**
-       * Sets disabled row on grid.
+       * Sets disabled row on table.
       **/
       getDisabled() {
         return this.state.disabled;
       }
 
       /**
-       * Sets disabled row on grid.
+       * Sets disabled row on table.
       **/
       setDisabled(items) {
         const disabledItems = this.state.disabled;
@@ -903,8 +909,8 @@ class Table extends Component {
       }
 
       /**
-       * Set deselected rows on grid.
-       * @param {items} an array of id's that need to be deselected in grid.
+       * Set deselected rows on table.
+       * @param {items} an array of id's that need to be deselected in table.
        */
       setDeselected(items) {
         this._setSelection(items, false);
@@ -939,7 +945,7 @@ class Table extends Component {
         }
         const row = this.refs.body.refs[model[this.state.structure.id]];
         if(!row){
-          this.logger.error('Table.updateModelForRow :: Trying to updateModelForRow failed, supplied model is not part of data for the grid, models that are part of grid data can only be updated.');
+          this.logger.error('Table.updateModelForRow :: Trying to updateModelForRow failed, supplied model is not part of data for the table, models that are part of table data can only be updated.');
           return;
         }
         try {
@@ -984,7 +990,7 @@ class Table extends Component {
           this.setState({
             data,
             totalRecords,
-            gridState: this._gridStates.ready
+            tableState: this._tableStates.ready
           });
         }
       }
@@ -1063,7 +1069,7 @@ class Table extends Component {
           type = 'XML';
         }
 
-        Export.triggerDownload('grid-export', type, this.state.data, this.state.structure, this.props.ignoreHiddenForExport);
+        Export.triggerDownload('table-export', type, this.state.data, this.state.structure, this.props.ignoreHiddenForExport);
       }
 
 }
@@ -1087,7 +1093,7 @@ const propTypes = {
   allowPageSize: PropTypes.bool,
   //do we need auto clearing of messages displayed.
   autoClear: PropTypes.bool,
-  // if set to true the grid will do an auto refresh after elapse of autoRefreshInterval
+  // if set to true the table will do an auto refresh after elapse of autoRefreshInterval
   autoRefresh: PropTypes.bool,
   // time in milliseconds that we need to wait after we set an autorefresh.
   autoRefreshInterval: PropTypes.number,
@@ -1099,15 +1105,15 @@ const propTypes = {
   baseRenderers: PropTypes.object,
   // if border is needed.
   bordered: PropTypes.bool,
-  // data that grid is going to render.
+  // data that table is going to render.
   data: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   // time in ms to be used for all delaying, like use typing in for a search etc.
   delay: PropTypes.number,
   // an array of models that have to be shown disabled.
   disabled: PropTypes.array,
-  //catalog of all the events supported by the grid, these events have specific payload associated.
+  //catalog of all the events supported by the table, these events have specific payload associated.
   eventCatalog: PropTypes.object,
-  //filter object as set on grid search/simple/compound are supported
+  //filter object as set on table search/simple/compound are supported
   filter: PropTypes.object,
   // set to true will make the table layout fexible meaning adjusting to parent container's width. The widths sets in structurs will be the minimun that will force a scrollbar if needed.
   flexible: PropTypes.bool,
@@ -1117,7 +1123,7 @@ const propTypes = {
   headerFilterPredicate: PropTypes.oneOf(['OR','AND']),
   //default minimum height if not specified the marginbox comes from mountNode.
   height: PropTypes.string,
-  //all the icons used in the grid except that are listed in metadata.
+  //all the icons used in the table except that are listed in metadata.
   icons: PropTypes.object,
   //When data is exported, if set to true the hidden fields will not get exported.
   ignoreHiddenForExport: PropTypes.bool,
@@ -1127,7 +1133,7 @@ const propTypes = {
   inlineActions: PropTypes.array,
   // a function that determines how to locate actions for a given model as all actions may not be available for all models.
   inlineActionsBroker: PropTypes.func,
-  // if the grid is nested.
+  // if the table is nested.
   isNested: PropTypes.bool,
   // logger to user
   logger: PropTypes.object,
@@ -1137,13 +1143,13 @@ const propTypes = {
   messageCatalog: PropTypes.object,
   // minimum characters that user needs to type for things like search.
   minLength: PropTypes.number,
-  // minimum width in case w eneed , for scenarios where we do not want thr grid to shrink beyond certain width, normally width of the grid is sum of columns widths for all visible columns. If we set flexible and paren is reslly not wide enough we can override by setting minWidth.
+  // minimum width in case w eneed , for scenarios where we do not want thr table to shrink beyond certain width, normally width of the table is sum of columns widths for all visible columns. If we set flexible and paren is reslly not wide enough we can override by setting minWidth.
   minWidth: PropTypes.number,
   // incase we are looking for a nested attr in a model what splitter to use.
   nestedKeySplitter: PropTypes.string,
   // @TODO mode to messageCatalog what test to show if there is no data.
   noDataMessage: PropTypes.string,
-  // a function that can be provided as a prop to interface with grid events.
+  // a function that can be provided as a prop to interface with table events.
   onTableEvent: PropTypes.func,
   // data state object refer defaults.
   pagination: PropTypes.object,
@@ -1153,13 +1159,13 @@ const propTypes = {
   pinnedRows: PropTypes.array,
   // an array of attributes from structure that need to ne pinned on left.
   pinnedColumns: PropTypes.array,
-  // if we need to keep the expanded rows expanded after we refresh the grid.
+  // if we need to keep the expanded rows expanded after we refresh the table.
   preserveRowExpansionOnRender: PropTypes.bool,
-  // if we need to keep the nested rows open after we refresh the grid.
+  // if we need to keep the nested rows open after we refresh the table.
   preserveNestedRowStateOnRender: PropTypes.bool,
   // actions belonging to primary area of the toolbar, these would be merged with the type primary in the toolbarItems
   primaryActions: PropTypes.array,
-  // catalog of all the private events used internally by the grid.
+  // catalog of all the private events used internally by the table.
   privateEventCatalog: PropTypes.object,
   // actions belonging to secondary area of the toolbar, these would be merged with the type secondary in the toolbarItems.
   secondaryActions: PropTypes.array,
@@ -1181,7 +1187,7 @@ const propTypes = {
   simpleFilterAlwaysVisible: PropTypes.bool,
   // either a sort object or an array of sort objects {attribute: anAttribute, order: 1} or -1
   sort: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
-  // if the grid needs stripes.
+  // if the table needs stripes.
   striped: PropTypes.bool,
   // refer docs/structure.md file for how to map a structure for a given model.
   structure: PropTypes.object,
@@ -1246,12 +1252,15 @@ const defaultProps = {
   usePagination: false,
   useRowExpander: false,
   //inlineActionsBroker: (model, action) => {return (model && action);},
-  onTableEvent: (payload) => {this.logger.log('Default onTableEvent handller called with payload -->' + JSON.stringify(payload));},
+  onTableEvent: (payload) => {console.log('Default onTableEvent handller called with payload -->' + JSON.stringify(payload));},
   baseCellRenderer: (column, model) => { return '<span class="empty-cell">NA</span>'}
 };
 Table.propTypes = propTypes;
 
 Table.defaultProps = defaultProps;
 
+Table.childContextTypes = {
+  logger: PropTypes.object
+}
 
 export default Table;

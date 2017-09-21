@@ -1,0 +1,40 @@
+.fe-table {
+  &.inline-editing {
+    .toolbar-container {
+      opacity: $opacityOnEditMode;
+    }
+  }
+  .toolbar-container {
+    padding: 10px $cell-padding - 2;
+    .toolbar {
+      height: 33px;
+      .settings {
+        display: inline-block;
+        position: relative;
+        .btn {
+          &.settings-open {
+            color: $table-icon-hover;
+          }
+
+        }
+        .settings-container {
+          position: absolute;
+          border: 1px solid $table-border-color;
+          background-color: #fff;
+          border-radius: 4px;
+          right: 0;
+          top: 32px;
+          padding: 10px;
+          z-index: 1000;
+          min-width: 400px;
+          ul {
+            li {
+              padding: 10px;
+              border: 2px dashed transparent;
+            }
+          }
+        }
+      }
+    }
+  }
+}
