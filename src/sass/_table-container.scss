@@ -1,6 +1,4 @@
-.fe-table {
-
-  font-size: $table-font-size;
+.the-table {
 
   &::placeholder {
     color: $table-input-placeholder-color;
@@ -53,7 +51,6 @@
       table {
         border: none;
         table-layout: fixed;
-        margin: 0;
         &.flexible {
           /* @todo harjeet delete later width: 100%;*/
         }
@@ -63,9 +60,12 @@
               background: $table-infilter-cell-background;
             }
           }
+          td[column-id="selectRow"] {
+            color: red;
+          }
+          
         }
         th,td {
-          padding: 8px;
           &.in-filter {
             background: $table-infilter-cell-background;
           }
@@ -109,7 +109,7 @@
           border-bottom: 2px groove $table-nested-row;
           border-left: 2px groove $table-nested-row;
           td {
-            white-space: normal !important;
+            white-space: normal;
           }
         }
         tr {
@@ -206,4 +206,16 @@
 
 .fe-table .table-container .body table .child-row:last-of-type {
     border-bottom: 1px solid red !important;
+}
+
+
+.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.invisible {
+  visibility: hidden;
 }

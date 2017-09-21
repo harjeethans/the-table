@@ -1,5 +1,6 @@
-@import './_colors';
+@import './colors';
 @import './effects';
+@import './variables';
 
 
 //@import "../../node_modules/@material/theme/mixins";
@@ -10,4 +11,4 @@
 @import "../../node_modules/material-components-web/dist/material-components-web.css";
 
 @import '../lib/common/components/_components';
-@import './_table'
+@import './the-table'

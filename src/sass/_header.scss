@@ -1,9 +1,10 @@
-.fe-table {
+.the-table {
   .table-container {
     .header {
       table {
         border: none;
         table-layout: fixed;
+        border-spacing: inherit;
         margin: 0;
         &.flexible {
           width: 100%;
@@ -11,6 +12,8 @@
         th,td {
           border-top: 1px solid $table-border-color;
           border-bottom: 1px solid $table-border-color;
+          padding-top: 0rem;
+          padding-bottom: 0rem;
           input[type=checkbox] {
             margin: 0px 0px 4px 2px;
           }
@@ -19,8 +22,7 @@
           }
 
           &.select-all {
-            padding-left: 8px;
-            padding-right: 5px;
+            vertical-align: inherit;
           }
 
           .sort-indicator {
@@ -63,8 +65,18 @@
           }
 
           .filter-input {
-            &__rounded {
-              border-radius: 15px;
+            padding: 5px;
+            width: 100%;
+            line-height: 20px;
+            -webkit-appearance: inherit;
+            border: 1px solid $color__grey--dark8;
+            &[disabled] {
+              background-color: transparent;
+              border-color: transparent;
+              box-shadow: none;
+            }
+            &::placeholder {
+              color: $table-input-placeholder-color;
             }
           }
 
@@ -100,16 +112,7 @@
               padding: 0px 5px 5px 5px;
             }
           }
-          .form-control {
-            &[disabled] {
-              background-color: transparent;
-              border-color: transparent;
-              box-shadow: none;
-            }
-            &::placeholder {
-              color: $table-input-placeholder-color;
-            }
-          }
+          
 
         }
         tr {

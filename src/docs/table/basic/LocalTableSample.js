@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ReactDOM from 'react-dom';
-import {Table} from 'the-table';
+import {LocalTable} from 'the-table';
 
 
 const peopleStructure = {
@@ -85,9 +85,14 @@ const _code = {
 }
 
 
-class BasicTable extends React.Component{
+class LocalTableSample extends React.Component{
 
-
+  constructor(props){
+    super(props);
+    this.state = {
+      data: []
+    }
+  }
   getPeopleData(queryParams){
 
     const query = {};
@@ -111,10 +116,8 @@ class BasicTable extends React.Component{
     fetch(fetchUrl, {'method': 'get'}).then(function(response) {
       return response.json();
     }).then(function(response) {
-      _self.refs.grid.setState({
-        data: response.items || [],
-        totalRecords: response.totalCount,
-        gridState: 'ready'
+      _self.setState({
+        data: response.items || []
       });
     }).catch(function(err) {
     console.log('Error:: ' + err);
@@ -182,10 +185,10 @@ class BasicTable extends React.Component{
           <div className="col-md-8"><div className="info-container"><pre><p className="grid-info">A simple table with a structure. Following properties are in use. <br/><code>{JSON.stringify(_code)}</code></p></pre></div></div>
           <div className="col-md-4"><pre><div><button type="button" className="btn btn-default btn-xs" onClick={this.removeTable.bind(this)}>Remove Grid (refresh to get it again)</button></div></pre></div>
         </div>
-        <Table
+        { this.state.data && this.state.data.length> 0 && <LocalTable
           allowPageSize = {true}
           bordered={false}
-          data={[]}
+          data={this.state.data}
           flexible={true}
           disabled={this.props.disabled}
           emitRowClick = {false}
@@ -206,14 +209,19 @@ class BasicTable extends React.Component{
           usePagination={this.props.usePagination}
           showFreeFormSearchBar= {false}
           dataState={this.props.dataState}>
-        </Table>
+        </LocalTable>
+        }
       </div>
 
     );
   }
 }
 
-BasicTable.propTypes = {
+LocalTableSample.state = {
+  data: []
+}
+
+LocalTableSample.propTypes = {
   peopleServiceUrl: PropTypes.string,
   disabled: PropTypes.array,
   structure: PropTypes.object,
@@ -228,7 +236,7 @@ BasicTable.propTypes = {
   sort: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
 };
 
-BasicTable.defaultProps = {
+LocalTableSample.defaultProps = {
   structure: peopleStructure,
   peopleServiceUrl: '/data/sample-s.json', // /js/data/sample-s.json without proxy.  /restapi/people
   flexible: false,
@@ -247,4 +255,4 @@ BasicTable.defaultProps = {
   usePagination: true
 
 };
-export default BasicTable;
+export default LocalTableSample;

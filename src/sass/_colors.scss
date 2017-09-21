@@ -31,13 +31,13 @@ $table-sortable-indicator: $color__grey--dark5 !default;
 $table-sort-applied-indicator: $color__action--default !default;
 
 //cell borders.
-$table-border-color: $color__grey--dark6 !default;
-$table-row-border-color: $color__grey--dark6 !default;
+$table-border-color: $color__grey--dark8 !default;
+$table-row-border-color: $color__grey--dark8 !default;
 
-$table-cell-border-top-color: $color__grey--dark6 !default;
-$table-cell-border-bottom-color: $color__grey--dark6 !default;
-$table-cell-border-left-color: $color__grey--dark6 !default;
-$table-cell-border-right-color: $color__grey--dark6 !default;
+$table-cell-border-top-color: $color__grey--dark8 !default;
+$table-cell-border-bottom-color: $color__grey--dark8 !default;
+$table-cell-border-left-color: $color__grey--dark8 !default;
+$table-cell-border-right-color: $color__grey--dark8 !default;
 
 $table-input-placeholder-color: $color__action--default !default;
 $table-infilter-cell-background: $color__grey--dark5 !default;
@@ -69,3 +69,5 @@ $action-disabled-bg: $paginator-disabled-bg !default;
 $action-disabled-border: $paginator-disabled-border !default;
 $inline-color: $color__grey--dark6 !default;
 $inline-hover-color: $table-icon-hover !default;
+
+$background-mdc-menu: $color__grey--dark1 !default;

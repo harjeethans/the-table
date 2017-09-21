@@ -624,6 +624,7 @@ class Table extends Component {
               pageSizes = {this.props.pagination.pageSizes}
               pagination = {this.state.pagination}
               ref = "paginator"
+              totalRecords = {this.props.totalRecords}
                />
           </div>
         );
@@ -692,7 +693,7 @@ class Table extends Component {
         const bodyStyle = {'maxHeight': this.state.dimension.h};
 
         return (
-          <div className="fe-table" ref="table" style={tableStyle}>
+          <div className="the-table" ref="table" style={tableStyle}>
             {toolbarComponent}
             <HeaderSection ref="headerSection" maxWidth={this.state.dimension.w} selectionModel={this.props.selectionModel} selected={this.state.selected}></HeaderSection>
             <div className="table-container" ref="tableContainer" style={tableStyle}>

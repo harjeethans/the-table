@@ -2,12 +2,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Grid from '../../Table';
+import Table from '../../Table';
 import Defaults from '../../Defaults';
 import Logger from '../../../common/Logger';
 import LocalService from './LocalService';
 
-class LocalGrid extends React.Component {
+class LocalTable extends React.Component {
 
   constructor(props) {
     super(props);
@@ -115,15 +115,15 @@ class LocalGrid extends React.Component {
       onGridEvent: this.handleGridEvents,
       totalRecords: this.localService.getTotalNumberOfRecords()
     });
-    //const localGrid = React.createElement(Grid, props);
+    //const localGrid = React.createElement(Table, props);
 
-    return <Grid {...props}/>;
+    return <Table {...props}/>;
   }
 
 }
 
-LocalGrid.propTypes = Object.assign({},Grid.propTypes,{useCaseSensitiveFilter: React.PropTypes.bool});
+LocalTable.propTypes = Object.assign({},Table.propTypes,{useCaseSensitiveFilter: React.PropTypes.bool});
 
-LocalGrid.defaultProps = Object.assign({}, Grid.defaultProps,{useCaseSensitiveFilter: false});
+LocalTable.defaultProps = Object.assign({}, Table.defaultProps,{useCaseSensitiveFilter: false});
 
-export default LocalGrid;
+export default LocalTable;

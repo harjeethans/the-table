@@ -292,7 +292,7 @@ class Header extends React.Component {
     if(col.type === 'set'){
       return (
         <select
-          className = "form-control input-sm filter-input__rounded"
+          className = "filter-input"
           defaultValue = "na"
           {...opts}
           onClick = {this.onFilterClick.bind(this, col)}
@@ -313,7 +313,7 @@ class Header extends React.Component {
       return (
         <div>
           <input
-            className = "form-control input-sm search-box filter-input__rounded"
+            className = "filter-input"
             {...opts}
             onChange = {this.onFilterChange.bind(this, col)}
             ref = {"input-" + col.attr}

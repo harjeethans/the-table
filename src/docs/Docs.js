@@ -13,7 +13,7 @@ import '../sass/index.css';
 import Buttons from './components/Buttons';
 import Menus from './components/Menus';
 import Dialogs from './components/Dialogs';
-import {BasicTable} from './table';
+import {BasicTable, LocalTableSample} from './table';
 
 class Docs extends Component {
   render() {
@@ -39,6 +39,9 @@ class Docs extends Component {
                   <Link className="mdc-toolbar__title-link" to="/table">
                     <h1 className="mdc-toolbar__title mdc-toolbar__title--full">Table</h1>
                   </Link>
+                  <Link className="mdc-toolbar__title-link" to="/localtable">
+                    <h1 className="mdc-toolbar__title mdc-toolbar__title--full">Local Table</h1>
+                  </Link>
                   <Link className="mdc-toolbar__title-link" to="/faq">
                     <h1 className="mdc-toolbar__title mdc-toolbar__title--full"> FAQ </h1>
                   </Link>
@@ -48,12 +51,14 @@ class Docs extends Component {
             <main className="mdc-layout__content">
               {this.props.children}
             </main>
-            <div>
+            <div className="container-fluid">
               <Route exact path="/" component={Home}/>
               <Route path="/about" component={About}/>
               <Route path="/topics" component={Topics}/>
               <Route path="/components" component={Components}/>
               <Route path="/table" component={BT}/>
+              <Route path="/localtable" component={LocalTableSample}/>
+
             </div>
           </div>
           </div>
@@ -85,107 +90,6 @@ const Components = () => (
 
 const BT = () => (
   <BasicTable></BasicTable>
-)
-
-const Tables = () => (
-  <div>
-    <h2>Table</h2>
-      <div className="table-responsive-vertical shadow-z-1">
-    <table className="table table-hover table-mc-light-blue">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Link</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td data-title="ID">1</td>
-          <td data-title="Name">Material Design Color Palette</td>
-          <td data-title="Link">
-            GitHub
-          </td>
-          <td data-title="Status">Completed</td>
-        </tr>
-        <tr>
-          <td data-title="ID">2</td>
-          <td data-title="Name">Material Design Iconic Font</td>
-          <td data-title="Link">
-            Codepen
-          </td>
-          <td data-title="Status">Completed</td>
-        </tr>
-        <tr>
-          <td data-title="ID">3</td>
-          <td data-title="Name">Material Design Hierarchical Display</td>
-          <td data-title="Link">
-            GitHub
-          </td>
-          <td data-title="Status">Completed</td>
-        </tr>
-        <tr>
-          <td data-title="ID">4</td>
-          <td data-title="Name">Material Design Sidebar</td>
-            <td data-title="Link">
-              GitHub
-            </td>
-
-          <td data-title="Status">Completed</td>
-        </tr>
-        <tr>
-          <td data-title="ID">5</td>
-          <td data-title="Name">Material Design Tiles</td>
-          <td data-title="Link">
-            Codepen
-          </td>
-          <td data-title="Status">Completed</td>
-        </tr>
-        <tr>
-          <td data-title="ID">6</td>
-          <td data-title="Name">Material Design Typography</td>
-          <td data-title="Link">
-            GitHub
-          </td>
-          <td data-title="Status">Completed</td>
-        </tr>
-        <tr>
-          <td data-title="ID">7</td>
-          <td data-title="Name">Material Design Buttons</td>
-          <td data-title="Link">
-            Codepen
-          </td>
-          <td data-title="Status">In progress</td>
-        </tr>
-        <tr>
-          <td data-title="ID">8</td>
-          <td data-title="Name">Material Design Form Elements</td>
-          <td data-title="Link">
-            Codepen
-          </td>
-          <td data-title="Status">In progress</td>
-        </tr>
-        <tr>
-          <td data-title="ID">9</td>
-          <td data-title="Name">Material Design Email Template</td>
-          <td data-title="Link">
-            Codepen
-          </td>
-          <td data-title="Status">Completed</td>
-        </tr>
-        <tr>
-          <td data-title="ID">10</td>
-          <td data-title="Name">Material Design Animation Timing (old one)</td>
-          <td data-title="Link">
-            Codepen
-          </td>
-          <td data-title="Status">Completed</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  </div>
 )
 
 const Topics = ({ match }) => (

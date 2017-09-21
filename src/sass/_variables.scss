@@ -38,3 +38,6 @@ $line-height-computed: floor(($font-size-base * $line-height-base)) !default; //
 
 $sel-checkbox-size: 16px !default;
 $fa-var-check: "\f00c" !default;
+
+$table-cell-padding: 1rem;
+$table-condensed-cell-padding: 0.5rem;

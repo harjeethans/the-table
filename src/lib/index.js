@@ -11,8 +11,8 @@ import Dialog from './common/components/dialog/Dialog';
 
 import Table from './table/Table';
 //import RESTGrid from './ext/rest/RESTGrid';
-//import RESTService from './ext/rest/RESTService';
-//import LocalGrid from './ext/local/LocalGrid';
+//import RESTService from './table/ext/rest/RESTService';
+import LocalTable from './table/ext/local/LocalTable';
 
 if(typeof window !== 'undefined'){
   window.Table = Table;
@@ -28,7 +28,8 @@ export {
   IconButton,
   Menu,
   MenuItem,
-  Table
+  Table,
+  LocalTable
 //  LocalGrid,
 //  RESTGrid,
 //  RESTService
