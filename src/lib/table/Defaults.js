@@ -56,22 +56,22 @@ export default {
   paginator: {
     'first': {
       'action': 'goto-first',
-      'iconName': 'fa-step-backward',
+      'iconName': 'first_page',
       'label': I18N.getI18N('First')
     },
     'last': {
-      'action': 'goto-last',
-      'iconName': 'fa-step-forward',
+      'action': 'last-page',
+      'iconName': 'last_page',
       'label': I18N.getI18N('Last')
     },
     'privious': {
       'action': 'goto-privious',
-      'iconName': 'fa-chevron-left',
+      'iconName': 'keyboard_arrow_left',
       'label': I18N.getI18N('Privious')
     },
     'next': {
       'action': 'goto-next',
-      'iconName': 'fa-chevron-right',
+      'iconName': 'keyboard_arrow_right',
       'label': I18N.getI18N('Next')
     }
   },

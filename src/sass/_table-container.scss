@@ -193,6 +193,8 @@
   .footer-container {
     height: 40px;
     padding-top: 10px;
+    display: flex;
+    justify-content: flex-end;
     .footer-message {
       line-height: 30px;
       padding: 0 10px;

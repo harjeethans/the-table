@@ -5,8 +5,7 @@ import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
 
-//import { Button, MenuItem, Dropdown, ButtonToolbar} from 'react-bootstrap';
-
+import Util from '../common/Util';
 import Icon from '../common/components/Icon';
 import Search from './Search';
 import Settings from './Settings';
@@ -18,7 +17,8 @@ class Toolbar extends React.Component {
     super(props);
     this.logger = context.logger;
 
-    this.onClick = this.onClick.bind(this);
+    Util.bindFunctions(['onClick'], this);
+   
   }
 
   componentDidMount (){
@@ -245,8 +245,6 @@ Toolbar.propTypes = {
   minLength: PropTypes.number, // minimum characters that user needs to type for things like search.
   onSearchChange: PropTypes.func, // callback for onChange
   onToolbarChange: PropTypes.func,
-  primaryToolbarItems: PropTypes.array, // actions belonging to primary area of the toolbar, these would be merged with the type primary in the toolbarItems
-  secondaryToolbarItems: PropTypes.array, // actions belonging to secondary area of the toolbar, these would be merged with the type secondary in the toolbarItems.
   selected: PropTypes.array, // reference to selected on table as some toolbar items are selection aware.
   showFreeFormSearchBar: PropTypes.bool, // if we need to show the free form search bar on the right side of the toolbar section.
   structure: PropTypes.object, // refer docs/structure.md file for how to map a structure for a given model.

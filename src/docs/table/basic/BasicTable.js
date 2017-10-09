@@ -112,7 +112,7 @@ class BasicTable extends React.Component{
     }).then(function(response) {
       _self.refs.grid.setState({
         data: response.items || [],
-        totalRecords: response.totalCount,
+        totalRecords: response.totalCount || response.items.length,
         gridState: 'ready'
       });
     }).catch(function(err) {

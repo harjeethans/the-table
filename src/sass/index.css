@@ -208,7 +208,9 @@ dialog.fixed {
 
 .the-table .footer-container {
   height: 40px;
-  padding-top: 10px; }
+  padding-top: 10px;
+  display: flex;
+  justify-content: flex-end; }
   .the-table .footer-container .footer-message {
     line-height: 30px;
     padding: 0 10px; }
@@ -348,24 +350,27 @@ dialog.fixed {
           border: 2px dashed transparent; }
 
 .the-table .paginator-container {
-  height: 30px; }
+  display: flex;
+  justify-content: flex-end; }
   .the-table .paginator-container .page-size {
     width: 60px;
     background: transparent; }
   .the-table .paginator-container .paginator {
-    margin: 0;
-    height: 30px; }
+    margin: 0; }
     .the-table .paginator-container .paginator__list {
-      display: inline-block;
       padding-left: 0;
       margin: 0;
-      border-radius: 4px;
-      font-size: 11px; }
+      list-style: none;
+      display: flex;
+      align-items: center;
+      border-radius: 4px; }
     .the-table .paginator-container .paginator__item {
-      display: inline-block;
-      margin: 0 10px;
-      position: relative;
-      top: 3px; }
+      margin: 5px 10px;
+      border: 1px solid transparent;
+      border-radius: 4px; }
+      .the-table .paginator-container .paginator__item:focus, .the-table .paginator-container .paginator__item:hover {
+        color: #515761;
+        border-color: #515761; }
       .the-table .paginator-container .paginator__item--active .paginator__link, .the-table .paginator-container .paginator__item--active .paginator__link:focus, .the-table .paginator-container .paginator__item--active .paginator__link:hover {
         color: #515761;
         border-color: transparent;
@@ -377,33 +382,16 @@ dialog.fixed {
         position: relative;
         background-color: #515761;
         height: 2px;
-        top: 25px;
+        top: 20px;
         left: 3px; }
       .the-table .paginator-container .paginator__item.disabled .paginator__link, .the-table .paginator-container .paginator__item.disabled .paginator__link:focus, .the-table .paginator-container .paginator__item.disabled .paginator__link:hover {
         color: #444444;
         border: none;
         cursor: not-allowed; }
-    .the-table .paginator-container .paginator__entries {
-      top: 0px; }
     .the-table .paginator-container .paginator__link {
-      position: relative;
-      display: block;
-      float: left;
-      padding: 0px 6px;
-      line-height: 17px;
       text-decoration: none;
-      color: #3fa1d0;
-      border: 1px solid transparent;
-      border-radius: 4px;
-      font-size: 11px; }
-      .the-table .paginator-container .paginator__link:focus, .the-table .paginator-container .paginator__link:hover {
-        color: #515761;
-        border-color: #515761; }
-    .the-table .paginator-container .paginator nav {
-      margin: 0;
-      display: inline-block; }
-      .the-table .paginator-container .paginator nav .info-label {
-        line-height: 17px; }
+      padding: 6px;
+      color: #3fa1d0; }
     .the-table .paginator-container .paginator .entires-per-page-label {
       margin: 0px 5px; }
 

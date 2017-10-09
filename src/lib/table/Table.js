@@ -610,49 +610,32 @@ class Table extends Component {
       }
 
       _renderPaginator() {
-        //@TODO totalRecords = {this.state.totalRecords || this.state.data.length}
+        const totalRecords = this.state.totalRecords || this.state.data.length;
+        const {allowPageSize, eventCatalog, logger, onPaginatorChange, pageLinksToShow, pagination} = this.props;
+        const props = {allowPageSize, eventCatalog, logger, onPaginatorChange, pageLinksToShow, pagination, totalRecords};
+
         return (
           <div className="paginator-container pull-right" ref="paginatorContainer">
             <Paginator
-              allowPageSize = {this.props.allowPageSize}
-              currentPage = {this.state.pagination.currentPage}
-              eventCatalog = {this.props.eventCatalog}
-              logger = {this.logger}
-              onPaginatorChange = {this.handlePaginatorChange.bind(this)}
-              pageLinksToShow = {this.props.pageLinksToShow}
-              pageSize = {this.state.pagination.pageSize}
-              pageSizes = {this.props.pagination.pageSizes}
-              pagination = {this.state.pagination}
+              {...props}
               ref = "paginator"
-              totalRecords = {this.props.totalRecords}
-               />
+            />
           </div>
         );
       }
 
       _renderToolbar() {
         const style = {maxWidth: this.state.dimension.w};
+        const { additionalToolbarItems, delay, disabledToolbarItems, exculdedToolbarItems, eventCatalog, icons, logger, minLength, onSearchChange, onToolbarChange, selected, showFreeFormSearchBar, structure, showToolbar, toolbarItems } = this.props;
+        const props = { additionalToolbarItems, delay, disabledToolbarItems, exculdedToolbarItems, eventCatalog, icons, logger, minLength, onSearchChange, onToolbarChange, selected, showFreeFormSearchBar, structure, showToolbar, toolbarItems }
+        
         return (
           <div className="toolbar-container" ref="toolbarContainer" style={style}>
             <Toolbar
-              additionalToolbarItems = {this.props.additionalToolbarItems}
-              delay = {this.props.delay}
-              disabledToolbarItems = {this.props.disabledToolbarItems}
-              exculdedToolbarItems = {this.props.exculdedToolbarItems}
-              eventCatalog = {this.props.eventCatalog}
-              icons = {this.props.icons}
-              logger = {this.logger}
-              minLength = {this.props.minLength}
-              onSearchChange = {this.handleSearchChange.bind(this)}
-              onToolbarChange = {this.handleToolbarChange.bind(this)}
-              primaryToolbarItems = {this.props.primaryActions}
+              { ...props }
               ref = "toolbar"
-              secondaryToolbarItems = {this.props.secondaryActions}
-              selected = {this.state.selected}
-              showFreeFormSearchBar = {this.props.showFreeFormSearchBar}
-              structure = {this.state.structure}
-              showToolbar = {this.props.showToolbar}
-              toolbarItems = {this.props.toolbarItems} />
+              style = {style}
+            />
           </div>
         );
       }

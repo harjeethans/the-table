@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
 
+import Util from '../common/Util';
 import Icon from '../common/components/Icon';
 import I18N from '../locale/I18N';
 import Defaults from './Defaults';
@@ -12,22 +13,13 @@ class Paginator extends React.Component {
   constructor(props, context) {
     super(props);
     this.logger = context.logger;
-    if(!props.pageSizes){
-      this.props.pageSizes = Defaults.paginator.pageSizes;
-    }
+
     this.state = {
       currentPage: this.props.currentPage || 1,
       pageSize: this.props.pageSize || 0
     };
 
-    //bind methods to context.
-    this.gotoPage = this.gotoPage.bind(this);
-    this.gotoFirstPage = this.gotoFirstPage.bind(this);
-    this.gotoLastPage = this.gotoLastPage.bind(this);
-    this.gotoNextPage = this.gotoNextPage.bind(this);
-    this.gotoPriviousPage = this.gotoPriviousPage.bind(this);
-    this.handleRowsPerPage = this.handleRowsPerPage.bind(this);
-
+    Util.bindFunctions(['gotoPage','gotoFirstPage','gotoLastPage','gotoNextPage','gotoPriviousPage','handleRowsPerPage'], this);
   }
 
   gotoFirstPage(event){
@@ -128,11 +120,11 @@ class Paginator extends React.Component {
   }
 
   render() {
-    this.logger.log('Calling Paginator.render()');
+    this.logger.log('Calling Paginator.render():' + this.props.totalRecords);
 
 
-    const {allowPageSize, defaults, pageLinksToShow, pageSize, pageSizes, totalRecords} = this.props;
-
+    const {allowPageSize, defaults, pageLinksToShow, totalRecords=0} = this.props;
+    const {pageSize} = this.state;
     const getEntriesText = function() {
       const start = (pageSize * (this.state.currentPage - 1)) + 1;
       let end = start + pageSize - 1;
@@ -145,6 +137,8 @@ class Paginator extends React.Component {
         </span>
       );
     }.bind(this);
+
+
 
     const _self = this;
     const renderPageLinks = function(){
@@ -198,7 +192,7 @@ class Paginator extends React.Component {
                 disabled = {isFirstPage}
                 onClick = {this.gotoFirstPage}
                 ref = "first" >
-                <Icon faIconClass = {defaults.first.iconClass}></Icon>
+                <Icon iconName={defaults.first.iconName}></Icon>
               </a>
             </li>
             <li className = {classNames('paginator__item', {disabled: isFirstPage})}>
@@ -209,7 +203,7 @@ class Paginator extends React.Component {
                 data-action = {defaults.privious.action}
                 onClick = {this.gotoPriviousPage}
                 ref = "privious" >
-                <Icon faIconClass={defaults.privious.iconClass}></Icon>
+                <Icon iconName={defaults.privious.iconName}></Icon>
               </a>
             </li>
 
@@ -223,7 +217,7 @@ class Paginator extends React.Component {
                 disabled = {isLastPage}
                 onClick = {this.gotoNextPage}
                 ref = "next" >
-                <Icon faIconClass={defaults.next.iconClass}></Icon>
+                <Icon iconName={defaults.next.iconName}></Icon>
               </a>
             </li>
             <li className = {classNames('paginator__item', 'paginator__item--last', {disabled: isLastPage})}>
@@ -234,7 +228,7 @@ class Paginator extends React.Component {
                 data-action = {defaults.last.action}
                 onClick={this.gotoLastPage}
                 ref="last">
-                <Icon faIconClass={defaults.last.iconClass}></Icon>
+                <Icon iconName={defaults.last.iconName}></Icon>
               </a>
             </li>
           </ul>
@@ -250,6 +244,7 @@ class Paginator extends React.Component {
       );
     }.bind(this)
 
+    const {pageSizes} = this.state;
     const getSelectPageSize = function() {
       let index;
       // find index of first pageSize larger than totalRecords
@@ -269,10 +264,10 @@ class Paginator extends React.Component {
       );
     }.bind(this)
 
-    return this.props.totalRecords? (
+    return this.props.totalRecords ? (
       <div className="paginator">
         {
-          allowPageSize && this.props.totalRecords > Math.min(...this.props.pageSizes) &&
+          allowPageSize && this.props.totalRecords > Math.min(this.props.pageSizes) &&
           <span>
             <span className="entires-per-page-label">{I18N.getI18N("EntriesPerPage")}</span>
               {getSelectPageSize()}
@@ -293,25 +288,19 @@ Paginator.state = {
 
 Paginator.propTypes = {
   allowPageSize: PropTypes.bool, //allow user to change page size.
-  currentPage: PropTypes.number,
   defaults:  PropTypes.object, // refrence to defaults lile buttons supported and their labels/icocs etc.
   eventCatalog: PropTypes.object, // catalog of all the events supported by the table, these venets have specific payload associated.
   logger: PropTypes.object.isRequired, // logger.
   onPaginatorChange: PropTypes.func,
   pageLinksToShow: PropTypes.number,
-  pageSize: PropTypes.number,
-  pageSizes: PropTypes.array, // default pages sizes to support.
   totalRecords: PropTypes.number
 }
 
 Paginator.defaultProps = {
   allowPageSize: false,
-  currentPage: 1,
   defaults: Defaults.paginator,
   onPaginatorChange: (payload) => {this.logger.log('Default onPaginatorChange handller called with payload -->' + JSON.stringify(payload));},
   pageLinksToShow: 3,
-  pageSize: 10,
-  pageSizes: [],
   totalRecords: 0
 }
 

@@ -8,7 +8,7 @@ function Icon(props) {
   const {iconClass, iconName, ...elementProps} = props;
 
     return (
-      <i className={iconClass} {...elementProps} style={{"vertical-align": "middle"}}>{iconName}</i>
+      <i className={iconClass} {...elementProps} style={{"verticalAlign": "middle"}}>{iconName}</i>
     );
 }
 

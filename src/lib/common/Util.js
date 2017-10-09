@@ -80,10 +80,10 @@ export default {
       'foo',
       'bar',
       'baz'
-    ]);
+    ], context);
   */
 
-  bindFunctions(functions) {
-    functions.forEach(f => this[f] = this[f].bind(this));
+  bindFunctions(functions, context) {
+    functions.forEach(f => context[f] = context[f].bind(context));
   },
 };
