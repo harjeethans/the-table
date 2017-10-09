@@ -216,7 +216,8 @@ dialog.fixed {
     padding: 0 10px; }
 
 .the-table .header-container {
-  padding: 0px 10px; }
+  display: flex;
+  justify-content: space-between; }
 
 .fe-table .table-container .body table .child-row:last-of-type {
   border-bottom: 1px solid red !important; }
@@ -324,7 +325,7 @@ dialog.fixed {
   opacity: 0.5; }
 
 .the-table .toolbar-container {
-  padding: 10px 6px; }
+  padding: 10px 0px; }
   .the-table .toolbar-container .toolbar {
     height: 33px;
     display: flex; }
@@ -395,20 +396,17 @@ dialog.fixed {
     .the-table .paginator-container .paginator .entires-per-page-label {
       margin: 0px 5px; }
 
-.table-search {
-  position: relative;
-  margin: 0 10px;
-  display: inline-block; }
-  .table-search .search-input {
-    border-radius: 18px;
-    padding-right: 35px; }
-  .table-search button {
+.freeform-search {
+  position: relative; }
+  .freeform-search .search-input {
+    padding: 8px 35px 8px 8px; }
+  .freeform-search button {
     position: absolute;
-    top: 1px;
-    right: 0;
+    top: 4px;
+    right: 1px;
     border: 0 none;
     padding-left: 0; }
-    .table-search button:hover, .table-search button:focus, .table-search button:active {
+    .freeform-search button:hover, .freeform-search button:focus, .freeform-search button:active {
       background: none !important; }
 
 /*

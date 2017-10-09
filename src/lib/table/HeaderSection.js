@@ -6,7 +6,8 @@ import classNames from 'classnames';
 
 import Defaults from './Defaults';
 import I18N from '../locale/I18N';
-//import Fa from './bootstrap/Fa';
+
+import Search from './Search';
 
 class HeaderSection extends React.Component {
   render() {
@@ -14,9 +15,15 @@ class HeaderSection extends React.Component {
     const {maxWidth, selected} = this.props;
     const showSelectionCount = !(this.props.selectionModel === 'none' || this.props.selectionModel === 'one');
     return (
-      <div className="container-flex header-container" ref="headerContainer" style={{maxWidth}}>
+      <div className="header-container" ref="headerContainer" style={{maxWidth}}>
         { showSelectionCount &&
         <p className="text-info">{selected.length} {I18N.getI18N("RowsSelected")}</p>}
+        <Search
+          delay={this.props.delay}
+          minLength={this.props.minLength}
+          onSearchChange={this.props.onSearchChange}
+          ref="search">
+        </Search>
       </div>);
   }
 }
@@ -24,8 +31,10 @@ class HeaderSection extends React.Component {
 
 HeaderSection.propTypes = {
   maxWidth: PropTypes.number, // maximun width available from layout
+  onSearchChange: PropTypes.func, // callback for onChange  
   selected: PropTypes.array, // number of rows selected.
-  selectionModel: PropTypes.oneOf(['all','some','one','none']) // all/some/one/none meaning select all available, some has no select all, and non is non selectable.
+  selectionModel: PropTypes.oneOf(['all','some','one','none']), // all/some/one/none meaning select all available, some has no select all, and non is non selectable.
+  showFreeFormSearchBar: PropTypes.bool  
 }
 
 HeaderSection.defaultProps = {

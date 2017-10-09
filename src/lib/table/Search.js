@@ -52,9 +52,9 @@ class Search extends React.Component {
   render(){
 
     return (
-      <div className="table-search">
+      <div className="freeform-search">
         <input
-          className="form-control input-sm search-input"
+          className="search-input"
           onChange={this.handleChange}
           onKeyPress={this.onKeyPress}
           placeholder={I18N.getI18N("Search")}

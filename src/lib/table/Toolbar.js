@@ -6,7 +6,15 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import Util from '../common/Util';
+
+import Button from '../common/components/form/Button';
 import Icon from '../common/components/Icon';
+import IconButton from '../common/components/form/IconButton';
+
+import Menu from '../common/components/menu/Menu';
+import MenuItem from '../common/components/menu/MenuItem';
+
+
 import Search from './Search';
 import Settings from './Settings';
 import GridModal from './GridModal';
@@ -92,31 +100,16 @@ class Toolbar extends React.Component {
   renderPrimaryToolbar() {
     const primaryClasses = classNames('primary');
     const tbData = (this.state && this.state.primaryToolbarItems) ? this.state.primaryToolbarItems : [];
-    return this.renderToolbar(tbData, primaryClasses, false);
+    return this.renderToolbar(tbData, primaryClasses);
   }
 
   renderSecondaryToolbar() {
     const secondaryClasses = classNames('secondary');
     const tbData = (this.state && this.state.secondaryToolbarItems) ? this.state.secondaryToolbarItems : [];
-    return this.renderToolbar(tbData, secondaryClasses, true);
+    return this.renderToolbar(tbData, secondaryClasses);
   }
 
-  renderToolbar(toolbarItems, toolbarClasses, pullRight) {
-
-    const search = function(){
-      if(this.props.showFreeFormSearchBar){
-        return (
-        <Search
-          icons={this.props.icons}
-          delay={this.props.delay}
-          minLength={this.props.minLength}
-          onSearchChange={this.props.onSearchChange}
-          ref="search">
-        </Search>);
-      } else {
-        return null;
-      }
-    }.bind(this);
+  renderToolbar(toolbarItems, toolbarClasses) {
 
     const getLabel = function(item){
       if(item.iconClass) {
@@ -126,7 +119,8 @@ class Toolbar extends React.Component {
       }
     }
     const selected = this.props.selected;
-    const disabled = function(item){
+
+    const isDisabled = function(item){
       if(item.enableOnSelection && selected.length===0){
         return true;
       } else if(item.enableOnSelection && item.selectionModel==='one' && selected.length>1){
@@ -136,14 +130,35 @@ class Toolbar extends React.Component {
       }
     }
 
-    const createDropdown = function(item, i){
+    const createItem = function(item, i){
+
+      const disabled = isDisabled(item);
+      const props = {
+        disabled,
+       'data-action': item.action,
+       'data-confirm': item.needsConfirmation,
+       'data-confirm-message': item.confirmationMessage,
+       'data-confirm-title': item.confirmationTitle,
+       'data-promisable': item.promisable,
+       'key': i,
+       'onClick': this.onClick,
+       'title': item.label || ''
+       }
+
       if(item.items){
+        const _props = {
+          key: i,
+          id: `menu-${i}`
+        };
+        if(item.iconName){
+          _props['icon'] = item.iconName;
+        } else {
+          _props['label'] = item.label;
+        }
+
         return (
-          <button title={item.label} key={i} id={`dropdown-${i}`}>
-            <button>
-              {getLabel(item)}
-            </button>
-            <button>
+          <Menu {...props} >
+
               {item.items.map(function(innerItem, j) {
                 return (
                   <button
@@ -152,43 +167,35 @@ class Toolbar extends React.Component {
                     data-confirm-message = {innerItem.confirmationMessage}
                     data-confirm-title = {innerItem.confirmationTitle}
                     data-promisable = {innerItem.promisable}
-                    disabled = {disabled(innerItem)}
+                    disabled = {isDisabled(innerItem)}
                     key = {j}
                     onClick = {this.onClick}>
                     {getLabel(innerItem)}
                   </button>
                 );
               }, this)}
-            </button>
-          </button>
+          </Menu>
         );
       } else if(item.isOverlay){
         return this.generateOverlayContent(item, i);
       } else {
-        return (
-          <button
-            disabled = {disabled(item)}
-            data-action = {item.action}
-            data-confirm = {item.needsConfirmation}
-            data-confirm-message = {item.confirmationMessage}
-            data-confirm-title = {item.confirmationTitle}
-            data-promisable = {item.promisable}
-            key = {i}
-            onClick = {this.onClick}
-            title = {item.label}>
-            {getLabel(item)}
-          </button>
-        );
+          if(item.iconName) {
+            return (
+              <IconButton {...props} iconName={item.iconName}></IconButton>
+            );
+          } else {
+            return (
+              <Button {...props}>{item.label}</Button>);
+          }
       }
     }
+
+
 
     //var toolbarItems = (this.state && this.state.primaryToolbarItems) ? this.state.primaryToolbarItems : [];
     return (
       <div className={toolbarClasses}>
-        {this.props.showFreeFormSearchBar && search()}
-        <button className={toolbarClasses}>
-          {toolbarItems.map(createDropdown, this)}
-        </button>
+        {toolbarItems.map(createItem, this)}
       </div>
 
     );
@@ -236,14 +243,11 @@ class Toolbar extends React.Component {
 Toolbar.propTypes = {
   confirmationMessage: PropTypes.string, // confirmation messgae to display if not provided by toolbar item.
   confirmationTitle: PropTypes.string,
-  delay: PropTypes.number, // time in ms to be used for all delaying, like use typeing in for a search etc.
   disabledToolbarItems: PropTypes.array, // toolbar items disabled , provide action-id s from Defaults.toolbarItems
   exculdedToolbarItems: PropTypes.array, // toolbar items exculded , provide action-id s from Defaults.toolbarItems
   eventCatalog: PropTypes.object, // catalog of all the events supported by the table, these venets have specific payload associated.
   icons: PropTypes.object,
   logger: PropTypes.object.isRequired, // logger.
-  minLength: PropTypes.number, // minimum characters that user needs to type for things like search.
-  onSearchChange: PropTypes.func, // callback for onChange
   onToolbarChange: PropTypes.func,
   selected: PropTypes.array, // reference to selected on table as some toolbar items are selection aware.
   showFreeFormSearchBar: PropTypes.bool, // if we need to show the free form search bar on the right side of the toolbar section.

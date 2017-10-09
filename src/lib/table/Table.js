@@ -651,6 +651,18 @@ class Table extends Component {
         );
       }
 
+
+      _renderHeader() {
+
+        const {delay, minLength, onSearchChange, selectionModel, showFreeFormSearchBar} = this.props;
+        const maxWidth = this.state.dimension.w;
+        const selected = this.state.selected;
+        const props = {delay, minLength, onSearchChange, selectionModel, showFreeFormSearchBar, maxWidth, selected};
+
+        return (<HeaderSection ref="headerSection" {...props}></HeaderSection>);
+        
+      }
+
       render() {
         this.logger.log('Calling Table.render()');
         let paginatorComponent;
@@ -678,7 +690,7 @@ class Table extends Component {
         return (
           <div className="the-table" ref="table" style={tableStyle}>
             {toolbarComponent}
-            <HeaderSection ref="headerSection" maxWidth={this.state.dimension.w} selectionModel={this.props.selectionModel} selected={this.state.selected}></HeaderSection>
+            {this._renderHeader()}
             <div className="table-container" ref="tableContainer" style={tableStyle}>
               <div className="table-scroller" ref="tableScroller" style={{'width': this.state.dimension.w + 2}}>
                 <Header

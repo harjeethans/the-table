@@ -1,15 +1,12 @@
-.table-search {
+.freeform-search {
   position: relative;
-  margin: 0 10px;
-  display: inline-block;
   .search-input {
-    border-radius: 18px;
-    padding-right: 35px;
+    padding: 8px 35px 8px 8px;
   }
   button {
     position: absolute;
-    top: 1px;
-    right: 0;
+    top: 4px;
+    right: 1px;
     border: 0 none;
     padding-left: 0;
     &:hover, &:focus, &:active {

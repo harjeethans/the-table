@@ -111,29 +111,28 @@ export default {
       'action': 'refresh',
       'confirmationMessage': 'Hell will fall upon if you do this!',
       'confirmationTitle': 'Hellish',
-      'iconName': 'fa-refresh',
+      'iconName': 'refresh',
       'label': I18N.getI18N('Refresh'),
       'needsConfirmation': true,
       'type': 'primary'
     }, {
       'action': 'add',
-      'iconName': 'fa-plus',
+      'iconName': 'add',
       'label': I18N.getI18N('Add'),
       'type': 'primary',
       'promisable': true
     }, {
       'action': 'duplicate',
-      'iconName': 'fa-clone',
+      'iconName': 'control_point_duplicate',
       'label': I18N.getI18N('Duplicate'),
       'enableOnSelection': true,
       'selectionModel': 'one',
       'type': 'primary'
     },
-
     {
-      'action': 'trash',
-      'iconName': 'fa-trash',
-      'label': I18N.getI18N('Trash'),
+      'action': 'delete',
+      'iconName': 'delete',
+      'label': I18N.getI18N('Delete'),
       'type': 'primary',
       'items': [{
         'action': 'trash-all',
@@ -151,28 +150,28 @@ export default {
       }]
     }, {
       'action': 'edit',
-      'iconName': 'fa-edit',
+      'iconName': 'mode_edit',
       'label': I18N.getI18N('Edit'),
       'enableOnSelection': true,
       'selectionModel': 'one',
       'type': 'primary'
     }, {
       'action': 'moveup',
-      'iconName': 'fa-arrow-up',
+      'iconName': 'keyboard_arrow_up',
       'label': I18N.getI18N('MoveUp'),
       'enableOnSelection': true,
       'selectionModel': 'one',
       'type': 'primary'
     }, {
       'action': 'movedown',
-      'iconName': 'fa-arrow-down',
+      'iconName': 'keyboard_arrow_down',
       'label': I18N.getI18N('MoveDown'),
       'enableOnSelection': true,
       'selectionModel': 'one',
       'type': 'primary'
     }, {
       'action': 'filter-simple',
-      'iconName': 'fa-filter',
+      'iconName': 'filter_list',
       'label': I18N.getI18N('Filter'),
       'type': 'secondary',
       'xxxitems': [{
@@ -199,7 +198,7 @@ export default {
       }]
     }, {
       'action': 'settingsxxx',
-      'iconName': 'fa-cog',
+      'iconName': 'settings',
       'label': I18N.getI18N('Settings'),
       'type': 'secondary',
       'isOverlay': true
