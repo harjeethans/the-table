@@ -1,0 +1,30 @@
+.button {
+  display: inline-block;
+  font-family: inherit;
+  outline: 0;
+  border: 0;
+  border-radius: 2px;
+  background: #f1f1f1;
+  white-space: nowrap;
+  padding: 8px 12px;
+  margin: 5px;
+  line-height: 1.4;
+  position: relative;
+  text-transform: uppercase;
+  &:not(.disabled):hover,
+  &:not(.disabled):focus,
+  &.active {
+    color: white;
+    background: black;
+  }
+  &:not(.disabled):active {
+    transform: translateY(1px);
+  }
+  &.disabled {
+    opacity: 0.5;
+  }
+  &.button-small {
+    font-size: 0.85rem;
+    padding: 0.2rem 0.3rem;
+  }
+}

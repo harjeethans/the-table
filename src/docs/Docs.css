@@ -2,8 +2,11 @@
   background-color: #212121;
 }
 
-
-.mdc-toolbar__title-link {
+.nav-section {
+  background-color: #1D1E1E;
+  display: flex;
+}
+.nav-link {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

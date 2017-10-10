@@ -8,11 +8,13 @@ import classnames from 'classnames';
 import Button from '../form/Button';
 import IconButton from '../form/IconButton';
 
+//https://codepen.io/raneio/pen/NbbZEM
+
 
 const modifierClasses = {
-  'mdc-menu--small': true,
-  'mdc-menu--medium': false,
-  'mdc-menu--large': false
+  'menu--small': true,
+  'menu--medium': false,
+  'menu--large': false
 };
 
 class Menu extends React.Component {
@@ -33,8 +35,8 @@ class Menu extends React.Component {
     if(position === 'TL'){
       style = Object.assign({}, style, {
         transformOrigin: 'left bottom 0px',
-        left: 0,
-        top: 0
+        left: 5,
+        top: 20
       });
     }
 
@@ -87,8 +89,8 @@ class Menu extends React.Component {
 
     const classes = classnames(baseClass, className);
     const containerClasses = classnames({
-      'mdc-simple-menu': true,
-      'mdc-simple-menu--open': this.state.isOpen
+      'dropdown-menu': true,
+      'dropdown-menu__open': this.state.isOpen
     })
 
     let target;
@@ -98,15 +100,12 @@ class Menu extends React.Component {
       target = <Button onClick={this.toggle}>{label}</Button>
     }
 
-
     return (
       <div className={classes}>
         {target}
-        <div className={containerClasses} onClick={this.onClick} style={this.state.style}>
-          <ul className="mdc-simple-menu__items mdc-list">
-            {children}
-          </ul>
-        </div>
+        <ul className={containerClasses} onClick={this.onClick} style={this.state.style}>
+          {children}
+        </ul>
       </div>
     );
   }
@@ -129,7 +128,7 @@ Menu.propTypes = {
 }
 
 Menu.defaultProps = {
-  baseClass: 'mdc-menu-anchor',
+  baseClass: 'dropdown',
   position: 'TL'
 }
 

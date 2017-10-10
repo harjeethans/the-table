@@ -1,4 +1,42 @@
-.mdc-menu {
+.dropdown {
+  display: inline-block;
+  position: relative;
+  
+  &-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 6px 0 rgba(0,0,0,0.1);
+    background-color: #ffffff;
+    list-style-type: none;
+    padding: 0;
+    &__open {
+      display: inline-block;
+      z-index: 999;
+    }
+    &-item {
+      padding: 10px 20px;
+      cursor: pointer;
+      white-space: nowrap;
+      &:hover {
+        background-color: #f6f6f6;
+      }
+      &__link {
+        display: block;
+        margin: -10px -20px;
+        padding: 10px 20px;
+      }
+      &__divider {
+        padding: 0;
+        border-bottom: 1px solid #cccccc;
+      }
+    }
+  }
+
+}
+
+.menu {
   position: relative;
   background: $background-mdc-menu;
   &__container{

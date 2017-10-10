@@ -5,8 +5,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 const baseClasses = {
-  'mdc-button': true,
-  'mdc-js-button': true
+  'button': true
 };
 
 function Button(props) {

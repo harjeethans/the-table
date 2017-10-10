@@ -20,33 +20,33 @@ class Docs extends Component {
     return (
         <Router>
           <div className="the-table-docs">
-            <div className="mdc-layout mdc-js-layout mdc-layout--fixed-header">
-              <header className="mdc-toolbar mdc-toolbar--fixed mdc-toolbar--platform">
-              <div className="mdc-toolbar__row">
-                <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
-                  <Link className="mdc-toolbar__title-link" to="/">
-                    <h4 className="mdc-toolbar__title mdc-toolbar__title--full">the-table</h4>
-                  </Link>
-                  <Link className="mdc-toolbar__title-link" to="/about">
-                    <h1 className="mdc-toolbar__title mdc-toolbar__title--full">About</h1>
-                  </Link>
-                  <Link className="mdc-toolbar__title-link" to="/topics">
-                    <h1 className="mdc-toolbar__title mdc-toolbar__title--full">Getting Started</h1>
-                  </Link>
-                  <Link className="mdc-toolbar__title-link" to="/components">
-                    <h1 className="mdc-toolbar__title mdc-toolbar__title--full">Components</h1>
-                  </Link>
-                  <Link className="mdc-toolbar__title-link" to="/table">
-                    <h1 className="mdc-toolbar__title mdc-toolbar__title--full">Table</h1>
-                  </Link>
-                  <Link className="mdc-toolbar__title-link" to="/localtable">
-                    <h1 className="mdc-toolbar__title mdc-toolbar__title--full">Local Table</h1>
-                  </Link>
-                  <Link className="mdc-toolbar__title-link" to="/faq">
-                    <h1 className="mdc-toolbar__title mdc-toolbar__title--full"> FAQ </h1>
-                  </Link>
-                </section>
-              </div>
+            <div className="header">
+              <header className="header">
+                <div className="header__row">
+                  <section className="nav-section">
+                    <Link className="nav-link" to="/">
+                      <h4 className="">the-table</h4>
+                    </Link>
+                    <Link className="nav-link" to="/about">
+                      <h4 className="">About</h4>
+                    </Link>
+                    <Link className="nav-link" to="/topics">
+                      <h4 className="">Getting Started</h4>
+                    </Link>
+                    <Link className="nav-link" to="/components">
+                      <h4 className="">Components</h4>
+                    </Link>
+                    <Link className="nav-link" to="/table">
+                      <h4 className="">Table</h4>
+                    </Link>
+                    <Link className="nav-link" to="/localtable">
+                      <h4 className="">Local Table</h4>
+                    </Link>
+                    <Link className="nav-link" to="/faq">
+                      <h4 className=""> FAQ </h4>
+                    </Link>
+                  </section>
+                </div>
             </header>
             <main className="mdc-layout__content">
               {this.props.children}

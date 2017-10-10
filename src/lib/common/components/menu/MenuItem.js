@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 const baseClasses = {
-  'mdc-list-item': true
+  'dropdown-menu-item': true
 };
 
 function MenuItem(props) {
@@ -35,7 +35,7 @@ MenuItem.PropTypes = {
 };
 
 MenuItem.defaultProps = {
-  dividerClass: 'mdc-list-divider',
+  dividerClass: 'dropdown-menu-item__divider',
   onClick: (event) => { console.log('MenuItem onClick'); },
 }
 

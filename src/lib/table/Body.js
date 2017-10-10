@@ -106,21 +106,19 @@ class Body extends React.Component {
     }
     return (
       <div className={containerClasses} style={style}>
-        <div className="table-container">
-          { this.state.data && this.state.data.length>0 &&
-            <table className={tableClasses} width={this.props.dimension.w}>
-              {colGroup}
-              <tbody>
-                {rows}
-              </tbody>
-            </table>
-          }
-          { (!this.state.data || this.state.data.length===0) &&
-            <div className="no-data-found">
-              <strong>{I18N.getI18N(this.props.noDataMessage)}</strong>
-            </div>
-          }
-        </div>
+        { this.state.data && this.state.data.length>0 &&
+          <table className={tableClasses} width={this.props.dimension.w}>
+            {colGroup}
+            <tbody>
+              {rows}
+            </tbody>
+          </table>
+        }
+        { (!this.state.data || this.state.data.length===0) &&
+          <div className="no-data-found">
+            <strong>{I18N.getI18N(this.props.noDataMessage)}</strong>
+          </div>
+        }
         <div ref="modalContainer"></div>
       </div>
     )

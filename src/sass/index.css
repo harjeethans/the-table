@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@import url(../../node_modules/material-components-web/dist/material-components-web.css);
 .valign-wrapper {
   display: flex;
   align-items: center; }
@@ -11,17 +10,46 @@ blockquote {
   padding-left: 1.5rem;
   border-left: 5px solid black; }
 
-.mdc-menu {
+.dropdown {
+  display: inline-block;
+  position: relative; }
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    list-style-type: none;
+    padding: 0; }
+    .dropdown-menu__open {
+      display: inline-block;
+      z-index: 999; }
+    .dropdown-menu-item {
+      padding: 10px 20px;
+      cursor: pointer;
+      white-space: nowrap; }
+      .dropdown-menu-item:hover {
+        background-color: #f6f6f6; }
+      .dropdown-menu-item__link {
+        display: block;
+        margin: -10px -20px;
+        padding: 10px 20px; }
+      .dropdown-menu-item__divider {
+        padding: 0;
+        border-bottom: 1px solid #cccccc; }
+
+.menu {
   position: relative;
   background: #ffffff; }
-  .mdc-menu__container {
+  .menu__container {
     width: 100%;
     position: relative; }
-  .mdc-menu--small {
+  .menu--small {
     width: 150px; }
-  .mdc-menu--medium {
+  .menu--medium {
     width: 250px; }
-  .mdc-menu--large {
+  .menu--large {
     width: 400px; }
 
 dialog {
@@ -98,6 +126,30 @@ dialog.fixed {
   opacity: .5;
   background-color: #d4d4d4;
   z-index: 10; }
+
+.button {
+  display: inline-block;
+  font-family: inherit;
+  outline: 0;
+  border: 0;
+  border-radius: 2px;
+  background: #f1f1f1;
+  white-space: nowrap;
+  padding: 8px 12px;
+  margin: 5px;
+  line-height: 1.4;
+  position: relative;
+  text-transform: uppercase; }
+  .button:not(.disabled):hover, .button:not(.disabled):focus, .button.active {
+    color: white;
+    background: black; }
+  .button:not(.disabled):active {
+    transform: translateY(1px); }
+  .button.disabled {
+    opacity: 0.5; }
+  .button.button-small {
+    font-size: 0.85rem;
+    padding: 0.2rem 0.3rem; }
 
 .the-table::placeholder {
   color: #444444; }
@@ -217,7 +269,9 @@ dialog.fixed {
 
 .the-table .header-container {
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0px; }
 
 .fe-table .table-container .body table .child-row:last-of-type {
   border-bottom: 1px solid red !important; }
