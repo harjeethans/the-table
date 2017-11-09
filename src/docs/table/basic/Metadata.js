@@ -117,7 +117,7 @@ export default {
       'type': 'primary'
     }, {
       'action': 'add',
-      'iconName': 'add',
+      'iconNamexxx': 'add',
       'label': I18N.getI18N('Add'),
       'type': 'primary',
       'promisable': true

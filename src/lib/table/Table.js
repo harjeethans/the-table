@@ -123,7 +123,7 @@ class Table extends Component {
       if(nextProps.data){
         _state.data = nextProps.data;
       }
-      if(nextProps.totalRecords){
+      if(nextProps.totalRecords === 0 ||nextProps.totalRecords){
         _state.totalRecords = nextProps.totalRecords;
       }
       if(nextProps.selected){
@@ -464,19 +464,30 @@ class Table extends Component {
         } else if(change.type === this.props.eventCatalog.selectAll) {
           let refComp;
           const _allSelected = [];
+          const _disabledSelected = [];
           Object.keys(this.refs.body.refs).map(function(ref){
             refComp = this.refs.body.refs[ref];
             if(refComp && refComp.isReactComponent){
-              refComp.setState({'isSelected': payload.isSelected});
-              _allSelected.push(ref);
+              const isDisabled = this.props.disabled ? this.props.disabled.includes(refComp.state.model[this.props.structure.id]) : false;
+              if(!isDisabled) {
+                refComp.setState({'isSelected': payload.isSelected});
+                _allSelected.push(ref);
+              } else if(refComp.state.isSelected) {
+                _disabledSelected.push(ref);
+                _allSelected.push(ref);
+              }
             }
           }, this);
-
+    
           if(payload.isSelected){
-            Array.prototype.push.apply(this.state.selected, _allSelected);
+            this.setState({
+              selected:_allSelected
+            });
             //this.state.selected = Object.keys(this.refs.body.refs);
           } else {
-            this.state.selected.splice(0, this.state.selected.length);
+            this.setState({
+              selected:_disabledSelected
+            })
           }
 
 

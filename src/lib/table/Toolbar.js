@@ -150,28 +150,28 @@ class Toolbar extends React.Component {
           key: i,
           id: `menu-${i}`
         };
+        let className;
         if(item.iconName){
-          _props['icon'] = item.iconName;
+          props['icon'] = item.iconName;
         } else {
-          _props['label'] = item.label;
+          props['label'] = item.label;
+          className='toolbar-menu';
         }
-
         return (
-          <Menu {...props} >
-
-              {item.items.map(function(innerItem, j) {
-                return (
-                  <button
-                    data-action = {innerItem.action}
-                    data-confirm = {innerItem.needsConfirmation}
-                    data-confirm-message = {innerItem.confirmationMessage}
-                    data-confirm-title = {innerItem.confirmationTitle}
-                    data-promisable = {innerItem.promisable}
-                    disabled = {isDisabled(innerItem)}
-                    key = {j}
-                    onClick = {this.onClick}>
-                    {getLabel(innerItem)}
-                  </button>
+          <Menu {...props} className={className}>
+            {item.items.map(function(innerItem, j) {
+              return (
+                <MenuItem
+                  data-action = {innerItem.action}
+                  data-confirm = {innerItem.needsConfirmation}
+                  data-confirm-message = {innerItem.confirmationMessage}
+                  data-confirm-title = {innerItem.confirmationTitle}
+                  data-promisable = {innerItem.promisable}
+                  disabled = {isDisabled(innerItem)}
+                  key = {j}
+                  onClick = {this.onClick}>
+                  {getLabel(innerItem)}
+                </MenuItem>
                 );
               }, this)}
           </Menu>
@@ -185,7 +185,7 @@ class Toolbar extends React.Component {
             );
           } else {
             return (
-              <Button {...props}>{item.label}</Button>);
+              <Button className="toolbar-button" {...props}>{item.label}</Button>);
           }
       }
     }

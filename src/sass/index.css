@@ -383,6 +383,12 @@ dialog.fixed {
   .the-table .toolbar-container .toolbar {
     height: 33px;
     display: flex; }
+    .the-table .toolbar-container .toolbar .toolbar-menu .button {
+      padding: 12px;
+      margin: 0px 5px; }
+    .the-table .toolbar-container .toolbar .toolbar-button {
+      padding: 12px;
+      margin: 0px 5px; }
     .the-table .toolbar-container .toolbar .primary {
       flex-grow: 1; }
     .the-table .toolbar-container .toolbar .settings {

@@ -9,6 +9,16 @@
     .toolbar {
       height: 33px;
       display: flex;
+      .toolbar-menu {
+        .button {
+          padding: 12px;
+          margin: 0px 5px;
+        }
+      }
+      .toolbar-button {
+        padding: 12px;
+        margin: 0px 5px;
+      }
       .primary {
         flex-grow: 1;
       }
